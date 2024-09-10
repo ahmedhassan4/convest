@@ -1,0 +1,27 @@
+import { Files } from "@phosphor-icons/react";
+
+export const queryKeys = {
+    auth: "auth",
+    dashboard: "dashboard",
+    all_courses: "all_courses",
+    all_unversities: "all_universities",
+    home_announcements: "HomeAnnouncements",
+    users: "users",
+    majors: "majors",
+    course_detailes: "courses_detailes",
+    instiuuitions_detailes: "institutions_detailes",
+    calendar_data_key: "calendar_data_key",
+    eventsType: "eventsType_key",
+    people_course: "people_course_key",
+    calendarShow: "calendarShow_key",
+    eventAttendance: "eventAttendance_key",
+    modulesKey: "modulesKey",
+    announcements_list: "announcements_list",
+    assignments_list: "assignments_list",
+    discussions_list: "discussions_list",
+    student_in_course: "student_in_course",
+    page_list: "page_list",
+    files_list: "Files_list",
+    all_semestres: "all_semesters",
+    all_users: "all_users",
+};
