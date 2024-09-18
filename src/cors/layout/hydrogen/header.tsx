@@ -7,10 +7,11 @@ import Sidebar from "./sidebar";
 import HeaderMenuRight from "../header-menu-right";
 import Logo from "@/componnets/logo";
 import SearchWidget from "@/componnets/search/search";
+import ContactUs from "./ContactUs";
 
 export default function Header() {
   return (
-    <StickyHeader className="z-[990] 2xl:py-5 3xl:px-8  4xl:px-10">
+    <StickyHeader className="z-[990] 2xl:py-5 3xl:px-8  4xl:px-10 border-b">
       <div className="flex w-full max-w-2xl items-center">
         <HamburgerButton
           view={<Sidebar className="static w-full 2xl:w-full" />}
@@ -23,7 +24,8 @@ export default function Header() {
           <Logo iconOnly={true} />
         </Link>
 
-        <SearchWidget />
+        {/* <SearchWidget /> */}
+        <ContactUs/>
       </div>
 
       <HeaderMenuRight />

@@ -21,7 +21,8 @@ export default function Sidebar({ className }: { className?: string }) {
           aria-label="Site Logo"
           className="text-gray-800 hover:text-gray-900"
         >
-          <Image src={LogoImage} alt="elli" width={96} height={28} />
+          <Image src={LogoImage} alt="ConvestImage" width={143} height={38}/>
+
         </Link>
       </div>
 
