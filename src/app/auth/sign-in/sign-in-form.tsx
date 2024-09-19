@@ -74,6 +74,11 @@ export default function SignInForm() {
 
   return (
     <>
+     <div className="flex items-center mb-[28px]">
+        <h1 className="mr-4 text-[#666666] font-[500] text-[14px] leading-[20px]">LET&apos;S GET STARTED!</h1>
+        <div className="flex-grow border-t border-gray-200"></div>
+    </div>
+
       <Form<LoginSchema>
         validationSchema={loginSchema}
         onSubmit={onSubmit}
@@ -83,14 +88,13 @@ export default function SignInForm() {
         {({ register, formState: { errors } }) => (
           <div className="space-y-5">
             <Input
-              type="email"
+              type="number"
               size={isMedium ? "lg" : "xl"}
-              label="Email"
-              placeholder="Enter your email"
-              rounded="pill"
+              label="Phone Number"
+              prefix={<span className="text-[#2B90EC] text-[16px] font-medium mr-2">+20</span>}
+              placeholder="Enter your number"
               className="[&>label>span]:font-medium"
-              {...register("email")}
-              error={errors.email?.message}
+              rounded="pill"
             />
             <Password
               label="Password"
@@ -102,15 +106,9 @@ export default function SignInForm() {
               error={errors.password?.message}
             />
             <div className="flex items-center justify-between pb-2">
-              <Checkbox
-                {...register("rememberMe")}
-                label="Remember Me"
-                variant="flat"
-                className="[&>label>span]:font-medium"
-              />
               <Link
                 href={routes.auth.forgetPassword}
-                className="h-auto p-0 text-sm font-semibold text-blue underline transition-colors hover:text-gray-900 hover:no-underline">
+                className="h-auto p-0 leading-[24px] font-semibold text-[#2B90EC] transition-colors text-[14px] hover:text-gray-500 hover:no-underline">
                 Forget Password?
               </Link>
             </div>
@@ -120,17 +118,17 @@ export default function SignInForm() {
               size={isMedium ? "lg" : "xl"}
               rounded="pill"
               isLoading={isPending || isSuccess}>
-              Sign in
+              Continue
             </Button>
           </div>
         )}
       </Form>
       <Text className="mt-5 text-center text-[15px] leading-loose text-gray-500 lg:text-start xl:mt-7 xl:text-base">
-        Don’t have an account?{" "}
+      Don&apos;t have an account?{" "}
         <Link
-          href={routes.auth.signUp}
-          className="font-semibold text-gray-700 transition-colors hover:text-blue">
-          Create Account
+          href={routes.auth.login}
+          className="font-semibold text-[#2B90EC] transition-colors hover:text-blue">
+          Sign Up
         </Link>
       </Text>
     </>

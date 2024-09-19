@@ -30,16 +30,17 @@ export default function AuthWrapperTwo({
   return (
     <div className="min-h-screen items-center justify-center xl:flex xl:bg-gray-50 xl:px-5 xl:py-16 2xl:px-8 2xl:py-28">
       <div className="mx-auto w-full py-2 xl:py-14 2xl:w-[1720px]">
-        <div className="rounded-xl bg-white xl:flex dark:bg-transparent dark:xl:bg-gray-100/50">
+        <div className="rounded-xl bg-white xl:flex dark:bg-transparent dark:xl:bg-gray-100/50 shadow-md">
           <AuthNavBar />
           <IntroBannerBlock />
-          <div className="flex w-full items-center px-4 xl:px-0">
-            <div className="mx-auto w-full max-w-sm shrink-0 py-16 md:max-w-md xl:px-8 xl:py-10 2xl:max-w-xl 2xl:py-14 3xl:py-20">
+          <div className="flex w-full items-center px-4 xl:px-0 ">
+            <div className="mx-auto w-[80%] max-w-sm shrink-0 py-16 md:max-w-md xl:px-8 xl:py-10 2xl:max-w-xl 2xl:py-14 3xl:py-20">
               <Title
                 as="h2"
-                className="mb-6 text-center text-[26px] font-bold leading-snug md:!leading-normal xl:mb-8 xl:text-start xl:text-3xl xl:text-[28px] 2xl:-mt-1 2xl:text-4xl"
+                className="mb-6 text-center text-[26px] font-bold leading-snug md:!leading-normal xl:mb-8 xl:text-start xl:text-3xl xl:text-[28px] 2xl:-mt-1 2xl:text-[28px]"
               >
                 {title}
+                <span style={{ color: '#2B90EC', fontSize: '1.2em' }}>.</span>
               </Title>
   
               {children}

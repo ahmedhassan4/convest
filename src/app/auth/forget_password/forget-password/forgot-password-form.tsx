@@ -59,6 +59,10 @@ export default function ForgetPasswordForm() {
 
   return (
     <>
+    <div className="flex items-center mb-[28px]">
+        <h1 className="mr-4 text-[#666666] font-[500] text-[14px] leading-[20px]">Happens to the best of us</h1>
+        <div className="flex-grow border-t border-gray-200"></div>
+    </div>
       <Form<ForgetPasswordSchema>
         validationSchema={forgetPasswordSchema}
         resetValues={reset}
@@ -68,15 +72,14 @@ export default function ForgetPasswordForm() {
         }}>
         {({ register, formState: { errors } }) => (
           <div className="space-y-5">
-            <Input
-              type="email"
+           <Input
+              type="number"
               size={isMedium ? "lg" : "xl"}
-              label="Email"
-              placeholder="Enter your email"
-              rounded="pill"
+              label="Phone Number"
+              prefix={<span className="text-[#2B90EC] text-[16px] font-medium mr-2">+20</span>}
+              placeholder="Enter your number"
               className="[&>label>span]:font-medium"
-              {...register("email")}
-              error={errors.email?.message as string}
+              rounded="pill"
             />
             <Button
               className="border-primary-light w-full border-2 text-base font-medium text-white"
@@ -84,17 +87,17 @@ export default function ForgetPasswordForm() {
               size={isMedium ? "lg" : "xl"}
               rounded="pill"
               isLoading={isPending}>
-              Reset Password
+              Reset
             </Button>
           </div>
         )}
       </Form>
       <Text className="mt-5 text-center text-[15px] leading-loose text-gray-500 lg:text-start xl:mt-7 xl:text-base">
-        Don’t want to reset?{" "}
+        Already have an account?{" "}
         <Link
           href={routes.auth.login}
-          className="font-semibold text-gray-700 transition-colors hover:text-blue">
-          Sign In
+          className="font-semibold text-[#2B90EC] transition-colors hover:text-blue">
+          Back to Login
         </Link>
       </Text>
     </>
