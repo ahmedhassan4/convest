@@ -13,6 +13,7 @@ import { endPoitsUrl } from "@/config/endPointsUrl";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useRouter } from "next-nprogress-bar";
+import OrSeparation from "../or-separation";
 
 export default function SignUpForm() {
   const isMedium = useMedia("(max-width: 1200px)", false);
@@ -21,7 +22,8 @@ export default function SignUpForm() {
   const { mutateAsync, isPending } = useMutation({
     mutationFn: (data: SignUpSchema) =>
       axios.post(
-        `${process.env.NEXT_PUBLIC_API_ENDPOINT}${endPoitsUrl.auth.signUp}`, data
+        `${process.env.NEXT_PUBLIC_API_ENDPOINT}${endPoitsUrl.auth.signUp}`,
+        data
       ),
     onSuccess: async (res: any) => {
       toast.success("Account created successfully");
@@ -33,28 +35,38 @@ export default function SignUpForm() {
     },
   });
 
-  const onSubmit: SubmitHandler<SignUpSchema> = data => {
+  const onSubmit: SubmitHandler<SignUpSchema> = (data) => {
     console.log("sign up form data", data);
     mutateAsync(data);
   };
 
   return (
     <>
-    <div className="flex items-center mb-[28px]">
-        <h1 className="mr-4 text-[#666666] font-[500] text-[14px] leading-[20px]">LET&apos;S GET STARTED!</h1>
-        <div className="flex-grow border-t border-gray-200"></div>
-    </div>
+      <div className="">
+        <OrSeparation
+          title="LET'S GET STARTED!"
+          className="my-7 "
+          isCenter={false}
+        />
+        {/* Other components */}
+      </div>
+
       <Form<SignUpSchema>
         validationSchema={signUpSchema}
         resetValues={reset}
-        onSubmit={onSubmit}>
+        onSubmit={onSubmit}
+      >
         {({ register, formState: { errors } }) => (
           <div className="space-y-5">
             <Input
               type="number"
               size={isMedium ? "lg" : "xl"}
               label="Phone Number"
-              prefix={<span className="text-[#2B90EC] text-[16px] font-medium mr-2">+20</span>}
+              prefix={
+                <span className="text-[#2B90EC] text-[16px] font-medium mr-2">
+                  +20
+                </span>
+              }
               placeholder="Enter your number"
               className="[&>label>span]:font-medium"
               rounded="pill"
@@ -66,17 +78,19 @@ export default function SignUpForm() {
               type="submit"
               size={isMedium ? "lg" : "xl"}
               isLoading={isPending}
-              rounded="pill">
+              rounded="pill"
+            >
               Continue
             </Button>
           </div>
         )}
       </Form>
       <Text className="mt-5 text-center text-[15px] leading-loose text-gray-500 lg:text-start xl:mt-7 xl:text-base">
-      Don&apos;t have an account?{" "}
+        Don&apos;t have an account?{" "}
         <Link
           href={routes.auth.login}
-          className="font-semibold text-[#2B90EC] transition-colors hover:text-blue">
+          className="font-semibold text-[#2B90EC] transition-colors hover:text-blue"
+        >
           Sign Up
         </Link>
       </Text>

@@ -15,6 +15,7 @@ import { setCookie } from "cookies-next";
 import { siteConfig } from "@/config/site.config";
 import { useRouter } from "next-nprogress-bar";
 import { useState } from "react";
+import OrSeparation from "../or-separation";
 
 const WelcomeMessage = ({ name }: { name: string }) => {
   return (
@@ -68,30 +69,39 @@ export default function SignInForm() {
     },
   });
 
-  const onSubmit: SubmitHandler<LoginSchema> = data => {
+  const onSubmit: SubmitHandler<LoginSchema> = (data) => {
     mutateAsync(data);
   };
 
   return (
     <>
-     <div className="flex items-center mb-[28px]">
-        <h1 className="mr-4 text-[#666666] font-[500] text-[14px] leading-[20px]">LET&apos;S GET STARTED!</h1>
-        <div className="flex-grow border-t border-gray-200"></div>
-    </div>
+      <div className="">
+        <OrSeparation
+          title="LET'S GET STARTED!"
+          className="my-7 "
+          isCenter={false}
+        />
+        {/* Other components */}
+      </div>
 
       <Form<LoginSchema>
         validationSchema={loginSchema}
         onSubmit={onSubmit}
         useFormProps={{
           mode: "onChange",
-        }}>
+        }}
+      >
         {({ register, formState: { errors } }) => (
           <div className="space-y-5">
             <Input
               type="number"
               size={isMedium ? "lg" : "xl"}
               label="Phone Number"
-              prefix={<span className="text-[#2B90EC] text-[16px] font-medium mr-2">+20</span>}
+              prefix={
+                <span className="text-[#2B90EC] text-[16px] font-medium mr-2">
+                  +20
+                </span>
+              }
               placeholder="Enter your number"
               className="[&>label>span]:font-medium"
               rounded="pill"
@@ -108,7 +118,8 @@ export default function SignInForm() {
             <div className="flex items-center justify-between pb-2">
               <Link
                 href={routes.auth.forgetPassword}
-                className="h-auto p-0 leading-[24px] font-semibold text-[#2B90EC] transition-colors text-[14px] hover:text-gray-500 hover:no-underline">
+                className="h-auto p-0 leading-[24px] font-semibold text-[#2B90EC] transition-colors text-[14px] hover:text-gray-500 hover:no-underline"
+              >
                 Forget Password?
               </Link>
             </div>
@@ -117,17 +128,19 @@ export default function SignInForm() {
               type="submit"
               size={isMedium ? "lg" : "xl"}
               rounded="pill"
-              isLoading={isPending || isSuccess}>
+              isLoading={isPending || isSuccess}
+            >
               Continue
             </Button>
           </div>
         )}
       </Form>
       <Text className="mt-5 text-center text-[15px] leading-loose text-gray-500 lg:text-start xl:mt-7 xl:text-base">
-      Don&apos;t have an account?{" "}
+        Don&apos;t have an account?{" "}
         <Link
           href={routes.auth.login}
-          className="font-semibold text-[#2B90EC] transition-colors hover:text-blue">
+          className="font-semibold text-[#2B90EC] transition-colors hover:text-blue"
+        >
           Sign Up
         </Link>
       </Text>

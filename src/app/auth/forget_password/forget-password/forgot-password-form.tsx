@@ -14,6 +14,7 @@ import {
 } from "./forget-password.schema";
 import { useRouter } from "next-nprogress-bar";
 import useSendEmail from "./useSendEmail";
+import OrSeparation from "../../or-separation";
 
 const initialValues = {
   email: "",
@@ -26,7 +27,7 @@ export default function ForgetPasswordForm() {
   const router = useRouter();
 
   const { mutateAsync, isPending } = useSendEmail({
-    navigate: true
+    navigate: true,
   });
 
   // const { mutateAsync, isPending } = useMutation({
@@ -52,31 +53,41 @@ export default function ForgetPasswordForm() {
   //     toast.error(err?.response?.data?.message);
   //   },
   // });
-  const onSubmit: SubmitHandler<ForgetPasswordSchema> = data => {
+  const onSubmit: SubmitHandler<ForgetPasswordSchema> = (data) => {
     console.log("Forgot password form data->", data);
     mutateAsync(data);
   };
 
   return (
     <>
-    <div className="flex items-center mb-[28px]">
-        <h1 className="mr-4 text-[#666666] font-[500] text-[14px] leading-[20px]">Happens to the best of us</h1>
-        <div className="flex-grow border-t border-gray-200"></div>
-    </div>
+      <div className="">
+        <OrSeparation
+          title="Happens to the best of us"
+          className="my-7"
+          isCenter={false}
+        />
+        {/* Other components */}
+      </div>
+
       <Form<ForgetPasswordSchema>
         validationSchema={forgetPasswordSchema}
         resetValues={reset}
         onSubmit={onSubmit}
         useFormProps={{
           defaultValues: initialValues,
-        }}>
+        }}
+      >
         {({ register, formState: { errors } }) => (
           <div className="space-y-5">
-           <Input
+            <Input
               type="number"
               size={isMedium ? "lg" : "xl"}
               label="Phone Number"
-              prefix={<span className="text-[#2B90EC] text-[16px] font-medium mr-2">+20</span>}
+              prefix={
+                <span className="text-[#2B90EC] text-[16px] font-medium mr-2">
+                  +20
+                </span>
+              }
               placeholder="Enter your number"
               className="[&>label>span]:font-medium"
               rounded="pill"
@@ -86,7 +97,8 @@ export default function ForgetPasswordForm() {
               type="submit"
               size={isMedium ? "lg" : "xl"}
               rounded="pill"
-              isLoading={isPending}>
+              isLoading={isPending}
+            >
               Reset
             </Button>
           </div>
@@ -96,7 +108,8 @@ export default function ForgetPasswordForm() {
         Already have an account?{" "}
         <Link
           href={routes.auth.login}
-          className="font-semibold text-[#2B90EC] transition-colors hover:text-blue">
+          className="font-semibold text-[#2B90EC] transition-colors hover:text-blue"
+        >
           Back to Login
         </Link>
       </Text>

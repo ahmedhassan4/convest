@@ -40,16 +40,17 @@ export default function SignUpForm() {
 
   return (
     <>
-    <div className="mb-[28px] text-[14px]">
-        <p >sign up using your login code to gain access to your.
-        </p>
-        <span>Payment Portal.
-        </span>
-    </div>
+      <div className="mb-[28px]">
+        <Text className="text-sm font-medium text-[#666666]">
+          Sign up using your login code to gain access to your Payment Portal.
+        </Text>
+      </div>
+
       <Form<SignUpSchema>
         validationSchema={signUpSchema}
         resetValues={reset}
-        onSubmit={onSubmit}>
+        onSubmit={onSubmit}
+      >
         {({ register, formState: { errors } }) => (
           <div className="space-y-5">
             <Password
@@ -71,29 +72,35 @@ export default function SignUpForm() {
               error={errors.confirmPassword?.message}
             />
 
-            <div className="text-gray-700 font-[600] text-sm leading-[22.75px]">
-            By signing up you have agreed to our {" "}
-              <a href="#" className="text-[#2B90EC] hover:underline">Terms</a> {" "}
-              &amp; {" "}
-              <a href="#" className="text-[#2B90EC] hover:underline">Privacy Policy</a>.
-            </div>
+            <Text className="mt-5 text-center text-sm font-normal leading-loose text-[#333333] lg:text-start xl:mt-7">
+              By signing up you have agreed to our{" "}
+              <Link
+                href={routes.auth.login}
+                className="font-semibold text-[#2B90EC] transition-colors hover:text-blue"
+              >
+                Terms <span className="text-gray-500"> &amp; </span> Privacy
+                Policy
+              </Link>
+            </Text>
 
             <Button
               className="border-primary-light w-full border-2 text-base font-medium text-white"
               type="submit"
               size={isMedium ? "lg" : "xl"}
               isLoading={isPending}
-              rounded="pill">
+              rounded="pill"
+            >
               Create Account
             </Button>
           </div>
         )}
       </Form>
-      <Text className="mt-5 text-center text-[15px] leading-loose text-gray-500 lg:text-start xl:mt-7 xl:text-base">
+      <Text className="mt-5 text-center text-[16px] font-normal leading-loose text-gray-500 lg:text-start xl:mt-7 xl:text-base">
         Already have an account?{" "}
         <Link
           href={routes.auth.login}
-          className="font-semibold text-[#2B90EC] transition-colors hover:text-blue">
+          className="font-semibold text-[#2B90EC] transition-colors hover:text-blue"
+        >
           Log In
         </Link>
       </Text>
