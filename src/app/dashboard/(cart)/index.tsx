@@ -135,19 +135,79 @@ export default function CartPageWrapper() {
   const billingAddress = useAtomValue(billingAddressAtom);
   const shippingAddress = useAtomValue(shippingAddressAtom);
 
+  const mockProducts = [
+    {
+      id: 1,
+      name: "Stylish T-shirt",
+      description: "A stylish t-shirt made from soft cotton fabric.",
+      image:
+        "https://isomorphic-furyroad.s3.amazonaws.com/public/products/details/1.jpg",
+      size: "M",
+      color: { name: "Blue" },
+    },
+    {
+      id: 2,
+      name: "Running Shoes",
+      description: "Comfortable running shoes with good grip.",
+      image:
+        "https://isomorphic-furyroad.s3.amazonaws.com/public/products/details/2.jpg",
+      size: 42,
+      color: { name: "Red" },
+    },
+    {
+      id: 3,
+      name: "Leather Wallet",
+      description: "Genuine leather wallet with multiple compartments.",
+      image:
+        "https://isomorphic-furyroad.s3.amazonaws.com/public/products/details/3.jpg",
+      size: "",
+      color: { name: "Brown" },
+    },
+  ];
+
   return (
     <div className="@container">
       <div className="mx-auto w-full max-w-[1536px] items-start @5xl:grid @5xl:grid-cols-12 @5xl:gap-7 @6xl:grid-cols-10 @7xl:gap-10">
         <div className="@5xl:col-span-8 @6xl:col-span-7">
-          {[].length ? (
-            [].map((item) => <CartProduct key={item} product={item} />)
+          {mockProducts.length ? (
+            mockProducts.map((item) => (
+              <CartProduct key={item.id} product={item} />
+            ))
           ) : (
             <Empty
               image={<EmptyProductBoxIcon />}
               text="No Product in the Cart"
             />
           )}
+
+          <div className="space-y-7 @5xl:col-span-8 @5xl:space-y-10 @6xl:col-span-7">
+            <div className="">
+              <div className="mb-3.5 @5xl:mb-5">
+                <Title as="h3" className="text-base font-semibold @7xl:text-lg">
+                  Balance
+                </Title>
+              </div>
+              <div className="space-y-6 rounded-xl border border-muted px-5 py-6 @5xl:space-y-7 @5xl:p-7">
+                <div className="flex justify-between font-medium">
+                  Total Order <span>$5275.00</span>
+                </div>
+                <div className="flex justify-between font-medium">
+                  Total Return <span>$350.00</span>
+                </div>
+                <div className="flex justify-between font-medium">
+                  Paid By Customer <span>$3000.00</span>
+                </div>
+                <div className="flex justify-between font-medium">
+                  Refunded <span>$350.00</span>
+                </div>
+                <div className="flex justify-between font-medium">
+                  Balance <span>$4975.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
         <div className="sticky top-24 mt-10 @container @5xl:col-span-4 @5xl:mt-0 @5xl:px-4 @6xl:col-span-3 2xl:top-28">
           <CartCalculations />
           <WidgetCard
@@ -241,12 +301,6 @@ export default function CartPageWrapper() {
           )}
         </div>
       </div>
-
-      {/* <ProductCarousel
-        title={'Recommendations'}
-        data={recommendationProducts}
-      /> */}
-      {/* <ProductCarousel title={"Recently Viewed"} data={recentlyProducts} /> */}
     </div>
   );
 }
