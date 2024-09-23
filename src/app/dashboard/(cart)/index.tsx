@@ -7,21 +7,34 @@ import { SubmitHandler } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { routes } from '@/config/routes';
 import { Empty, EmptyProductBoxIcon, Title, Text, Input, Button } from 'rizzui';
-import { Form } from '@/ui/Form';
-import CartProduct from './cart-product';
-import ProductCarousel from '@/shared/product-carousel';
-import { recentlyProducts, recommendationProducts } from '@/data/shop-products';
+import { PiCheckBold } from "react-icons/pi";
+import { Form } from "@/ui/Form";
+import CartProduct from "./cart-product";
+import ProductCarousel from "@/shared/product-carousel";
+import { recentlyProducts, recommendationProducts } from "@/data/shop-products";
+import WidgetCard from "./WidgetCard";
+import cn from "@/utils/class-names";
 
 type FormValues = {
   couponCode: string;
 };
+
+const orderStatus = [
+  { id: 1, label: "Order Pending" },
+  { id: 2, label: "Order Processing" },
+  { id: 3, label: "Order At Local Facility" },
+  { id: 4, label: "Order Out For Delivery" },
+  { id: 5, label: "Order Completed" },
+];
+
+const currentOrderStatus = 3;
 
 function CheckCoupon() {
   const [reset, setReset] = useState({});
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     console.log(data);
-    setReset({ couponCode: '' });
+    setReset({ couponCode: "" });
   };
 
   return (
@@ -29,7 +42,7 @@ function CheckCoupon() {
       resetValues={reset}
       onSubmit={onSubmit}
       useFormProps={{
-        defaultValues: { couponCode: '' },
+        defaultValues: { couponCode: "" },
       }}
       className="w-full"
     >
@@ -42,13 +55,13 @@ function CheckCoupon() {
               inputClassName="text-sm"
               className="w-full"
               label={<Text>Do you have a promo code?</Text>}
-              {...register('couponCode')}
+              {...register("couponCode")}
               error={errors.couponCode?.message}
             />
             <Button
               type="submit"
               className="ms-3"
-              disabled={watch('couponCode') ? false : true}
+              disabled={watch("couponCode") ? false : true}
             >
               Apply
             </Button>
@@ -70,7 +83,7 @@ function CartCalculations() {
   return (
     <div>
       <Title as="h2" className="border-b border-muted pb-4 text-lg font-medium">
-      Installment Details
+        Installment Details
       </Title>
       <div className="mt-6 grid grid-cols-1 gap-4 @md:gap-6">
         <div className="flex items-center justify-between">
@@ -86,7 +99,7 @@ function CartCalculations() {
           <span className="font-medium text-gray-1000">50.00 EGP</span>
         </div>
         <div className="flex items-center justify-between">
-        Amount Outstanding
+          Amount Outstanding
           <span className="font-medium text-gray-1000">150.00 EGP</span>
         </div>
         {/* <CheckCoupon /> */}
@@ -109,8 +122,6 @@ function CartCalculations() {
   );
 }
 
-
-
 export default function CartPageWrapper() {
   return (
     <div className="@container">
@@ -127,6 +138,33 @@ export default function CartPageWrapper() {
         </div>
         <div className="sticky top-24 mt-10 @container @5xl:col-span-4 @5xl:mt-0 @5xl:px-4 @6xl:col-span-3 2xl:top-28">
           <CartCalculations />
+          <WidgetCard
+            title="Order Status"
+            childrenWrapperClass="py-5 @5xl:py-8 flex"
+          >
+            <div className="ms-2 w-full space-y-7 border-s-2 border-gray-100">
+              {orderStatus.map((item) => (
+                <div
+                  key={item.id}
+                  className={cn(
+                    "relative ps-6 text-sm font-medium before:absolute before:-start-[9px] before:top-px before:h-5 before:w-5 before:-translate-x-px before:rounded-full before:bg-gray-100 before:content-[''] after:absolute after:-start-px after:top-5  after:h-10 after:w-0.5  after:content-[''] last:after:hidden",
+                    currentOrderStatus > item.id
+                      ? "before:bg-primary after:bg-primary"
+                      : "after:hidden",
+                    currentOrderStatus === item.id && "before:bg-primary"
+                  )}
+                >
+                  {currentOrderStatus >= item.id ? (
+                    <span className="absolute -start-1.5 top-1 text-white">
+                      <PiCheckBold className="h-auto w-3" />
+                    </span>
+                  ) : null}
+
+                  {item.label}
+                </div>
+              ))}
+            </div>
+          </WidgetCard>
         </div>
       </div>
 
