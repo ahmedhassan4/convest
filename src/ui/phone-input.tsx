@@ -1,13 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
-import PhoneInput, {
-  formatPhoneNumber,
-  isValidPhoneNumber,
-  parsePhoneNumber,
-} from "react-phone-number-input";
-import "react-phone-number-input/style.css";
+import PhoneInput, { type PhoneInputProps } from "react-phone-input-2";
 import { cn, FieldError, FieldHelperText, FieldClearButton } from "rizzui";
+import "react-phone-input-2/lib/style.css";
 
 const labelClasses = {
   size: {
@@ -43,25 +38,78 @@ const inputClasses = {
   },
 };
 
-export interface PhoneNumberProps {
+const buttonClasses = {
+  base: "!border-0 !bg-transparent !static [&>.selected-flag]:!absolute [&>.selected-flag]:!top-[1px] [&>.selected-flag]:!bottom-[1px] [&>.selected-flag]:!left-[1px] [&>.selected-flag.open]:!bg-transparent [&>.selected-flag:hover]:!bg-transparent [&>.selected-flag:focus]:!bg-transparent",
+  size: {
+    sm: "[&>.selected-flag]:!h-[30px]",
+    md: "[&>.selected-flag]:!h-[38px]",
+    lg: "[&>.selected-flag]:!h-[46px]",
+    xl: "[&>.selected-flag]:!h-[54px]",
+  },
+};
+
+const dropdownClasses = {
+  base: "!shadow-xl !text-sm !max-h-[216px] !w-full !my-1.5 !bg-gray-0 [&>.no-entries-message]:!text-center [&>.divider]:!border-muted",
+  rounded: {
+    none: "!rounded-sm",
+    sm: "!rounded",
+    md: "!rounded-md",
+    lg: "!rounded-lg",
+    pill: "!rounded-xl",
+  },
+  searchBox:
+    "!pr-2.5 !bg-gray-0 [&>.search-box]:!w-full [&>.search-box]:!m-0 [&>.search-box]:!px-3 [&>.search-box]:!py-1 [&>.search-box]:!text-sm [&>.search-box]:!capitalize [&>.search-box]:!h-9 [&>.search-box]:!leading-[36px] [&>.search-box]:!rounded-md [&>.search-box]:!bg-transparent [&>.search-box]:!border-muted [&>.search-box:focus]:!border-gray-400/70 [&>.search-box:focus]:!ring-0 [&>.search-box]:placeholder:!text-gray-500",
+  highlightListColor:
+    "[&>li.country.highlight]:!bg-gray-100 [&>li.country:hover]:!bg-gray-100",
+};
+
+const clearIconClasses = {
+  base: "absolute right-2 group-hover/phone-number:visible group-hover/phone-number:translate-x-0 group-hover/phone-number:opacity-100",
+  position: {
+    sm: "top-[9px]",
+    md: "top-3",
+    lg: "top-4",
+    xl: "top-5",
+  },
+};
+
+export interface PhoneNumberProps
+  extends Omit<
+    PhoneInputProps,
+    | "inputClass"
+    | "buttonClass"
+    | "containerClass"
+    | "dropdownClass"
+    | "searchClass"
+    | "enableSearch"
+    | "disableSearchIcon"
+  > {
   /** Set field label */
   label?: React.ReactNode;
   /** Show error message using this prop */
   error?: string;
-  /** The size of the component. */
+  /** The size of the component. `"sm"` is equivalent to the dense input styling. */
   size?: keyof typeof inputClasses.size;
   /** The rounded variants are: */
   rounded?: keyof typeof inputClasses.rounded;
   /** The variants of the component are: */
   variant?: keyof typeof inputClasses.variant;
-  /** clearable option */
+  /** add clearable option */
   clearable?: boolean;
+  /** add search filed at the top of dropdown list */
+  enableSearch?: boolean;
   /** clear event */
   onClear?: (event: React.MouseEvent) => void;
   /** Use labelClassName prop to do some addition style for the field label */
   labelClassName?: string;
   /** Add custom classes for the input field */
   inputClassName?: string;
+  /** Add custom classes for dropdown button */
+  buttonClassName?: string;
+  /** Add custom classes for dropdown */
+  dropdownClassName?: string;
+  /** Add custom classes for dropdown's search */
+  searchClassName?: string;
   /** This prop allows you to customize the helper message style */
   helperClassName?: string;
   /** This prop allows you to customize the error message style */
@@ -70,8 +118,6 @@ export interface PhoneNumberProps {
   helperText?: React.ReactNode;
   /** Add custom classes into the component wrapper for extra style like spacing */
   className?: string;
-  /** Callback to return the phone number and dial code */
-  onPhoneNumberChange?: (parsedNumber: any) => void;
 }
 
 export const PhoneNumber = ({
@@ -83,70 +129,72 @@ export const PhoneNumber = ({
   error,
   clearable,
   onClear,
+  enableSearch,
   labelClassName,
   inputClassName,
+  buttonClassName,
+  dropdownClassName,
+  searchClassName,
   helperClassName,
   errorClassName,
   className,
-  onPhoneNumberChange,
   ...props
-}: PhoneNumberProps) => {
-  const [value, setValue] = useState<string | undefined>("");
+}: PhoneNumberProps) => (
+  <div className={cn("rizzui-phone-number", className)}>
+    {label ? (
+      <label className={cn("block", labelClasses.size[size], labelClassName)}>
+        {label}
+      </label>
+    ) : null}
 
-  const handleClear = (event: React.MouseEvent) => {
-    setValue("");
-    if (onClear) onClear(event); // Ensure we pass the event to onClear
-  };
+    <div className="group/phone-number relative">
+      <PhoneInput
+        inputClass={cn(
+          inputClasses.base,
+          inputClasses.size[size],
+          inputClasses.rounded[rounded],
+          inputClasses.variant[variant],
+          error && inputClasses.error,
+          inputClassName
+        )}
+        buttonClass={cn(
+          buttonClasses.base,
+          buttonClasses.size[size],
+          // @ts-ignore
+          props.inputProps?.disabled && "pointer-events-none",
+          // @ts-ignore
+          props.inputProps?.readOnly && "pointer-events-none",
+          buttonClassName
+        )}
+        dropdownClass={cn(
+          dropdownClasses.base,
+          dropdownClasses.rounded[rounded],
+          dropdownClasses.highlightListColor,
+          dropdownClassName
+        )}
+        searchClass={cn(dropdownClasses.searchBox, searchClassName)}
+        enableSearch={enableSearch}
+        disableSearchIcon
+        {...props}
+      />
 
-  return (
-    <div className={cn("rizzui-phone-number", className)}>
-      {label ? (
-        <label className={cn("block", labelClasses.size[size], labelClassName)}>
-          {label}
-        </label>
-      ) : null}
-
-      <div className="group/phone-number relative">
-        <PhoneInput
-          international
-          defaultCountry="EG"
-          value={value}
-          onChange={value => {
-            setValue(value);
-            if (value) {
-              const parsedNumber = parsePhoneNumber(value);
-              onPhoneNumberChange?.(parsedNumber);
-            }
-          }}
-          className={cn(
-            inputClasses.base,
-            inputClasses.size[size],
-            inputClasses.rounded[rounded],
-            inputClasses.variant[variant],
-            error && inputClasses.error,
-            inputClassName
-          )}
-          {...props}
+      {clearable ? (
+        <FieldClearButton
+          size={size}
+          onClick={onClear}
+          className={cn(clearIconClasses.base, clearIconClasses.position[size])}
         />
-
-        {clearable && value ? (
-          <FieldClearButton
-            size={size}
-            onClick={handleClear}
-            className="absolute right-2 top-1/2 transform -translate-y-1/2"
-          />
-        ) : null}
-      </div>
-
-      {!error && helperText ? (
-        <FieldHelperText size={size} className={helperClassName}>
-          {helperText}
-        </FieldHelperText>
-      ) : null}
-
-      {error ? (
-        <FieldError size={size} error={error} className={errorClassName} />
       ) : null}
     </div>
-  );
-};
+
+    {!error && helperText ? (
+      <FieldHelperText size={size} className={helperClassName}>
+        {helperText}
+      </FieldHelperText>
+    ) : null}
+
+    {error ? (
+      <FieldError size={size} error={error} className={errorClassName} />
+    ) : null}
+  </div>
+);

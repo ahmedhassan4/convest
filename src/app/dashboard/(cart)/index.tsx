@@ -109,6 +109,7 @@ function CartCalculations() {
   );
 }
 
+
 export default function CartPageWrapper() {
   return (
     <div className="@container">
@@ -128,11 +129,11 @@ export default function CartPageWrapper() {
         </div>
       </div>
 
-      <ProductCarousel
+      {/* <ProductCarousel
         title={'Recommendations'}
         data={recommendationProducts}
-      />
-      <ProductCarousel title={'Recently Viewed'} data={recentlyProducts} />
+      /> */}
+      {/* <ProductCarousel title={"Recently Viewed"} data={recentlyProducts} /> */}
     </div>
   );
 }
