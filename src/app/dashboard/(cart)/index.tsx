@@ -4,9 +4,10 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { SubmitHandler } from 'react-hook-form';
-import { useRouter } from 'next/navigation';
-import { routes } from '@/config/routes';
-import { Empty, EmptyProductBoxIcon, Title, Text, Input, Button } from 'rizzui';
+import isEmpty from "lodash/isEmpty";
+import { useRouter } from "next/navigation";
+import { routes } from "@/config/routes";
+import { Empty, EmptyProductBoxIcon, Title, Text, Input, Button } from "rizzui";
 import { PiCheckBold } from "react-icons/pi";
 import { Form } from "@/ui/Form";
 import CartProduct from "./cart-product";
@@ -14,6 +15,13 @@ import ProductCarousel from "@/shared/product-carousel";
 import { recentlyProducts, recommendationProducts } from "@/data/shop-products";
 import WidgetCard from "./WidgetCard";
 import cn from "@/utils/class-names";
+import { useAtomValue } from "jotai";
+
+import {
+  billingAddressAtom,
+  orderNoteAtom,
+  shippingAddressAtom,
+} from "@/store/checkout";
 
 type FormValues = {
   couponCode: string;
@@ -123,6 +131,10 @@ function CartCalculations() {
 }
 
 export default function CartPageWrapper() {
+  const orderNote = useAtomValue(orderNoteAtom);
+  const billingAddress = useAtomValue(billingAddressAtom);
+  const shippingAddress = useAtomValue(shippingAddressAtom);
+
   return (
     <div className="@container">
       <div className="mx-auto w-full max-w-[1536px] items-start @5xl:grid @5xl:grid-cols-12 @5xl:gap-7 @6xl:grid-cols-10 @7xl:gap-10">
@@ -165,6 +177,68 @@ export default function CartPageWrapper() {
               ))}
             </div>
           </WidgetCard>
+          <WidgetCard
+            title="Customer Details"
+            childrenWrapperClass="py-5 @5xl:py-8 flex"
+          >
+            <div className="relative aspect-square h-16 w-16 shrink-0 @5xl:h-20 @5xl:w-20">
+              <Image
+                fill
+                alt="avatar"
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw"
+                src="https://isomorphic-furyroad.s3.amazonaws.com/public/avatar.png"
+              />
+            </div>
+            <div className="ps-4 @5xl:ps-6">
+              <Title
+                as="h3"
+                className="mb-2.5 text-base font-semibold @7xl:text-lg"
+              >
+                Leslie Alexander
+              </Title>
+              <Text as="p" className="mb-2 break-all last:mb-0">
+                nevaeh.simmons@example.com
+              </Text>
+              <Text as="p" className="mb-2 last:mb-0">
+                (316) 555-0116
+              </Text>
+            </div>
+          </WidgetCard>
+          <WidgetCard
+            title="Shipping Address"
+            childrenWrapperClass="@5xl:py-6 py-5"
+          >
+            <Title
+              as="h3"
+              className="mb-2.5 text-base font-semibold @7xl:text-lg"
+            >
+              {billingAddress?.customerName}
+            </Title>
+            <Text as="p" className="mb-2 leading-loose last:mb-0">
+              {billingAddress?.street}, {billingAddress?.city},{" "}
+              {billingAddress?.state}, {billingAddress?.zip},{" "}
+              {billingAddress?.country}
+            </Text>
+          </WidgetCard>
+          {!isEmpty(shippingAddress) && (
+            <WidgetCard
+              title="Billing Address"
+              childrenWrapperClass="@5xl:py-6 py-5"
+            >
+              <Title
+                as="h3"
+                className="mb-2.5 text-base font-semibold @7xl:text-lg"
+              >
+                {shippingAddress?.customerName}
+              </Title>
+              <Text as="p" className="mb-2 leading-loose last:mb-0">
+                {shippingAddress?.street}, {shippingAddress?.city},{" "}
+                {shippingAddress?.state}, {shippingAddress?.zip},{" "}
+                {shippingAddress?.country}
+              </Text>
+            </WidgetCard>
+          )}
         </div>
       </div>
 
