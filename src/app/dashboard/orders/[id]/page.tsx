@@ -1,4 +1,4 @@
-import { Button } from "rizzui";
+import { Badge, Button } from "rizzui";
 import { routes } from "@/config/routes";
 import PageHeader from "@/shared/page-header";
 import Link from "next/link";
@@ -27,11 +27,8 @@ export default function OrderDetailsPage({ params }: any) {
         <Link
           href={routes.eCommerce.editOrder(params.id)}
           className="mt-4 w-full @lg:mt-0 @lg:w-auto"
-        >
-          <Button as="span" className="w-full @lg:w-auto ">
-            Edit Order
-          </Button>
-        </Link>
+        ></Link>
+        <Badge renderAsDot />
       </PageHeader>
       <CartPageWrapper />
     </>

@@ -4,8 +4,7 @@ import SettingsButton from './settings-button';
 import ProfileMenu from './profile-menu';
 import RingBellSolidIcon from '@/componnets/icons/ring-bell-solid';
 import ChatSolidIcon from '@/componnets/icons/chat-solid';
-import { Globe } from '@phosphor-icons/react';
-
+import { Globe, ShoppingCart } from "@phosphor-icons/react";
 
 export default function HeaderMenuRight() {
   return (
@@ -15,13 +14,7 @@ export default function HeaderMenuRight() {
         variant="text"
         className="relative h-[34px] w-[34px] shadow backdrop-blur-md dark:bg-gray-100 md:h-9 md:w-9"
       >
-        <Globe className="h-[18px] w-auto"  weight="duotone" />
-        {/* <Badge
-          renderAsDot
-          color="warning"
-          enableOutlineRing
-          className="absolute right-2.5 top-2.5 -translate-y-1/3 translate-x-1/2"
-        /> */}
+        <Globe className="h-[18px] w-auto" weight="duotone" />
       </ActionIcon>
       <ActionIcon
         aria-label="Notification"
@@ -36,7 +29,7 @@ export default function HeaderMenuRight() {
           className="absolute right-2.5 top-2.5 -translate-y-1/3 translate-x-1/2"
         />
       </ActionIcon>
-      
+
       {/* <MessagesDropdown>
         <ActionIcon
           aria-label="Localization"
@@ -53,7 +46,13 @@ export default function HeaderMenuRight() {
         </ActionIcon>
       </MessagesDropdown> */}
 
-      <SettingsButton />
+      <ActionIcon
+        aria-label="cart"
+        variant="text"
+        className="relative h-[34px] w-[34px] shadow backdrop-blur-md dark:bg-gray-100 md:h-9 md:w-9"
+      >
+        <ShoppingCart className="h-[18px] w-auto" weight="duotone" />
+      </ActionIcon>
       <ProfileMenu />
     </div>
   );

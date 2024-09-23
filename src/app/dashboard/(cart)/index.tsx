@@ -28,11 +28,51 @@ type FormValues = {
 };
 
 const orderStatus = [
-  { id: 1, label: "Order Pending" },
-  { id: 2, label: "Order Processing" },
-  { id: 3, label: "Order At Local Facility" },
-  { id: 4, label: "Order Out For Delivery" },
-  { id: 5, label: "Order Completed" },
+  { id: 1, label: "Order Created" },
+  { id: 2, label: "1st Instalment (450 EGP)", description: "23rd March 2024" },
+  {
+    id: 3,
+    label: "2nd Instalment (450 EGP)",
+    description: "23rd March 2024",
+  },
+  {
+    id: 4,
+    label: "3rd Instalment (450 EGP) ",
+    description: "23rd March 2024",
+  },
+  {
+    id: 5,
+    label: "5th Instalment (450 EGP) ",
+    description: "23rd March 2024",
+  },
+  {
+    id: 6,
+    label: "6th Instalment (450 EGP) ",
+    description: "23rd April 2024",
+  },
+  { id: 7, label: "Out For Delivery", description: "23rd May 2024" },
+  { id: 8, label: "Delivered", description: "2 Item(s)" },
+  {
+    id: 9,
+    label: "7th Instalment (220 EGP) ",
+    description: "2 Item(s)",
+  },
+  {
+    id: 10,
+    label: "8th Instalment (220 EGP) ",
+    description: "23rd June 2024",
+  },
+  {
+    id: 11,
+    label: "9th Instalment (220 EGP) ",
+    description: "23rd June 2024",
+  },
+  {
+    id: 12,
+    label: "Out For Delivery",
+    description: "1 Item(s)",
+  },
+  { id: 13, label: "Delivered" },
 ];
 
 const currentOrderStatus = 3;
@@ -91,30 +131,68 @@ function CartCalculations() {
   return (
     <div>
       <Title as="h2" className="border-b border-muted pb-4 text-lg font-medium">
-        Installment Details
+        Your Order{" "}
       </Title>
       <div className="mt-6 grid grid-cols-1 gap-4 @md:gap-6">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between text-sm">
           Subtotal
           <span className="font-medium text-gray-1000">140.00 EGP</span>
         </div>
         <div className="flex items-center justify-between">
-          Tax
-          <span className="font-medium text-gray-1000">0.18 EGP</span>
+          Tax (included)
+          <span className="font-medium text-gray-1000">320 EGP</span>
         </div>
         <div className="flex items-center justify-between">
           Shipping
-          <span className="font-medium text-gray-1000">50.00 EGP</span>
+          <span className="font-medium text-gray-1000">120 EGP</span>
+        </div>
+        <div className="flex items-center justify-between">
+          You Have Saved
+          <span className="font-medium  text-[#0D9488]">330 EGP</span>
+        </div>
+        <div className="flex items-center justify-between">
+          Cash Collection
+          <span className="font-medium text-gray-1000">330 EGP</span>
+        </div>
+        <div className="flex items-center justify-between">
+          Amount Paid
+          <span className="font-medium text-gray-1000">0 EGP</span>
         </div>
         <div className="flex items-center justify-between">
           Amount Outstanding
-          <span className="font-medium text-gray-1000">150.00 EGP</span>
+          <span className="font-medium text-gray-1000">2,890 EGP</span>
+        </div>
+        <div className="flex items-center justify-between">
+          Expiring In
+          <span className="font-medium text-[#C50000]">24 Hours</span>
         </div>
         {/* <CheckCoupon /> */}
-        <div className="mt-3 flex items-center justify-between border-t border-muted py-4 font-semibold text-gray-1000">
-          Total
-          <span className="font-medium text-gray-1000">{""}</span>
+        <div className="mt-3 flex items-center justify-between border-t text-gray-1000 pt-4 ">
+          Instalment Subtotal
+          <span className="font-medium text-gray-1000">450 EGP</span>
         </div>
+        <div className="flex items-center justify-between">
+          Instalment Cash Collection
+          <span className="font-medium text-gray-1000">30 EGP</span>
+        </div>
+        <div className="flex items-center justify-between">
+          Late Fee
+          <span className="font-medium text-[#C50000]">300 EGP</span>
+        </div>
+        <div className="mt-3 flex items-center justify-between border-t border-muted py-4 font-semibold text-gray-1000">
+          Total Due Today
+          <span className="font-medium text-gray-1000">480 EGP</span>
+        </div>
+        <Link href={""}>
+          <Button
+            size="xl"
+            rounded="pill"
+            onClick={() => router.push("")}
+            className="w-full  text-white border-[2px]  hover:bg-transparent "
+          >
+            Continue
+          </Button>
+        </Link>
         <Link href={""}>
           <Button
             size="xl"
@@ -122,7 +200,7 @@ function CartCalculations() {
             onClick={() => router.push("")}
             className="w-full bg-transparent text-[#2B90EC] border-[2px] border-[#2B90EC] hover:bg-transparent "
           >
-            Proceed To Checkout
+            Cancel Order
           </Button>
         </Link>
       </div>
@@ -138,30 +216,33 @@ export default function CartPageWrapper() {
   const mockProducts = [
     {
       id: 1,
-      name: "Stylish T-shirt",
-      description: "A stylish t-shirt made from soft cotton fabric.",
+      name: "King Size Bed Sheets",
+      description: "IKEA",
       image:
         "https://isomorphic-furyroad.s3.amazonaws.com/public/products/details/1.jpg",
       size: "M",
       color: { name: "Blue" },
+      Receive_In: "6 Months",
     },
     {
       id: 2,
-      name: "Running Shoes",
-      description: "Comfortable running shoes with good grip.",
+      name: "Casio Watch",
+      description: "Casio",
       image:
         "https://isomorphic-furyroad.s3.amazonaws.com/public/products/details/2.jpg",
       size: 42,
       color: { name: "Red" },
+      Receive_In: "6 Months",
     },
     {
       id: 3,
-      name: "Leather Wallet",
-      description: "Genuine leather wallet with multiple compartments.",
+      name: "Casio Watch",
+      description: "Casio Classic Watch",
       image:
         "https://isomorphic-furyroad.s3.amazonaws.com/public/products/details/3.jpg",
-      size: "",
+      size: "lg",
       color: { name: "Brown" },
+      Receive_In: "12 Months",
     },
   ];
 
@@ -169,6 +250,19 @@ export default function CartPageWrapper() {
     <div className="@container">
       <div className="mx-auto w-full max-w-[1536px] items-start @5xl:grid @5xl:grid-cols-12 @5xl:gap-7 @6xl:grid-cols-10 @7xl:gap-10">
         <div className="@5xl:col-span-8 @6xl:col-span-7">
+          <div>
+            <Title as="h3" className="text-base font-semibold text-[#111111]">
+              Delivery By 12 June 2025
+            </Title>
+            <div className="flex text-[#484848]">
+              <Text className="text-sm font-medium mr-4">
+                Shipping Fee: <span className="font-bold text-sm">60 EGP</span>
+              </Text>
+              <Text className="text-sm font-medium">
+                Vendor: <span className="font-bold text-sm">HnM</span>
+              </Text>
+            </div>
+          </div>
           {mockProducts.length ? (
             mockProducts.map((item) => (
               <CartProduct key={item.id} product={item} />
@@ -180,7 +274,7 @@ export default function CartPageWrapper() {
             />
           )}
 
-          <div className="space-y-7 @5xl:col-span-8 @5xl:space-y-10 @6xl:col-span-7">
+          <div className="@5xl:col-span-8 @5xl:space-y-10 @6xl:col-span-7 mt-10 mb-5">
             <div className="">
               <div className="mb-3.5 @5xl:mb-5">
                 <Title as="h3" className="text-base font-semibold @7xl:text-lg">
@@ -213,17 +307,20 @@ export default function CartPageWrapper() {
           <WidgetCard
             title="Order Status"
             childrenWrapperClass="py-5 @5xl:py-8 flex"
+            className="mt-10"
           >
             <div className="ms-2 w-full space-y-7 border-s-2 border-gray-100">
               {orderStatus.map((item) => (
                 <div
                   key={item.id}
                   className={cn(
-                    "relative ps-6 text-sm font-medium before:absolute before:-start-[9px] before:top-px before:h-5 before:w-5 before:-translate-x-px before:rounded-full before:bg-gray-100 before:content-[''] after:absolute after:-start-px after:top-5  after:h-10 after:w-0.5  after:content-[''] last:after:hidden",
+                    `relative ps-6 text-sm before:absolute before:-start-[9px] before:top-px before:h-5 before:w-5 before:-translate-x-px before:rounded-full before:bg-gray-100 before:content-[''] after:absolute after:-start-px after:top-5 after:w-0.5  after:content-[''] last:after:hidden font-medium`,
                     currentOrderStatus > item.id
                       ? "before:bg-primary after:bg-primary"
                       : "after:hidden",
-                    currentOrderStatus === item.id && "before:bg-primary"
+                    currentOrderStatus === item.id && "before:bg-primary",
+                    { "after:h-14": Boolean(item.description) },
+                    { "after:h-10": !Boolean(item.description) }
                   )}
                 >
                   {currentOrderStatus >= item.id ? (
@@ -233,13 +330,17 @@ export default function CartPageWrapper() {
                   ) : null}
 
                   {item.label}
+                  <span className="block text-[13px] text-[#666666] font-normal">
+                    {item.description}
+                  </span>
                 </div>
               ))}
             </div>
           </WidgetCard>
-          <WidgetCard
+          {/* <WidgetCard
             title="Customer Details"
             childrenWrapperClass="py-5 @5xl:py-8 flex"
+            className="mt-7"
           >
             <div className="relative aspect-square h-16 w-16 shrink-0 @5xl:h-20 @5xl:w-20">
               <Image
@@ -264,10 +365,11 @@ export default function CartPageWrapper() {
                 (316) 555-0116
               </Text>
             </div>
-          </WidgetCard>
-          <WidgetCard
+          </WidgetCard> */}
+          {/* <WidgetCard
             title="Shipping Address"
             childrenWrapperClass="@5xl:py-6 py-5"
+            className="mt-7"
           >
             <Title
               as="h3"
@@ -298,7 +400,7 @@ export default function CartPageWrapper() {
                 {shippingAddress?.country}
               </Text>
             </WidgetCard>
-          )}
+          )} */}
         </div>
       </div>
     </div>

@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import isEmpty from 'lodash/isEmpty';
-import { Title, Text } from 'rizzui';
-import { routes } from '@/config/routes';
-import QuantityInput from './quantity-input';
-import RemoveItem from './remove-item';
-import { AddToWishList } from '@/componnets/wishlist-button';
+import { Title, Text, Button, Input, Badge } from "rizzui";
+import { routes } from "@/config/routes";
+import QuantityInput from "./quantity-input";
+import RemoveItem from "./remove-item";
+import { AddToWishList } from "@/componnets/wishlist-button";
 
 export default function CartProduct({ product }: { product: any }) {
   return (
@@ -25,21 +25,27 @@ export default function CartProduct({ product }: { product: any }) {
             as="h3"
             className="truncate text-base font-medium transition-colors hover:text-primary 3xl:text-lg"
           >
-            <Link
-              href=""
-            >
+            <Link href="" className="font-[500] text-base text-[#111111]">
               {product.name}
             </Link>
           </Title>
-          <span className="inline-block text-sm font-semibold text-gray-1000 sm:font-medium md:text-base 3xl:text-lg">
-            data name
+          <span className="inline-block  sm:font-medium text-base">
+            210 EGP/Month
+            <span className="inline-flex items-center text-[13px] font-medium text-[#484848]">
+              <span className="scale-50">
+                <Badge renderAsDot color="primary" className="mx-[10px]" />
+              </span>
+              990 EGP
+            </span>
           </span>
         </div>
-        <Text className="mt-1 w-full max-w-xs truncate leading-6 2xl:max-w-lg">
+        <Text className="mt-1 w-full max-w-xs truncate leading-6 2xl:max-w-lg font-[400] text-sm">
           {product.description}
         </Text>
 
-        {(!isEmpty(product.size) || !isEmpty(product.color)) && (
+        {(!isEmpty(product.size) ||
+          !isEmpty(product.color) ||
+          !isEmpty(product.Receive_In)) && (
           <ul className="mt-2 flex flex-wrap gap-x-4 gap-y-3 sm:mt-4 sm:gap-x-8">
             {product.size !== 0 && (
               <li className="flex items-center gap-3 text-gray-500">
@@ -48,9 +54,9 @@ export default function CartProduct({ product }: { product: any }) {
               </li>
             )}
             {!isEmpty(product.color) && (
-              <li className="flex items-center gap-3 text-gray-500">
+              <li className="flex items-center text-gray-500">
                 <span>Color :</span>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center ">
                   <div
                     className="inline-block h-4 w-4 rounded-full"
                     style={{
@@ -61,23 +67,30 @@ export default function CartProduct({ product }: { product: any }) {
                 </div>
               </li>
             )}
+            {!isEmpty(product.color) && (
+              <li className="flex items-center gap-3 text-gray-500">
+                <span>Receive_In :</span>
+                <span className="text-gray-1000">{product.Receive_In}</span>
+              </li>
+            )}
           </ul>
         )}
 
         <div className="mt-3 hidden items-center justify-between xs:flex sm:mt-6">
-          <QuantityInput product={product} />
-          <div className="flex items-center gap-4">
-            <AddToWishList />
-            <RemoveItem productID={product.id} placement="bottom-end" />
+          {/* <Input label="Name" placeholder="Enter your name" /> */}
+          <div className="flex gap-4">
+            <Text className="border  border-[#E3E3E3] px-2 rounded py-[7px] text-[16px] font-normal">
+              1 Item(s)
+            </Text>
+            <Text className="border  border-[#E3E3E3] px-2 rounded py-[7px] text-[16px] font-normal">
+              23 March 2025
+            </Text>
           </div>
+          <div className="flex items-center gap-4"></div>
         </div>
       </div>
       <div className="col-span-full flex items-center justify-between xs:hidden">
-        <div className="flex items-center gap-4">
-          <AddToWishList />
-          <RemoveItem productID={product.id} placement="bottom-start" />
-        </div>
-        <QuantityInput product={product} />
+        <div className="flex items-center gap-4"></div>
       </div>
     </div>
   );
