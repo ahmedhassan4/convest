@@ -23,12 +23,20 @@ export default function OrderDetailsPage({ params }: any) {
   };
   return (
     <>
-      <PageHeader title={pageHeader.title} breadcrumb={pageHeader.breadcrumb}>
+      <PageHeader
+        title={
+          <div className="flex items-center justify-center">
+            {pageHeader.title} <Badge renderAsDot className="mx-2" />{" "}
+            <span className="font-medium">23rd March 2024</span>
+          </div>
+        }
+        breadcrumb={pageHeader.breadcrumb}
+      >
         <Link
           href={routes.eCommerce.editOrder(params.id)}
           className="mt-4 w-full @lg:mt-0 @lg:w-auto"
         ></Link>
-        <Badge renderAsDot />
+        {/* <Badge renderAsDot /> */}
       </PageHeader>
       <CartPageWrapper />
     </>

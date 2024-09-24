@@ -49,7 +49,7 @@
     /* primary/brand colors */
     /* ----------------------------------- */
     --primary-lighter: 227 227 227; /* #e3e3e3 */
-    --primary-default: 13 148 136; /* #111111 */
+    --primary-default: 43 144 236; /* #111111 */
     --primary-dark: 13 148 136; /* #000000 */
     --primary-foreground: 255 255 255; /* #ffffff */
     
@@ -131,7 +131,7 @@
     /* primary/brand colors */
     /* ----------------------------------- */
     --primary-lighter: 34 34 34; /* #222222 */
-    --primary-default: 241 241 241; /* #f1f1f1 */
+    --primary-default: 43 144 236; /* #f1f1f1 */
     --primary-dark: 255 255 255; /* #ffffff */
     --primary-foreground: 0 0 0; /* #000000 */
 
