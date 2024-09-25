@@ -26,7 +26,7 @@ export default function OrderDetailsPage({ params }: any) {
       <PageHeader
         title={
           <div className="flex items-center justify-center">
-            {pageHeader.title} <Badge renderAsDot className="mx-2" />{" "}
+            {pageHeader.title} <Badge renderAsDot className="mx-2  bg-black" />{" "}
             <span className="font-medium">23rd March 2024</span>
           </div>
         }

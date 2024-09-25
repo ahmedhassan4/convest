@@ -1,14 +1,16 @@
 import { PiCheckBold } from "react-icons/pi";
 import WidgetCard from "./WidgetCard";
 import cn from "@/utils/class-names";
+import { Info } from "@phosphor-icons/react";
 
 const OrderStatus = () => {
   const orderStatus = [
-    { id: 1, label: "Order Created" },
+    { id: 1, label: "Order Created", info: true },
     {
       id: 2,
       label: "1st Instalment (450 EGP)",
       description: "23rd March 2024",
+      info: true,
     },
     {
       id: 3,
@@ -17,34 +19,35 @@ const OrderStatus = () => {
     },
     {
       id: 4,
-      label: "3rd Instalment (450 EGP) ",
+      label: "3rd Instalment (450 EGP)",
       description: "23rd March 2024",
     },
     {
       id: 5,
-      label: "5th Instalment (450 EGP) ",
+      label: "5th Instalment (450 EGP)",
       description: "23rd March 2024",
+      info: true,
     },
     {
       id: 6,
-      label: "6th Instalment (450 EGP) ",
+      label: "6th Instalment (450 EGP)",
       description: "23rd April 2024",
     },
     { id: 7, label: "Out For Delivery", description: "23rd May 2024" },
-    { id: 8, label: "Delivered", description: "2 Item(s)" },
+    { id: 8, label: "Delivered", description: "2 Item(s)", info: true },
     {
       id: 9,
-      label: "7th Instalment (220 EGP) ",
+      label: "7th Instalment (220 EGP)",
       description: "2 Item(s)",
     },
     {
       id: 10,
-      label: "8th Instalment (220 EGP) ",
+      label: "8th Instalment (220 EGP)",
       description: "23rd June 2024",
     },
     {
       id: 11,
-      label: "9th Instalment (220 EGP) ",
+      label: "9th Instalment (220 EGP)",
       description: "23rd June 2024",
     },
     {
@@ -56,6 +59,7 @@ const OrderStatus = () => {
   ];
 
   const currentOrderStatus = 3;
+
   return (
     <WidgetCard
       title="Order Status"
@@ -72,7 +76,6 @@ const OrderStatus = () => {
                 ? "before:bg-primary after:bg-primary"
                 : "after:hidden",
               currentOrderStatus === item.id && "before:bg-primary",
-
               { "after:h-14": Boolean(item.description) },
               { "after:h-10": !Boolean(item.description) }
             )}
@@ -83,10 +86,17 @@ const OrderStatus = () => {
               </span>
             ) : null}
 
-            {item.label}
-            <span className="block text-[13px] text-[#666666] font-normal">
-              {item.description}
+            <span className="flex items-center">
+              {item.label}
+
+              {item.info && <Info size={18} className="ml-1 text-[#2B90EC]" />}
             </span>
+
+            {item.description && (
+              <span className="block text-[13px] text-[#666666] font-normal">
+                {item.description}
+              </span>
+            )}
           </div>
         ))}
       </div>
