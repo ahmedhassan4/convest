@@ -2,10 +2,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import isEmpty from 'lodash/isEmpty';
 import { Title, Text, Button, Input, Badge } from "rizzui";
-import { routes } from "@/config/routes";
-import QuantityInput from "./quantity-input";
-import RemoveItem from "./remove-item";
-import { AddToWishList } from "@/componnets/wishlist-button";
 
 export default function CartProduct({ product }: { product: any }) {
   return (

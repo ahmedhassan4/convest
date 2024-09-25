@@ -10,46 +10,82 @@ import { routes } from '@/config/routes';
 export const menuItems = [
   // label start
   {
-    name: 'Home',
+    name: "Home",
   },
   // label end
   {
-    name: 'Orders',
+    name: "Orders",
     href: routes.dashboard.institutions,
-    icon: <Package size={32} weight="duotone" />,
+    icon: <Package weight="duotone" />,
+    dropdownItems: [
+      {
+        name: "Products",
+        href: routes.eCommerce.products,
+        badge: "",
+      },
+      {
+        name: "Products",
+        href: routes.eCommerce.products,
+        badge: "",
+      },
+    ],
   },
   {
-    name: 'Items',
+    name: "Items",
     href: routes.dashboard.institutions,
-    icon: <DropboxLogo size={32} weight="duotone"/>,
+    icon: <DropboxLogo weight="duotone" />,
   },
   {
-    name: 'Cards',
+    name: "Cards",
     href: routes.dashboard.all_courses.list,
-    icon: <Cards size={32} weight="duotone"/>,
+    icon: <Cards weight="duotone" />,
   },
   {
-    name: 'Payments',
+    name: "Payments",
     href: routes.dashboard.calendar,
-    icon: <CurrencyCircleDollar size={32} weight="duotone"/>,
+    icon: <CurrencyCircleDollar weight="duotone" />,
   },
   {
-    name: 'Shop',
+    name: "Shop",
     href: routes.dashboard.myAccount,
-    icon: <ShoppingCart size={32} weight="duotone"/>,
+    icon: <ShoppingCart weight="duotone" />,
   },
   {
-    name: 'Help Center',
+    name: "Help Center",
   },
   {
-    name: 'Support',
+    name: "Support",
     href: routes.dashboard.semesters,
-    icon: <Headset size={32}  weight="duotone" />,
+    icon: <Headset weight="duotone" />,
+    dropdownItems: [
+      {
+        name: "Products",
+        href: routes.eCommerce.products,
+        badge: "",
+      },
+      {
+        name: "Products",
+        href: routes.eCommerce.products,
+        badge: "",
+      },
+    ],
   },
   {
-    name: 'Settings',
+    name: "Settings",
     href: routes.dashboard.users,
-    icon: <GearSix size={32} weight="duotone"/>,
-    badge: '',
+    icon: <GearSix weight="duotone" />,
+    badge: "",
+    dropdownItems: [
+      {
+        name: "Products",
+        href: routes.eCommerce.products,
+        badge: "",
+      },
+      {
+        name: "Products",
+        href: routes.eCommerce.products,
+        badge: "",
+      },
+    ],
   },
 ];
