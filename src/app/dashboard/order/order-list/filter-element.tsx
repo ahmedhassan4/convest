@@ -2,12 +2,12 @@
 
 import React from 'react';
 import { PiTrashDuotone } from 'react-icons/pi';
-import DateFiled from '@/app/shared/controlled-table/date-field';
-import PriceField from '@/app/shared/controlled-table/price-field';
-import StatusField from '@/app/shared/controlled-table/status-field';
+import DateFiled from "@/shared/controlled-table/date-field";
+import PriceField from "@/shared/controlled-table/price-field";
+import StatusField from "@/shared/controlled-table/status-field";
 import { Badge, Text, Button } from 'rizzui';
-import { getDateRangeStateValues } from '@utils/get-formatted-date';
-import { useMedia } from '@hooks/use-media';
+import { getDateRangeStateValues } from "@/utils/get-formatted-date";
+import { useMedia } from "@/hooks/use-media";
 
 const statusOptions = [
   {

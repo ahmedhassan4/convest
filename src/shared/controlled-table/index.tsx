@@ -1,13 +1,21 @@
 'use client';
 
 import React from 'react';
-import isEmpty from 'lodash/isEmpty';
-import { Title, Loader } from 'rizzui';
-import { TableFilterProps } from './table-filter';
-import TablePagination, { TablePaginationProps } from './table-pagination';
-import cn from '@/utils/class-names';
-import Table, { TableProps } from '../table';
-
+import dynamic from "next/dynamic";
+import isEmpty from "lodash/isEmpty";
+import { Title, Loader } from "rizzui";
+import cn from "@/utils/class-names";
+import type { TableFilterProps } from "@/shared/controlled-table/table-filter";
+import type { TablePaginationProps } from "@/shared/controlled-table/table-pagination";
+import Table, { TableProps } from "../../shared/table";
+const TableFilter = dynamic(
+  () => import("@/shared/controlled-table/table-filter"),
+  { ssr: false }
+);
+const TablePagination = dynamic(
+  () => import("@/shared/controlled-table/table-pagination"),
+  { ssr: false }
+);
 
 type ControlledTableProps = {
   isLoading?: boolean;
@@ -46,6 +54,10 @@ export default function ControlledTable({
 
   return (
     <>
+      {!isEmpty(filterOptions) && (
+        <TableFilter {...filterOptions}>{filterElement}</TableFilter>
+      )}
+
       <div className="relative">
         <Table
           scroll={{ x: 1300 }}

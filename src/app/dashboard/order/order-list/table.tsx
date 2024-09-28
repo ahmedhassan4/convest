@@ -2,17 +2,17 @@
 
 import { useCallback, useMemo, useState } from 'react';
 import dynamic from 'next/dynamic';
-import { useTable } from '@hooks/use-table';
-import { useColumn } from '@hooks/use-column';
-import { PiCaretDownBold, PiCaretUpBold } from 'react-icons/pi';
-import ControlledTable from '@/app/shared/controlled-table/index';
-import { getColumns } from '@/app/shared/ecommerce/order/order-list/columns';
+import { useTable } from "@/hooks/use-table";
+import { useColumn } from "@/hooks/use-column";
+import { PiCaretDownBold, PiCaretUpBold } from "react-icons/pi";
+import ControlledTable from "@/shared/controlled-table/index";
+import { getColumns } from "@/app/dashboard/order/order-list/columns";
 import { ActionIcon } from 'rizzui';
-import cn from '@utils/class-names';
-import ExpandedOrderRow from '@/app/shared/ecommerce/order/order-list/expanded-row';
+import cn from "@/utils/class-names";
+import ExpandedOrderRow from "@/app/dashboard/order/order-list/expanded-row";
 // dynamic import
 const FilterElement = dynamic(
-  () => import('@/app/shared/ecommerce/order/order-list/filter-element'),
+  () => import("@/app/dashboard/order/order-list/filter-element"),
   { ssr: false }
 );
 

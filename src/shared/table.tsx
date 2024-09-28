@@ -2,10 +2,17 @@
 
 import {
   Empty,
-  Text
-} from 'rizzui';
-import RcTable from 'rc-table';
+  ActionIcon,
+  Checkbox,
+  CheckboxGroup,
+  Popover,
+  Title,
+  Text,
+} from "rizzui";
 import cn from '@/utils/class-names';
+import RcTable from "rc-table";
+import { addSpacesToCamelCase } from "@/utils/add-spaces-to-camel-case";
+import { PiTextColumns } from "react-icons/pi";
 
 export type ExtractProps<T> = T extends React.ComponentType<infer P> ? P : T;
 
@@ -164,6 +171,56 @@ export function HeaderCell({
           )}
         </div>
       )}
+    </div>
+  );
+}
+
+type ToggleColumnsTypes<T> = {
+  columns: T[];
+  checkedColumns: string[];
+  setCheckedColumns: React.Dispatch<React.SetStateAction<string[]>>;
+  hideIndex?: number;
+};
+
+export function ToggleColumns<T>({
+  columns,
+  checkedColumns,
+  setCheckedColumns,
+  hideIndex,
+}: ToggleColumnsTypes<T>) {
+  return (
+    <div>
+      <Popover shadow="sm" placement="bottom-end">
+        <Popover.Trigger>
+          <ActionIcon variant="outline" title={"Toggle Columns"}>
+            <PiTextColumns strokeWidth={3} className=" h-6 w-6" />
+          </ActionIcon>
+        </Popover.Trigger>
+        <Popover.Content className="z-0">
+          <div className="px-0.5 pt-2 text-left rtl:text-right">
+            <Title as="h6" className="mb-1 px-0.5 text-sm font-semibold">
+              Toggle Columns
+            </Title>
+            <CheckboxGroup
+              values={checkedColumns}
+              setValues={setCheckedColumns}
+              className="grid grid-cols-2 gap-x-6 gap-y-5 px-1.5 pb-3.5 pt-4"
+            >
+              {columns.map((column: any, index) => (
+                <Checkbox
+                  key={column.dataIndex}
+                  value={column.dataIndex}
+                  label={addSpacesToCamelCase(column.dataIndex)}
+                  labelClassName="ml-2 rtl:mr-2 text-[13px] font-medium"
+                  className={cn(
+                    hideIndex && index === hideIndex ? "hidden" : ""
+                  )}
+                />
+              ))}
+            </CheckboxGroup>
+          </div>
+        </Popover.Content>
+      </Popover>
     </div>
   );
 }
