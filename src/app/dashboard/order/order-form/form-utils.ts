@@ -1,4 +1,4 @@
-import { CreateOrderInput } from '@/validators/create-order.schema';
+import { CreateOrderInput } from "@/validators/create-order.schema";
 
 export function defaultValues(order?: CreateOrderInput) {
   return {
@@ -38,26 +38,26 @@ export function defaultValues(order?: CreateOrderInput) {
 
 export const orderData = {
   billingAddress: {
-    customerName: 'Smith Row',
-    phoneNumber: '',
-    country: 'Bangladesh',
-    state: 'Dhaka',
-    city: 'Dhaka',
-    zip: '1216',
-    street: 'Mirpur Road No #10',
+    customerName: "Smith Row",
+    phoneNumber: "",
+    country: "Bangladesh",
+    state: "Dhaka",
+    city: "Dhaka",
+    zip: "1216",
+    street: "Mirpur Road No #10",
   },
   sameShippingAddress: true,
   shippingAddress: {
-    customerName: 'Smith Row',
-    phoneNumber: '',
-    country: 'Bangladesh',
-    state: 'Dhaka',
-    city: 'Dhaka',
-    zip: '1216',
-    street: 'Mirpur Road No #10',
+    customerName: "Smith Row",
+    phoneNumber: "",
+    country: "Bangladesh",
+    state: "Dhaka",
+    city: "Dhaka",
+    zip: "1216",
+    street: "Mirpur Road No #10",
   },
-  note: '',
-  paymentMethod: 'PayPal',
-  shippingMethod: 'USPS',
-  shippingSpeed: '',
+  note: "",
+  paymentMethod: "PayPal",
+  shippingMethod: "USPS",
+  shippingSpeed: "",
 };

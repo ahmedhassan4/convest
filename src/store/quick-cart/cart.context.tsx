@@ -10,11 +10,11 @@ import {
 } from 'react';
 import { useAtom } from 'jotai';
 import { cartReducer, State, initialState } from './cart.reducer';
-import { useLocalStorage } from '@hooks/use-local-storage';
-import { getItem, inStock } from '@/store/quick-cart/cart.utils';
-import { verifiedResponseAtom } from '@/store/checkout';
-import { CART_KEY } from '@/config/constants';
-import { CartItem as Item } from '@/types';
+import { useLocalStorage } from "@/hooks/use-local-storage";
+import { getItem, inStock } from "@/store/quick-cart/cart.utils";
+import { verifiedResponseAtom } from "@/store/checkout";
+import { CART_KEY } from "@/config/constants";
+import { CartItem as Item } from "@/types/index";
 
 interface CartProviderState extends State {
   addItemsToCart: (items: Item[]) => void;
