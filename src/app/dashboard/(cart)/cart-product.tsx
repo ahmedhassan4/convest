@@ -78,9 +78,6 @@ export default function CartProduct({ product }: { product: any }) {
             <Text className="border  border-[#E3E3E3] px-2 rounded py-[7px] text-[16px] font-normal">
               1 Item(s)
             </Text>
-            <Text className="border  border-[#E3E3E3] px-2 rounded py-[7px] text-[16px] font-normal">
-              23 March 2025
-            </Text>
           </div>
           <div className="flex items-center gap-4"></div>
         </div>

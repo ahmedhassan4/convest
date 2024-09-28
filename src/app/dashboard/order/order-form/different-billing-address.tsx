@@ -1,6 +1,6 @@
 import { Controller, useFormContext, useWatch } from 'react-hook-form';
 import { Checkbox, Radio, RadioGroup } from 'rizzui';
-import cn from '@utils/class-names';
+import cn from "@/utils/class-names";
 
 interface DifferentBillingAddressProps {
   className?: string;

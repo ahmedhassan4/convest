@@ -11,10 +11,10 @@ import toast from "react-hot-toast";
 import isEmpty from "lodash/isEmpty";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
-// import DifferentBillingAddress from '@/app/shared/ecommerce/order/order-form/different-billing-address';
+import DifferentBillingAddress from "../order/order-form/different-billing-address";
 import { orderData } from "../order/order-form/form-utils";
 import AddressInfo from "../order/order-form/address-info";
-import ShippingMethod from "./shipping-method";
+// import ShippingMethod from "./shipping-method";
 import PaymentMethod from "./payment-method";
 import OrderSummery from "./order-summery";
 import OrderNote from "./order-note";
@@ -98,13 +98,12 @@ export default function CheckoutPageWrapper({
             <div className="flex flex-col gap-4 @xs:gap-7 @5xl:gap-9">
               <PaymentMethod />
               <AddressInfo type="billingAddress" title="Billing Information" />
+              {!sameShippingAddress && <AddressInfo type="shippingAddress" />}
+              <DifferentBillingAddress />
 
               <OrderNote />
 
-              <ShippingMethod />
-              {/* <DifferentBillingAddress /> */}
-
-              {/* {!sameShippingAddress && <AddressInfo type="shippingAddress" />} */}
+              {/* <ShippingMethod /> */}
             </div>
           </div>
 

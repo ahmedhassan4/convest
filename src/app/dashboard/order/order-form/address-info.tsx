@@ -9,12 +9,14 @@ interface AddressInfoProps {
   type: string;
   title?: string;
   className?: string;
+  disabled?: boolean;
 }
 
 export default function AddressInfo({
   type,
   title,
   className,
+  disabled = true,
 }: AddressInfoProps) {
   const {
     register,
@@ -36,6 +38,7 @@ export default function AddressInfo({
         label="Customer Name"
         placeholder="Customer name"
         {...register(`${type}.customerName`)}
+        disabled={disabled}
         // @ts-ignore
         error={errors?.[type]?.customerName?.message as any}
       />
@@ -48,6 +51,7 @@ export default function AddressInfo({
             country="us"
             value={value}
             onChange={onChange}
+            disabled={disabled}
             // @ts-ignore
             error={errors?.[type]?.phoneNumber?.message as string}
           />
@@ -56,6 +60,7 @@ export default function AddressInfo({
       <Input
         label="Country"
         placeholder="Country"
+        disabled={disabled}
         {...register(`${type}.country`)}
         // @ts-ignore
         error={errors?.[type]?.country?.message as string}
@@ -63,6 +68,7 @@ export default function AddressInfo({
       <Input
         label="State"
         placeholder="State"
+        disabled={disabled}
         {...register(`${type}.state`)}
         // @ts-ignore
         error={errors?.[type]?.state?.message as string}
@@ -70,6 +76,7 @@ export default function AddressInfo({
       <Input
         label="City"
         placeholder="City"
+        disabled={disabled}
         {...register(`${type}.city`)}
         // @ts-ignore
         error={errors?.[type]?.city?.message as string}
@@ -77,6 +84,7 @@ export default function AddressInfo({
       <Input
         label="ZIP / Postcode"
         placeholder="ZIP / postcode"
+        disabled={disabled}
         {...register(`${type}.zip`)}
         // @ts-ignore
         error={errors?.[type]?.zip?.message as string}
@@ -84,6 +92,7 @@ export default function AddressInfo({
       <Input
         label="Street Address"
         placeholder="Street Address"
+        disabled={disabled}
         className="col-span-full"
         {...register(`${type}.street`)}
         // @ts-ignore
