@@ -7,24 +7,25 @@ import { PiPlusBold } from "react-icons/pi";
 import { orderData } from "@/data/order-data";
 import { metaObject } from "@/config/site.config";
 import ExportButton from "@/shared/export-button";
+import OrderState from "@/app/dashboard/order/order-status/OrderState";
 
 export const metadata = {
-  ...metaObject('Orders'),
+  ...metaObject("Orders"),
 };
 
 const pageHeader = {
-  title: 'Orders',
+  title: "All Orders",
   breadcrumb: [
     {
       href: routes.eCommerce.dashboard,
-      name: 'E-Commerce',
+      name: "Home",
     },
     {
       href: routes.eCommerce.orders,
-      name: 'Orders',
+      name: "Orders",
     },
     {
-      name: 'List',
+      name: "All Orders",
     },
   ],
 };
@@ -33,6 +34,8 @@ export default function OrdersPage() {
   return (
     <>
       <PageHeader title={pageHeader.title} breadcrumb={pageHeader.breadcrumb} />
+
+      <OrderState className="mb-6 @5xl:mb-8 @7xl:mb-11" />
 
       <OrdersTable data={orderData} />
     </>

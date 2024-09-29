@@ -7,7 +7,7 @@ import { useColumn } from "@/hooks/use-column";
 import { PiCaretDownBold, PiCaretUpBold } from "react-icons/pi";
 import ControlledTable from "@/shared/controlled-table/index";
 import { getColumns } from "@/app/dashboard/order/order-list/columns";
-import { ActionIcon } from 'rizzui';
+import { ActionIcon, Title } from "rizzui";
 import cn from "@/utils/class-names";
 import ExpandedOrderRow from "@/app/dashboard/order/order-list/expanded-row";
 // dynamic import
@@ -37,19 +37,19 @@ function CustomExpandIcon(props: any) {
 }
 
 const filterState = {
-  price: ['', ''],
+  price: ["", ""],
   createdAt: [null, null],
   updatedAt: [null, null],
-  status: '',
+  status: "",
 };
 
 export default function OrderTable({
   data = [],
-  variant = 'modern',
+  variant = "modern",
   className,
 }: {
   data: any[];
-  variant?: 'modern' | 'minimal' | 'classic' | 'elegant' | 'retro';
+  variant?: "modern" | "minimal" | "classic" | "elegant" | "retro";
   className?: string;
 }) {
   const [pageSize, setPageSize] = useState(10);
@@ -93,6 +93,9 @@ export default function OrderTable({
 
   return (
     <div className={cn(className)}>
+      <Title className="text-base font-semibold text-[#111111]">
+        Upcoming instalments and Delivery
+      </Title>
       <ControlledTable
         variant={variant}
         isLoading={isLoading}
@@ -114,7 +117,7 @@ export default function OrderTable({
         filterOptions={{
           searchTerm,
           onSearchClear: () => {
-            handleSearch('');
+            handleSearch("");
           },
           onSearchChange: (event) => {
             handleSearch(event.target.value);
@@ -135,7 +138,7 @@ export default function OrderTable({
           />
         }
         className={
-          'rounded-md border border-muted text-sm shadow-sm [&_.rc-table-placeholder_.rc-table-expanded-row-fixed>div]:h-60 [&_.rc-table-placeholder_.rc-table-expanded-row-fixed>div]:justify-center [&_.rc-table-row:last-child_td.rc-table-cell]:border-b-0 [&_thead.rc-table-thead]:border-t-0'
+          "rounded-md border border-muted text-sm shadow-sm [&_.rc-table-placeholder_.rc-table-expanded-row-fixed>div]:h-60 [&_.rc-table-placeholder_.rc-table-expanded-row-fixed>div]:justify-center [&_.rc-table-row:last-child_td.rc-table-cell]:border-b-0 [&_thead.rc-table-thead]:border-t-0"
         }
       />
     </div>
