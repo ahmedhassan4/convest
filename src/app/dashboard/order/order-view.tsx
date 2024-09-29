@@ -12,10 +12,10 @@ import {
 // import OrderViewProducts from '@/app/shared/ecommerce/order/order-products/order-view-products';
 import { useCart } from '@/store/quick-cart/cart.context';
 import { Title, Text } from 'rizzui';
-import cn from '@utils/class-names';
+import cn from "@/utils/class-names";
 // import { toCurrency } from '@utils/to-currency';
 // import { formatDate } from '@utils/format-date';
-import usePrice from '@hooks/use-price';
+import usePrice from "@/hooks/use-price";
 
 const orderStatus = [
   { id: 1, label: 'Order Pending' },

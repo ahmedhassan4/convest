@@ -93,9 +93,6 @@ export default function OrderTable({
 
   return (
     <div className={cn(className)}>
-      <Title className="text-base font-semibold text-[#111111]">
-        Upcoming instalments and Delivery
-      </Title>
       <ControlledTable
         variant={variant}
         isLoading={isLoading}
