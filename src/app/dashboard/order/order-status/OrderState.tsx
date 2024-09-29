@@ -1,6 +1,6 @@
 "use client";
 
-import { Title, Text, Button } from "rizzui";
+import { Title, Text, Button, Radio } from "rizzui";
 import cn from "@/utils/class-names";
 import DocIcon from "@/componnets/icons/doc-solid";
 import ImageIcon from "@/componnets/icons/image-solid";
@@ -109,13 +109,13 @@ export default function OrderState({ className }: FileStatsType) {
                       label={stat.icon}
                       strokeClassName="dark:stroke-gray-300"
                     /> */}
-                    h
+                    <Radio label="Default" />
                   </div>
                   <div className="">
-                    <Text className="mb-1 text-sm font-medium text-gray-500">
+                    {/* <Text className="mb-1 text-sm font-medium text-gray-500">
                       {stat.title}
-                    </Text>
-                    <Title
+                    </Text> */}
+                    {/* <Title
                       as="h4"
                       className="mb-1 text-xl font-semibold text-gray-900"
                     >
@@ -123,7 +123,7 @@ export default function OrderState({ className }: FileStatsType) {
                       <span className="inline-block text-sm font-normal text-gray-500">
                         &nbsp;of 100 GB
                       </span>
-                    </Title>
+                    </Title> */}
                   </div>
                 </div>
               </MetricCard>

@@ -1,9 +1,12 @@
 import { PiCheckBold } from "react-icons/pi";
 import WidgetCard from "./WidgetCard";
 import cn from "@/utils/class-names";
-import { Info } from "@phosphor-icons/react";
+import { GoInfo } from "react-icons/go";
+import OrderStatusInfo from "./OrderStatusInfo";
+import { useModal } from "@/shared/modal-views/use-modal";
 
 const OrderStatus = () => {
+  const { openModal } = useModal();
   const orderStatus = [
     { id: 1, label: "Order Created", info: true },
     {
@@ -60,6 +63,14 @@ const OrderStatus = () => {
 
   const currentOrderStatus = 3;
 
+  const handleInfoClick = () => {
+    openModal({
+      view: <OrderStatusInfo />,
+      customSize: "550px",
+      size: "sm",
+    });
+  };
+
   return (
     <WidgetCard
       title="Order Status"
@@ -89,7 +100,13 @@ const OrderStatus = () => {
             <span className="flex items-center">
               {item.label}
 
-              {item.info && <Info size={18} className="ml-1 text-[#2B90EC]" />}
+              {item.info && (
+                <GoInfo
+                  size={16}
+                  className="ml-1 text-[#2B90EC] cursor-pointer"
+                  onClick={handleInfoClick}
+                />
+              )}
             </span>
 
             {item.description && (
