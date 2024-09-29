@@ -95,8 +95,8 @@ export default function OrderSummery({
             <Link href={routes.eCommerce.shop}>
               <Button
                 as="span"
-                className="mt-3 w-full text-base @md:h-12"
-              >{`Back to Store`}</Button>
+                className="mt-3 w-full text-base @md:h-12 rounded-full"
+              >{`Confirm`}</Button>
             </Link>
           )}
         </div>

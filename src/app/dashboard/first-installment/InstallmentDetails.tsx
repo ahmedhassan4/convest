@@ -1,11 +1,22 @@
 import { routes } from "@/config/routes";
+import { useModal } from "@/shared/modal-views/use-modal";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { Button, Title } from "rizzui";
+import ChagenPaymentMethod from "./ChagenPaymentMethod";
 
 const InstallmentDetails = () => {
+  const { openModal } = useModal();
   const router = useRouter();
+
+  const handleInfoClick = () => {
+    openModal({
+      view: <ChagenPaymentMethod />,
+      customSize: "550px",
+      size: "sm",
+    });
+  };
   return (
     // const { total } = useCart();
     // const { price: totalPrice } = usePrice({
@@ -40,17 +51,16 @@ const InstallmentDetails = () => {
           Next Instalment
           <span className="font-medium text-gray-1000">23/12/24 (30 Days)</span>
         </div>
-        <Link href={routes.eCommerce.checkout}>
-          <Button
-            size="xl"
-            rounded="pill"
-            variant="outline"
-            onClick={() => router.push(routes.eCommerce.checkout)}
-            className="w-full"
-          >
-            Change Payment Method
-          </Button>
-        </Link>
+
+        <Button
+          size="xl"
+          rounded="pill"
+          variant="outline"
+          onClick={handleInfoClick}
+          className="w-full"
+        >
+          Change Payment Method
+        </Button>
       </div>
     </div>
   );
