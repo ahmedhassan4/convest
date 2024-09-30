@@ -1,23 +1,15 @@
 "use client";
 
-import { Title, Text, Button, Radio } from "rizzui";
+import { Title, Button, Text } from "rizzui";
 import React from "react";
 
 import cn from "@/utils/class-names";
-import DocIcon from "@/componnets/icons/doc-solid";
-import ImageIcon from "@/componnets/icons/image-solid";
-import MusicIcon from "@/componnets/icons/music-solid";
-import VideoIcon from "@/componnets/icons/video-solid";
-import DriveIcon from "@/componnets/icons/drive-solid";
 import { useScrollableSlider } from "@/hooks/use-scrollable-slider";
 import { PiCaretLeftBold, PiCaretRightBold } from "react-icons/pi";
-import MetricCard from "@/componnets/cards/metric-card";
-
-
 import { AdvancedCheckbox } from "rizzui";
 import { PiCalendarBlank, PiCheckBold } from "react-icons/pi";
-import DateCell from "@/ui/date-cell";
-import SimpleBar from "simplebar-react";
+import DateCell from "@/ui/date-cell-installment-cards";
+import Link from "next/link";
 
 type FileStatsType = {
   className?: string;
@@ -102,7 +94,7 @@ export default function OrderState({ className }: FileStatsType) {
                 value="pound"
                 key={item.id}
                 className="relative z-5 mt-0.5 px-3 py-1.5 min-w-[400px]"
-                inputClassName="[&:checked~.rizzui-advanced-checkbox]:ring-muted [&:checked~.rizzui-advanced-checkbox>span>svg]:opacity-100 [&:checked~.rizzui-advanced-checkbox>span]:border-[#2B7F75] [&:checked~.rizzui-advanced-checkbox>div>div>strong]:line-through [&:checked~.rizzui-advanced-checkbox>div>div>strong]:text-gray-500 [&:checked~.rizzui-advanced-checkbox>div>div>strong+span]:line-through"
+                // inputClassName="[&:checked~.rizzui-advanced-checkbox]:ring-muted [&:checked~.rizzui-advanced-checkbox>span>svg]:opacity-100 [&:checked~.rizzui-advanced-checkbox>span]:border-[#2B7F75] [&:checked~.rizzui-advanced-checkbox>div>div>strong]:line-through [&:checked~.rizzui-advanced-checkbox>div>div>strong]:text-gray-500 [&:checked~.rizzui-advanced-checkbox>div>div>strong+span]:line-through"
                 contentClassName="flex w-full bg-gray-0 dark:bg-gray-50 items-center @md:px-5 px-4 py-4 rounded-lg shadow hover:shadow-md transition-shadow border-0 @md:gap-5 gap-4"
               >
                 <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-[#D9B34E]">
@@ -125,9 +117,13 @@ export default function OrderState({ className }: FileStatsType) {
                       date={item.date}
                       dateClassName="font-normal text-gray-500"
                       className="flex gap-2"
-                      timeClassName="text-sm"
                       dateFormat="M/D/YYYY"
                     />
+                    <Link href={"#"}>
+                      <Text className="text-xs font-bold text-[#2B90EC] ml-1 hover:underline">
+                        View Details
+                      </Text>
+                    </Link>
                   </div>
                 </div>
               </AdvancedCheckbox>

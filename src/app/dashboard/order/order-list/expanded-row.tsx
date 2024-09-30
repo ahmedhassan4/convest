@@ -11,19 +11,21 @@ export default function ExpandedOrderRow({ record }: any) {
       {record?.products.map((product: any) => (
         <article
           key={record.id + product.name}
-          className="flex items-center justify-between py-6 first-of-type:pt-2.5 last-of-type:pb-2.5"
+          className="flex items-center justify-center py-4 first:pt-2.5 last:pb-2.5 "
         >
-          <div className="flex items-start">
+          <div className="flex items-start w-[33%]">
             <div className="relative me-4 aspect-[80/60] w-20 flex-shrink-0 overflow-hidden rounded-md bg-gray-100">
               <Image
                 fill
-                className=" object-cover"
+                className="object-cover"
                 src={product.image}
                 alt={product.name}
               />
             </div>
             <header>
-              <Title as="h4" className="mb-0.5 text-sm font-medium">
+              <Title as="h4" className="mb-1 text-sm font-medium">
+                {" "}
+                {/* Adjusted margin-bottom */}
                 {product.name}
               </Title>
               <Text className="mb-1 text-gray-500">{product.category}</Text>
@@ -32,19 +34,37 @@ export default function ExpandedOrderRow({ record }: any) {
               </Text>
             </header>
           </div>
-          <div className="flex w-full max-w-xs items-center justify-between gap-4">
-            <div className="flex items-center">
-              <PiXBold size={13} className="me-1 text-gray-500" />{' '}
-              <Text
-                as="span"
-                className="font-medium text-gray-900 dark:text-gray-700"
-              >
-                {product.quantity}
+
+          <div className="flex-1 ml-4 w-3/4">
+            <div className="flex items-center justify-between gap-6">
+              <div>
+                <Text className="text-sm text-[#111111] font-medium mb-1">
+                  Inst. Price
+                </Text>
+                <Text className="text-xs text-[#666666]">$210.00/month</Text>
+              </div>
+              <div>
+                <Text className="text-sm text-[#111111] font-medium mb-1">
+                  Inst. Duration
+                </Text>
+                <Text className="text-xs text-[#666666]">12 Months</Text>
+              </div>
+              <div>
+                <Text className="text-sm text-[#111111] font-medium mb-1">
+                  Amount Paid
+                </Text>
+                <Text className="text-xs text-[#666666]">$420.00</Text>
+              </div>
+              <div>
+                <Text className="text-sm text-[#111111] font-medium mb-1">
+                  Amount Outstanding
+                </Text>
+                <Text className="text-xs text-[#666666]">$840.00</Text>
+              </div>
+              <Text className="text-xs text-[#0D9488] font-medium ">
+                Out For Delivery
               </Text>
             </div>
-            <Text className="font-medium text-gray-900 dark:text-gray-700">
-              ${Number(product.quantity) * Number(product.price)}
-            </Text>
           </div>
         </article>
       ))}

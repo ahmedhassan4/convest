@@ -46,7 +46,7 @@ const ChagenPaymentMethod = () => {
         </ActionIcon>
       </div>
 
-      <SimpleBar className="-mr-3 h-[300px] pr-3 md:h-[300px]">
+      <SimpleBar className="-mr-3 h-[300px] pr-3 md:h-[200px]">
         {/* rows*/}
         {rows.map((row) => (
           <div
