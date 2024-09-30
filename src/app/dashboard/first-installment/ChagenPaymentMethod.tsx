@@ -5,12 +5,12 @@ import { ActionIcon, Avatar, Badge, Button, Text, Title } from "rizzui";
 import { useModal } from "@/shared/modal-views/use-modal";
 import Breadcrumb from "@/ui/breadcrumb";
 import SimpleBar from "@/ui/simplebar";
-import { GiHandTruck } from "react-icons/gi";
+import { GiHandTruck, GiMoneyStack } from "react-icons/gi";
 
 const rows = [
   {
     id: 1,
-    avatar: "https://randomuser.me/api/portraits/men/43.jpg",
+    avatar: <GiMoneyStack size={24} />,
     name: "Pay with Cash (+30 EGP/Month)",
     description:
       "We will collect the cash from you every month at the billing address specified. ",
@@ -18,18 +18,11 @@ const rows = [
   },
   {
     id: 2,
-    avatar: "https://randomuser.me/api/portraits/men/97.jpg",
+    avatar: <GiMoneyStack size={24} />,
     name: "Pay with Card",
     description:
       "We will charge your card each month until your instalments have been completed.",
     price: "20 EGP",
-  },
-  {
-    id: 3,
-    avatar: "https://randomuser.me/api/portraits/women/26.jpg",
-    name: "Delivery",
-    description: "For 21st February 2025",
-    price: "10 EGP",
   },
 ];
 
@@ -61,12 +54,14 @@ const ChagenPaymentMethod = () => {
             className="flex items-center justify-between pb-3 pt-2 lg:pb-5 lg:first:pt-4 gap-2"
           >
             <div className="flex items-center gap-2">
-              <Avatar size="lg" name={row.name} src={row.avatar} />
-              <div className="flex flex-col gap-1">
-                <Text className="font-lexend font-medium text-sm capitalize text-[#111111]">
+              <div className="h-12 w-12 flex-shrink-0 flex items-center justify-center rounded-full bg-[#F1F1F1]">
+                {row.avatar}
+              </div>
+              <div className="flex flex-col gap-1 flex-grow overflow-hidden">
+                <Text className="font-lexend font-medium text-sm capitalize text-[#111111] ">
                   {row.name}
                 </Text>
-                <Text className="font-lexend text-xs font-normal capitalize text-[#484848]">
+                <Text className="font-lexend text-xs font-normal capitalize text-[#484848] ">
                   {row.description}
                 </Text>
               </div>

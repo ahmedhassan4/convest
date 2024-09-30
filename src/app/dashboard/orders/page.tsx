@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import React from "react";
+
 import { routes } from '@/config/routes';
 import { Button } from 'rizzui';
 import PageHeader from "@/shared/page-header";

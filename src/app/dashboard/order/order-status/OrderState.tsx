@@ -1,6 +1,8 @@
 "use client";
 
 import { Title, Text, Button, Radio } from "rizzui";
+import React from "react";
+
 import cn from "@/utils/class-names";
 import DocIcon from "@/componnets/icons/doc-solid";
 import ImageIcon from "@/componnets/icons/image-solid";

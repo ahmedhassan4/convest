@@ -98,11 +98,13 @@ export default function CheckoutPageWrapper({
             <div className="flex flex-col gap-4 @xs:gap-7 @5xl:gap-9">
               <PaymentMethod />
               <AddressInfo type="billingAddress" title="Billing Information" />
-              {!sameShippingAddress && <AddressInfo type="shippingAddress" />}
-              <DifferentBillingAddress />
+              <AddressInfo
+                type="shippingAddress"
+                title="Shipping Information"
+              />
+              {/* <DifferentBillingAddress /> */}
 
               <OrderNote />
-
               {/* <ShippingMethod /> */}
             </div>
           </div>

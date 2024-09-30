@@ -16,6 +16,7 @@ export default function OrderNote({ className }: OrderNoteProps) {
       className={cn("border-t border-muted pt-4 @xs:pt-6 @5xl:pt-7", className)}
     >
       <Textarea
+        disabled
         label="Order Note (optional)"
         placeholder="Notes about your order, e.g. special notes for delivery."
         {...register("note")}

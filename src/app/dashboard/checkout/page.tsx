@@ -1,4 +1,5 @@
 import { routes } from "@/config/routes";
+import React from "react";
 import PageHeader from "@/shared/page-header";
 import CheckoutPageWrapper from "@/app/dashboard/checkout";
 import { metaObject } from "@/config/site.config";
