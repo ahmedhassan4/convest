@@ -36,7 +36,7 @@ export default function ExpandedOrderRow({ record }: any) {
           </div>
 
           <div className="flex-1 ml-4 w-3/4">
-            <div className="flex items-center justify-between gap-6">
+            <div className="flex items- center justify-between gap-6">
               <div>
                 <Text className="text-sm text-[#111111] font-medium mb-1">
                   Inst. Price
@@ -47,7 +47,9 @@ export default function ExpandedOrderRow({ record }: any) {
                 <Text className="text-sm text-[#111111] font-medium mb-1">
                   Inst. Duration
                 </Text>
-                <Text className="text-xs text-[#666666]">12 Months</Text>
+                <Text className="text-xs text-[rgb(102,102,102)]">
+                  12 Months
+                </Text>
               </div>
               <div>
                 <Text className="text-sm text-[#111111] font-medium mb-1">

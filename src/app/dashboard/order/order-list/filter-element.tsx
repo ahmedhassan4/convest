@@ -1,12 +1,9 @@
 'use client';
 
 import React from 'react';
-import { PiTrashDuotone } from 'react-icons/pi';
-import DateFiled from "@/shared/controlled-table/date-field";
-import PriceField from "@/shared/controlled-table/price-field";
+import { PiTrashDuotone } from "react-icons/pi";
 import StatusField from "@/shared/controlled-table/status-field";
-import { Badge, Text, Button } from 'rizzui';
-import { getDateRangeStateValues } from "@/utils/get-formatted-date";
+import { Badge, Text, Button } from "rizzui";
 import { useMedia } from "@/hooks/use-media";
 
 const statusOptions = [
@@ -44,48 +41,11 @@ export default function FilterElement({
   const isMediumScreen = useMedia('(max-width: 1860px)', false);
   return (
     <>
-      <PriceField
-        value={filters['price']}
-        onChange={(data) => updateFilter('price', data)}
-        label={'Price'}
-      />
-      <DateFiled
-        className="w-full"
-        selected={getDateRangeStateValues(filters['createdAt'][0])}
-        startDate={getDateRangeStateValues(filters['createdAt'][0])}
-        endDate={getDateRangeStateValues(filters['createdAt'][1])}
-        onChange={(date: any) => {
-          updateFilter('createdAt', date);
-        }}
-        placeholderText="Select created date"
-        {...(isMediumScreen && {
-          inputProps: {
-            label: 'Created Date',
-            labelClassName: 'font-medium text-gray-700',
-          },
-        })}
-      />
-      <DateFiled
-        className="w-full"
-        selected={getDateRangeStateValues(filters['updatedAt'][0])}
-        startDate={getDateRangeStateValues(filters['updatedAt'][0])}
-        endDate={getDateRangeStateValues(filters['updatedAt'][1])}
-        onChange={(date: any) => {
-          updateFilter('updatedAt', date);
-        }}
-        placeholderText="Select modified date"
-        {...(isMediumScreen && {
-          inputProps: {
-            label: 'Due Date',
-            labelClassName: 'font-medium text-gray-700',
-          },
-        })}
-      />
       <StatusField
         options={statusOptions}
-        value={filters['status']}
+        value={filters["status"]}
         onChange={(value: string) => {
-          updateFilter('status', value);
+          updateFilter("status", value);
         }}
         getOptionValue={(option: { value: any }) => option.value}
         getOptionDisplayValue={(option: { value: any }) =>
@@ -93,8 +53,8 @@ export default function FilterElement({
         }
         displayValue={(selected: string) => renderOptionDisplayValue(selected)}
         {...(isMediumScreen && {
-          label: 'Status',
-          labelClassName: 'font-medium text-gray-700',
+          label: "Status",
+          labelClassName: "font-medium text-gray-700",
         })}
       />
       {isFiltered ? (

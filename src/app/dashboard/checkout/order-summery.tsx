@@ -92,10 +92,10 @@ export default function OrderSummery({
               {params?.id ? "Update Order" : "Place Order"}
             </Button>
           ) : (
-            <Link href={routes.eCommerce.shop}>
+            <Link href={routes.dashboard.firstInstallment}>
               <Button
                 as="span"
-                className="mt-3 w-full text-base @md:h-12 rounded-full"
+                className="mt-3 w-full text-base @md:h-12 rounded-full hover:bg-[#3489d7]"
               >{`Confirm`}</Button>
             </Link>
           )}

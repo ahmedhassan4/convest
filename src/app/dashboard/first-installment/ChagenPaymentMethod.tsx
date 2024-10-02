@@ -6,6 +6,8 @@ import { useModal } from "@/shared/modal-views/use-modal";
 import Breadcrumb from "@/ui/breadcrumb";
 import SimpleBar from "@/ui/simplebar";
 import { GiHandTruck, GiMoneyStack } from "react-icons/gi";
+import Link from "next/link";
+import { routes } from "@/config/routes";
 
 const rows = [
   {
@@ -66,15 +68,17 @@ const ChagenPaymentMethod = () => {
                 </Text>
               </div>
             </div>
-            <Button
-              size="sm"
-              rounded="pill"
-              variant="outline"
-              // onClick={() => setState(() => !state)}
-              className="font-medium capitalize md:h-9 md:px-4"
-            >
-              Proceed
-            </Button>
+            <Link href={routes.dashboard.checkout}>
+              <Button
+                size="sm"
+                rounded="pill"
+                variant="outline"
+                // onClick={() => setState(() => !state)}
+                className="font-medium capitalize md:h-9 md:px-4"
+              >
+                Proceed
+              </Button>
+            </Link>
           </div>
         ))}
       </SimpleBar>

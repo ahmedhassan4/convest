@@ -8,7 +8,10 @@ export const routes = {
   },
   dashboard: {
     home: "/",
+    checkout: "/dashboard/checkout",
+    firstInstallment: "/dashboard/first-installment",
     institutions: "/dashboard/institutions",
+    orderDetails: (id: string) => `/dashboard/orders/${id}`,
     all_courses: {
       list: "/dashboard/all-courses",
       course_detailes: (course_id: any | string) =>

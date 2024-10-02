@@ -1,9 +1,9 @@
 import { Badge, Button } from "rizzui";
+import React from "react";
 import { routes } from "@/config/routes";
 import PageHeader from "@/shared/page-header";
 import Link from "next/link";
 import CartPageWrapper from "@/app/dashboard/(cart)/index";
-
 export default function OrderDetailsPage({ params }: any) {
   const pageHeader = {
     title: `Order #${params.id}`,
