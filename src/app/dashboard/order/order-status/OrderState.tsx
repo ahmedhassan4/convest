@@ -100,7 +100,7 @@ export default function OrderState({ className }: FileStatsType) {
                   className="relative z-5 mt-0.5 px-[2px] py-1.5 min-w-[370px]"
                   contentClassName="flex w-full bg-gray-0 dark:bg-gray-50 items-center @md:px-5 px-4 py-4 rounded-lg shadow hover:shadow-md transition-shadow border-0 @md:gap-5 gap-4"
                 >
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-[#D9B34E]">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-[#2B90EC]">
                     <PiCheckBold className="fill-[#2B7F75] opacity-0" />
                   </span>
                   <div className="block">

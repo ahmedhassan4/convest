@@ -10,9 +10,9 @@ export default function StatusField({
     <Select
       inPortal={false}
       placeholder={placeholder}
-      selectClassName="min-h-[40px] min-w-[150px]"
-      dropdownClassName={cn("p-1.5 !z-0 min-h-[40px]", dropdownClassName)}
-      optionClassName="min-h-[40px]"
+      selectClassName="h-9 min-w-[150px]"
+      dropdownClassName={cn("p-1.5 !z-0", dropdownClassName)}
+      optionClassName="h-9"
       {...props}
     />
   );
