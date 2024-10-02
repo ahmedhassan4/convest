@@ -1,27 +1,25 @@
 'use client';
 
-import React from 'react';
-import { PiTrashDuotone } from "react-icons/pi";
+import React from "react";
 import StatusField from "@/shared/controlled-table/status-field";
-import { Badge, Text, Button } from "rizzui";
-import { useMedia } from "@/hooks/use-media";
+import { Badge, Text } from "rizzui";
 
 const statusOptions = [
   {
-    value: 'completed',
-    label: 'Completed',
+    value: "completed",
+    label: "Completed",
   },
   {
-    value: 'pending',
-    label: 'Pending',
+    value: "pending",
+    label: "Pending",
   },
   {
-    value: 'cancelled',
-    label: 'Cancelled',
+    value: "cancelled",
+    label: "Cancelled",
   },
   {
-    value: 'refunded',
-    label: 'Refunded',
+    value: "refunded",
+    label: "Refunded",
   },
 ];
 
@@ -33,12 +31,9 @@ type FilterElementProps = {
 };
 
 export default function FilterElement({
-  isFiltered,
   filters,
   updateFilter,
-  handleReset,
 }: FilterElementProps) {
-  const isMediumScreen = useMedia('(max-width: 1860px)', false);
   return (
     <>
       <StatusField
@@ -52,23 +47,7 @@ export default function FilterElement({
           renderOptionDisplayValue(option.value)
         }
         displayValue={(selected: string) => renderOptionDisplayValue(selected)}
-        {...(isMediumScreen && {
-          label: "Status",
-          labelClassName: "font-medium text-gray-700",
-        })}
       />
-      {isFiltered ? (
-        <Button
-          size="sm"
-          onClick={() => {
-            handleReset();
-          }}
-          className="h-8 bg-gray-200/70"
-          variant="flat"
-        >
-          <PiTrashDuotone className="me-1.5 h-[17px] w-[17px]" /> Clear
-        </Button>
-      ) : null}
     </>
   );
 }

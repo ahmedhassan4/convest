@@ -7,7 +7,7 @@ import { useColumn } from "@/hooks/use-column";
 import { PiCaretDownBold, PiCaretUpBold } from "react-icons/pi";
 import ControlledTable from "@/shared/controlled-table/index";
 import { getColumns } from "@/app/dashboard/order/order-list/columns";
-import { ActionIcon, Title } from "rizzui";
+import { ActionIcon } from "rizzui";
 import cn from "@/utils/class-names";
 import ExpandedOrderRow from "@/app/dashboard/order/order-list/expanded-row";
 // dynamic import

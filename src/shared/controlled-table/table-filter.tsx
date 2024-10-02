@@ -1,10 +1,13 @@
 'use client';
 
 import React, { useState } from 'react';
-import { PiMagnifyingGlassBold, PiFunnel } from "react-icons/pi";
-import { Button, Input } from "rizzui";
-import cn from "@/utils/class-names";
+import dynamic from "next/dynamic";
+import { PiMagnifyingGlassBold, PiFunnel, PiXBold } from "react-icons/pi";
+import { Button, ActionIcon, Input, Title } from "rizzui";
 import { useMedia } from "@/hooks/use-media";
+const Drawer = dynamic(() => import("rizzui").then((module) => module.Drawer), {
+  ssr: false,
+});
 
 export function FilterDrawerView({
   children,
@@ -15,7 +18,7 @@ export function FilterDrawerView({
   isOpen?: boolean;
 }>) {
   return (
-    <div className="flex h-full flex-col p-5">
+    <div className="flex h-full flex-col p-0">
       <div className="flex-grow">
         <div className="grid grid-cols-1 gap-6 [&_.price-field>span.mr-2]:mb-1.5 [&_.price-field]:flex-col [&_.price-field]:items-start [&_.react-datepicker-wrapper]:w-full [&_.react-datepicker-wrapper_.w-72]:w-full [&_.text-gray-500]:text-gray-700 [&_button.h-9]:h-10 sm:[&_button.h-9]:h-11 [&_label>.h-9]:h-10 sm:[&_label>.h-9]:h-11 [&_label>.w-24.h-9]:w-full">
           {children}
@@ -48,7 +51,7 @@ export default function TableFilter({
   drawerTitle = "Table Filters",
   hasSearched,
   enableDrawerFilter = false,
-  showSearchOnTheRight = false,
+  showSearchOnTheRight = true,
   menu,
   children,
 }: TableFilterProps) {
@@ -58,7 +61,7 @@ export default function TableFilter({
 
   return (
     <div className="table-filter mb-4 flex items-center justify-between">
-      <div className="flex flex-wrap items-center gap-4">
+      <div className="flex flex-wrap items-center gap-4 relative z-50">
         {!showSearchOnTheRight ? (
           <Input
             type="search"
@@ -69,6 +72,7 @@ export default function TableFilter({
             inputClassName="h-9"
             clearable={true}
             prefix={<PiMagnifyingGlassBold className="h-4 w-4" />}
+            className="p-5"
           />
         ) : null}
 
@@ -105,32 +109,7 @@ export default function TableFilter({
             inputClassName="h-9"
             clearable={true}
             prefix={<PiMagnifyingGlassBold className="h-4 w-4" />}
-            className="me-2.5"
           />
-        ) : null}
-
-        {children ? (
-          <Button
-            {...(isMediumScreen || enableDrawerFilter
-              ? {
-                  onClick: () => {
-                    setOpenDrawer(() => !openDrawer);
-                  },
-                }
-              : { onClick: () => setShowFilters(() => !showFilters) })}
-            variant={"outline"}
-            className={cn(
-              "me-2.5 h-9 pe-3 ps-2.5",
-              !(isMediumScreen || enableDrawerFilter) &&
-                showFilters &&
-                "border-dashed border-gray-700"
-            )}
-          >
-            <PiFunnel className="me-1.5 h-[18px] w-[18px]" strokeWidth={1.7} />
-            {!(isMediumScreen || enableDrawerFilter) && showFilters
-              ? "Hide Filters"
-              : "Filters"}
-          </Button>
         ) : null}
       </div>
     </div>
