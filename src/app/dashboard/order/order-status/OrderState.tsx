@@ -2,7 +2,6 @@
 
 import { Title, Button, Text } from "rizzui";
 import React from "react";
-
 import cn from "@/utils/class-names";
 import { useScrollableSlider } from "@/hooks/use-scrollable-slider";
 import { PiCaretLeftBold, PiCaretRightBold } from "react-icons/pi";
@@ -10,6 +9,7 @@ import { AdvancedCheckbox } from "rizzui";
 import { PiCalendarBlank, PiCheckBold } from "react-icons/pi";
 import DateCell from "@/ui/date-cell-installment-cards";
 import Link from "next/link";
+import { routes } from "@/config/routes";
 
 type FileStatsType = {
   className?: string;
@@ -26,7 +26,7 @@ const data = [
   {
     id: 2,
     orderName: "Order# 11247",
-    OrderStatus: " Out For Delivery",
+    OrderStatus: "Out For Delivery",
     price: "150 EGP",
     date: "2022-11-10T06:22:01.621Z",
   },
@@ -89,44 +89,46 @@ export default function OrderState({ className }: FileStatsType) {
             className="custom-scrollbar-x grid grid-flow-col gap-5 overflow-x-auto scroll-smooth"
           >
             {data.map((item) => (
-              <AdvancedCheckbox
-                name="currency"
-                value="pound"
+              <Link
                 key={item.id}
-                className="relative z-5 mt-0.5 px-3 py-1.5 min-w-[400px]"
-                // inputClassName="[&:checked~.rizzui-advanced-checkbox]:ring-muted [&:checked~.rizzui-advanced-checkbox>span>svg]:opacity-100 [&:checked~.rizzui-advanced-checkbox>span]:border-[#2B7F75] [&:checked~.rizzui-advanced-checkbox>div>div>strong]:line-through [&:checked~.rizzui-advanced-checkbox>div>div>strong]:text-gray-500 [&:checked~.rizzui-advanced-checkbox>div>div>strong+span]:line-through"
-                contentClassName="flex w-full bg-gray-0 dark:bg-gray-50 items-center @md:px-5 px-4 py-4 rounded-lg shadow hover:shadow-md transition-shadow border-0 @md:gap-5 gap-4"
+                href={routes.dashboard.orderDetails(String(item.id))}
+                passHref
               >
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-[#D9B34E]">
-                  <PiCheckBold className="fill-[#2B7F75] opacity-0" />
-                </span>
-                <div className="block">
-                  <div className="text-gray-600">
-                    <strong className="font-semibold text-gray-900">
-                      {item.orderName}
-                    </strong>{" "}
-                    <span>{item.OrderStatus}</span>{" "}
-                    <span className="inline-block rounded-2xl bg-[#666666] px-2.5 font-medium text-white">
-                      {item.price}
-                    </span>
-                  </div>
-                  <div className="flex flex-wrap items-center gap-1.5 pt-1.5">
-                    <PiCalendarBlank className="shrink-0 text-base text-gray-400" />
-                    <DateCell
-                      //@ts-ignore
-                      date={item.date}
-                      dateClassName="font-normal text-gray-500"
-                      className="flex gap-2"
-                      dateFormat="M/D/YYYY"
-                    />
-                    <Link href={"#"}>
+                <AdvancedCheckbox
+                  name="currency"
+                  value="pound"
+                  className="relative z-5 mt-0.5 px-[2px] py-1.5 min-w-[370px]"
+                  contentClassName="flex w-full bg-gray-0 dark:bg-gray-50 items-center @md:px-5 px-4 py-4 rounded-lg shadow hover:shadow-md transition-shadow border-0 @md:gap-5 gap-4"
+                >
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-[#D9B34E]">
+                    <PiCheckBold className="fill-[#2B7F75] opacity-0" />
+                  </span>
+                  <div className="block">
+                    <div className="text-gray-600">
+                      <strong className="font-semibold text-gray-900">
+                        {item.orderName}
+                      </strong>{" "}
+                      <span>{item.OrderStatus}</span>{" "}
+                      <span className="inline-block rounded-2xl bg-[#666666] px-2.5 font-medium text-white">
+                        {item.price}
+                      </span>
+                    </div>
+                    <div className="flex flex-wrap items-center gap-1.5 pt-1.5">
+                      <PiCalendarBlank className="shrink-0 text-base text-gray-400" />
+                      <DateCell
+                        //@ts-ignore
+                        date={item.date}
+                        dateClassName="font-normal text-gray-500"
+                        className="flex gap-2"
+                        dateFormat="M/D/YYYY"
+                      />
                       <Text className="text-xs font-bold text-[#2B90EC] ml-1 hover:underline">
                         View Details
                       </Text>
-                    </Link>
+                    </div>
                   </div>
-                </div>
-              </AdvancedCheckbox>
+                </AdvancedCheckbox>
+              </Link>
             ))}
           </div>
         </div>

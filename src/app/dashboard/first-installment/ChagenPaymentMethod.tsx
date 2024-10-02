@@ -5,7 +5,7 @@ import { ActionIcon, Avatar, Badge, Button, Text, Title } from "rizzui";
 import { useModal } from "@/shared/modal-views/use-modal";
 import Breadcrumb from "@/ui/breadcrumb";
 import SimpleBar from "@/ui/simplebar";
-import { GiHandTruck, GiMoneyStack } from "react-icons/gi";
+import { GiHandTruck, GiMoneyStack, GiSwipeCard } from "react-icons/gi";
 import Link from "next/link";
 import { routes } from "@/config/routes";
 
@@ -20,7 +20,7 @@ const rows = [
   },
   {
     id: 2,
-    avatar: <GiMoneyStack size={24} />,
+    avatar: <GiSwipeCard size={24} />,
     name: "Pay with Card",
     description:
       "We will charge your card each month until your instalments have been completed.",
