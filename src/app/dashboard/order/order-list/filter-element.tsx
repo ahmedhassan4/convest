@@ -2,7 +2,7 @@
 
 import React from "react";
 import StatusField from "@/shared/controlled-table/status-field";
-import { Badge, Text } from "rizzui";
+import { Badge, Text, Title } from "rizzui";
 
 const statusOptions = [
   {
@@ -35,7 +35,10 @@ export default function FilterElement({
   updateFilter,
 }: FilterElementProps) {
   return (
-    <>
+    <div className="flex items-center gap-3">
+      <Text className="font-semibold text-lg capitalize text-gray-700 flex-shrink-0">
+        Sort By
+      </Text>
       <StatusField
         options={statusOptions}
         value={filters["status"]}
@@ -48,7 +51,7 @@ export default function FilterElement({
         }
         displayValue={(selected: string) => renderOptionDisplayValue(selected)}
       />
-    </>
+    </div>
   );
 }
 
