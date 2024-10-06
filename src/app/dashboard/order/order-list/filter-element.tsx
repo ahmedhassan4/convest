@@ -2,7 +2,8 @@
 
 import React from "react";
 import StatusField from "@/shared/controlled-table/status-field";
-import { Badge, Text, Title } from "rizzui";
+import { Badge, Button, Text } from "rizzui";
+import { PiTrashDuotone } from "react-icons/pi";
 
 const statusOptions = [
   {
@@ -31,26 +32,44 @@ type FilterElementProps = {
 };
 
 export default function FilterElement({
+  isFiltered,
   filters,
   updateFilter,
+  handleReset,
 }: FilterElementProps) {
   return (
-    <div className="flex items-center gap-3">
-      <Text className="font-semibold text-lg capitalize text-gray-700 flex-shrink-0">
-        Sort By
-      </Text>
-      <StatusField
-        options={statusOptions}
-        value={filters["status"]}
-        onChange={(value: string) => {
-          updateFilter("status", value);
-        }}
-        getOptionValue={(option: { value: any }) => option.value}
-        getOptionDisplayValue={(option: { value: any }) =>
-          renderOptionDisplayValue(option.value)
-        }
-        displayValue={(selected: string) => renderOptionDisplayValue(selected)}
-      />
+    <div className="flex w-full flex-col gap-3 @[29rem]:flex-row items-center @[42rem]:w-auto">
+      <div className="flex items-center gap-3 w-full @[29rem]:w-auto">
+        <Text className="font-semibold text-lg capitalize text-gray-700 flex-shrink-0">
+          Sort By
+        </Text>
+        <StatusField
+          options={statusOptions}
+          value={filters["status"]}
+          onChange={(value: string) => {
+            updateFilter("status", value);
+          }}
+          getOptionValue={(option: { value: any }) => option.value}
+          getOptionDisplayValue={(option: { value: any }) =>
+            renderOptionDisplayValue(option.value)
+          }
+          displayValue={(selected: string) =>
+            renderOptionDisplayValue(selected)
+          }
+        />
+        {isFiltered ? (
+          <Button
+            size="sm"
+            onClick={() => {
+              handleReset();
+            }}
+            className="h-8 bg-gray-200/70 "
+            variant="flat"
+          >
+            <PiTrashDuotone className="me-1.5 h-[17px] w-[17px]" /> Clear
+          </Button>
+        ) : null}
+      </div>
     </div>
   );
 }

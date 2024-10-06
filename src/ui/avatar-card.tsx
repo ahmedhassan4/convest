@@ -2,7 +2,6 @@ import { Text, Avatar, AvatarProps } from 'rizzui';
 import cn from '../utils/class-names';
 
 interface AvatarCardProps {
-  src: string;
   name: string;
   className?: string;
   description?: string;
@@ -10,15 +9,14 @@ interface AvatarCardProps {
 }
 
 export default function AvatarCard({
-  src,
   name,
   className,
   description,
   avatarProps,
 }: AvatarCardProps) {
   return (
-    <figure className={cn('flex items-center gap-3', className)}>
-      <Avatar name={name} src={src} {...avatarProps} />
+    <figure className={cn("flex items-center gap-3", className)}>
+      <Avatar name={name} {...avatarProps} />
       <figcaption className="grid gap-0.5">
         <Text className="font-lexend text-sm font-medium text-gray-900 dark:text-gray-700">
           {name}

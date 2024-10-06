@@ -11,8 +11,11 @@ export default function StatusField({
       inPortal={false}
       placeholder={placeholder}
       selectClassName="h-9 min-w-[150px]"
-      dropdownClassName={cn("p-1.5 !z-0", dropdownClassName)}
-      optionClassName="h-9"
+      dropdownClassName={cn(
+        "p-1 !z-0 max-h-[150px] overflow-y-auto",
+        dropdownClassName
+      )}
+      optionClassName="h-8"
       {...props}
     />
   );

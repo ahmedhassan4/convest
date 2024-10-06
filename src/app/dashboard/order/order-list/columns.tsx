@@ -5,28 +5,26 @@ import { HeaderCell } from "@/shared/table";
 import { Badge, Text, Tooltip, ActionIcon } from 'rizzui';
 import { routes } from '@/config/routes';
 import EyeIcon from "@/componnets/icons/eye";
-import PencilIcon from "@/componnets/icons/pencil";
 import TableAvatar from "@/ui/avatar-card";
 import DateCell from "@/ui/date-cell";
-import DeletePopover from "@/shared/delete-popover";
 
 function getStatusBadge(status: string) {
   switch (status.toLowerCase()) {
-    case 'pending':
+    case "pending":
       return (
         <div className="flex items-center">
           <Badge color="warning" renderAsDot />
           <Text className="ms-2 font-medium text-orange-dark">{status}</Text>
         </div>
       );
-    case 'completed':
+    case "completed":
       return (
         <div className="flex items-center">
           <Badge color="success" renderAsDot />
           <Text className="ms-2 font-medium text-green-dark">{status}</Text>
         </div>
       );
-    case 'cancelled':
+    case "cancelled":
       return (
         <div className="flex items-center">
           <Badge color="danger" renderAsDot />
@@ -56,7 +54,7 @@ export const getColumns = ({
   onHeaderCellClick,
 }: Columns) => [
   {
-    title: <HeaderCell title="Order ID" />,
+    title: <HeaderCell title="Order No." />,
     dataIndex: "id",
     key: "id",
     width: 120,
@@ -66,13 +64,16 @@ export const getColumns = ({
     title: <HeaderCell title="Customer" />,
     dataIndex: "customer",
     key: "customer",
-    width: 300,
+    width: 220,
     render: (_: any, row: any) => (
-      <TableAvatar
-        src={row.avatar}
-        name={row.name}
-        description={row.email.toLowerCase()}
-      />
+      <div>
+        <Text className="text-sm font-medium text-gray-900 dark:text-gray-700">
+          {row.name}
+        </Text>
+        {row.phone && (
+          <Text className="text-[13px] text-gray-500">{row.phone}</Text>
+        )}
+      </div>
     ),
   },
   {
@@ -98,14 +99,23 @@ export const getColumns = ({
     dataIndex: "price",
     key: "price",
     width: 150,
-    render: (value: string) => (
-      <Text className="font-medium text-gray-700">${value}</Text>
+    render: (value: string, row: any) => (
+      <div>
+        <Text className="text-sm font-medium text-gray-900 dark:text-gray-700">
+          {value} EGP
+        </Text>
+        {row.fullPrice && (
+          <Text className="text-[13px] text-gray-500">
+            out of {row.fullPrice}
+          </Text>
+        )}
+      </div>
     ),
   },
   {
     title: (
       <HeaderCell
-        title="Created"
+        title="Order Date"
         sortable
         ascending={
           sortConfig?.direction === "asc" && sortConfig?.key === "createdAt"
@@ -115,22 +125,6 @@ export const getColumns = ({
     onHeaderCell: () => onHeaderCellClick("createdAt"),
     dataIndex: "createdAt",
     key: "createdAt",
-    width: 200,
-    render: (value: Date) => <DateCell date={value} />,
-  },
-  {
-    title: (
-      <HeaderCell
-        title="Modified"
-        sortable
-        ascending={
-          sortConfig?.direction === "asc" && sortConfig?.key === "updatedAt"
-        }
-      />
-    ),
-    onHeaderCell: () => onHeaderCellClick("updatedAt"),
-    dataIndex: "updatedAt",
-    key: "updatedAt",
     width: 200,
     render: (value: Date) => <DateCell date={value} />,
   },
@@ -220,11 +214,14 @@ export const getWidgetColumns = ({
     key: "customer",
     width: 300,
     render: (_: any, row: any) => (
-      <TableAvatar
-        src={row.avatar}
-        name={row.name}
-        description={row.email.toLowerCase()}
-      />
+      <div>
+        <Text className="text-sm font-medium text-gray-900 dark:text-gray-700">
+          {row.name}
+        </Text>
+        {row.email && (
+          <Text className="text-[13px] text-gray-500">{row.email}</Text>
+        )}
+      </div>
     ),
   },
   {
@@ -250,8 +247,15 @@ export const getWidgetColumns = ({
     dataIndex: "price",
     key: "price",
     width: 150,
-    render: (value: string) => (
-      <Text className="font-medium text-gray-700">${value}</Text>
+    render: (value: string, row: any) => (
+      <div>
+        <Text className="text-sm font-medium text-gray-900 dark:text-gray-700">
+          {value} EGP
+        </Text>
+        {row.fullPrice && (
+          <Text className="text-[13px] text-gray-500">{row.fullPrice}</Text>
+        )}
+      </div>
     ),
   },
   {
@@ -269,22 +273,6 @@ export const getWidgetColumns = ({
     key: "createdAt",
     width: 200,
     render: (createdAt: Date) => <DateCell date={createdAt} />,
-  },
-  {
-    title: (
-      <HeaderCell
-        title="Modified"
-        sortable
-        ascending={
-          sortConfig?.direction === "asc" && sortConfig?.key === "updatedAt"
-        }
-      />
-    ),
-    onHeaderCell: () => onHeaderCellClick("updatedAt"),
-    dataIndex: "updatedAt",
-    key: "updatedAt",
-    width: 200,
-    render: (value: Date) => <DateCell date={value} />,
   },
   {
     title: <HeaderCell title="Status" />,
