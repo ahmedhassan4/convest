@@ -9,6 +9,8 @@ import ControlledTable from "@/shared/controlled-table-not-modified/index";
 import { PiMagnifyingGlassBold, PiPlusBold } from "react-icons/pi";
 import { Button, Input } from "rizzui";
 import cn from "@/utils/class-names";
+import { useModal } from "@/shared/modal-views/use-modal";
+import AddSupplierForm from "../AddSupplierForm";
 
 const filterState = {
   date: [null, null],
@@ -20,6 +22,15 @@ export default function SuppliersHistoryTable({
   className?: string;
 }) {
   const [pageSize, setPageSize] = useState(7);
+  const { openModal } = useModal();
+
+  const handleInfoClick = () => {
+    openModal({
+      view: <AddSupplierForm />,
+      customSize: "550px",
+      size: "sm",
+    });
+  };
 
   const onHeaderCellClick = (value: string) => ({
     onClick: () => {
@@ -92,7 +103,8 @@ export default function SuppliersHistoryTable({
         />
         <Button
           as="span"
-          className="w-[13%] @lg:w-auto  hover:bg-blue-500 cursor-pointer"
+          className="min-w-[13%] @lg:w-auto  hover:bg-blue-500 cursor-pointer"
+          onClick={handleInfoClick}
         >
           <PiPlusBold className="me-1.5 h-[17px] w-[17px]" />
           New Supplier
