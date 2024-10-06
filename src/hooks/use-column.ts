@@ -1,7 +1,7 @@
 'use client';
 
-import { filterData } from '@/utils/filter-data';
-import { useState, useMemo } from 'react';
+import { useState, useMemo } from "react";
+import { filterData } from "@/utils/filter-data";
 
 export function useColumn<T extends Record<string, any>>(columnsData: T[]) {
   const [checkedColumns, setCheckedColumns] = useState(

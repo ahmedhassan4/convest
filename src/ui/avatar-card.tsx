@@ -3,6 +3,7 @@ import cn from '../utils/class-names';
 
 interface AvatarCardProps {
   name: string;
+  src?: string;
   className?: string;
   description?: string;
   avatarProps?: AvatarProps;
@@ -13,10 +14,11 @@ export default function AvatarCard({
   className,
   description,
   avatarProps,
+  src,
 }: AvatarCardProps) {
   return (
     <figure className={cn("flex items-center gap-3", className)}>
-      <Avatar name={name} {...avatarProps} />
+      <Avatar name={name} src={src} {...avatarProps} />
       <figcaption className="grid gap-0.5">
         <Text className="font-lexend text-sm font-medium text-gray-900 dark:text-gray-700">
           {name}
