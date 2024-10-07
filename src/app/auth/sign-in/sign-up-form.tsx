@@ -1,10 +1,9 @@
 "use client";
-
 import Link from "next/link";
-import React from "react";
 import { useState } from "react";
 import { SubmitHandler } from "react-hook-form";
 import { Password, Checkbox, Button, Input, Text } from "rizzui";
+import React from "react";
 import { routes } from "@/config/routes";
 import { useMedia } from "react-use";
 import { Form } from "@/ui/Form";
@@ -14,6 +13,7 @@ import { endPoitsUrl } from "@/config/endPointsUrl";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useRouter } from "next-nprogress-bar";
+import OrSeparation from "../or-separation";
 
 export default function SignUpForm() {
   const isMedium = useMedia("(max-width: 1200px)", false);
@@ -42,10 +42,13 @@ export default function SignUpForm() {
 
   return (
     <>
-      <div className="mb-[28px]">
-        <Text className="text-sm font-medium text-[#666666] text-center lg:text-start">
-          Sign up using your login code to gain access to your Payment Portal.
-        </Text>
+      <div className="">
+        <OrSeparation
+          title="LET'S GET STARTED!"
+          className="my-7 "
+          isCenter={false}
+        />
+        {/* Other components */}
       </div>
 
       <Form<SignUpSchema>
@@ -55,58 +58,43 @@ export default function SignUpForm() {
       >
         {({ register, formState: { errors } }) => (
           <div className="space-y-5">
-            <Password
-              label="Create Password"
-              placeholder="Enter your password"
+            <Input
+              type="number"
               size={isMedium ? "lg" : "xl"}
-              rounded="pill"
+              label="Phone Number"
+              prefix={
+                <span className="text-[#2B90EC] text-[16px] font-medium mr-2">
+                  +20
+                </span>
+              }
+              placeholder="Enter your number"
               className="[&>label>span]:font-medium"
-              {...register("password")}
-              error={errors.password?.message}
-            />
-            <Password
-              label="Confirm Password"
-              placeholder="Confirm Password"
-              size={isMedium ? "lg" : "xl"}
               rounded="pill"
-              className="[&>label>span]:font-medium"
-              {...register("confirmPassword")}
-              error={errors.confirmPassword?.message}
+              {...register("code")}
+              error={errors.code?.message}
             />
-            {/* pb-4 will be removed in future  */}
-            <Text className="mt-5 pb-4 text-center text-sm font-normal leading-loose text-[#333333] lg:text-start xl:mt-7">
-              By signing up you have agreed to our{" "}
-              <Link
-                href={routes.auth.login}
-                className="font-semibold text-[#2B90EC] transition-colors hover:text-blue"
-              >
-                Terms <span className="text-gray-500"> &amp; </span> Privacy
-                Policy
-              </Link>
-            </Text>
-
-            {/* Link will be romoved in future */}
-            <Link href={routes.dashboard.orderDetails("0012549")}>
+            {/* Link & mt-5  will be removed in future */}
+            <Link href={routes.auth.authLogin}>
               <Button
-                className="border-primary-light w-full border-2 text-base font-medium text-white"
+                className="border-primary-light w-full border-2 text-base font-medium text-white mt-5"
                 type="submit"
                 size={isMedium ? "lg" : "xl"}
                 isLoading={isPending}
                 rounded="pill"
               >
-                Create Account
+                Continue
               </Button>
             </Link>
           </div>
         )}
       </Form>
-      <Text className="mt-5 text-center text-[16px] font-normal leading-loose text-gray-500 lg:text-start xl:mt-7 xl:text-base">
-        Already have an account?{" "}
+      <Text className="mt-5 text-center text-[15px] leading-loose text-gray-500 lg:text-start xl:mt-7 xl:text-base">
+        Don&apos;t have an account?{" "}
         <Link
           href={routes.auth.login}
           className="font-semibold text-[#2B90EC] transition-colors hover:text-blue"
         >
-          Log In
+          Sign Up
         </Link>
       </Text>
     </>

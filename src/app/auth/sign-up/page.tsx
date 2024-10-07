@@ -4,7 +4,7 @@ import SignUpForm from './sign-up-form';
 
 export default function SignIn() {
   return (
-    <AuthWrapperTwo title="Sign up">
+    <AuthWrapperTwo title="Complete Sign Up">
       <SignUpForm />
     </AuthWrapperTwo>
   );

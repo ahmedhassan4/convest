@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import React from "react";
 import { SubmitHandler } from "react-hook-form";
 import { Input, Button, Password, Checkbox, Text, Title } from "rizzui";
 import { routes } from "@/config/routes";
@@ -97,6 +98,7 @@ export default function SignInForm() {
               type="number"
               size={isMedium ? "lg" : "xl"}
               label="Phone Number"
+              disabled={true}
               prefix={
                 <span className="text-[#2B90EC] text-[16px] font-medium mr-2">
                   +20
@@ -123,15 +125,19 @@ export default function SignInForm() {
                 Forget Password?
               </Link>
             </div>
-            <Button
-              className="border-primary-light w-full border-2 text-base font-bold text-primary-foreground"
-              type="submit"
-              size={isMedium ? "lg" : "xl"}
-              rounded="pill"
-              isLoading={isPending || isSuccess}
-            >
-              Continue
-            </Button>
+
+            {/* Link will be removed in the future */}
+            <Link href={routes.dashboard.orderDetails("00236987")}>
+              <Button
+                className="border-primary-light w-full border-2 text-base font-bold text-primary-foreground"
+                type="submit"
+                size={isMedium ? "lg" : "xl"}
+                rounded="pill"
+                isLoading={isPending || isSuccess}
+              >
+                Continue
+              </Button>
+            </Link>
           </div>
         )}
       </Form>
