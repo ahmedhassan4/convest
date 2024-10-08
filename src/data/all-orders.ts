@@ -1,5 +1,6 @@
 export const allOrders = [
   {
+    id: "023653413",
     createdAt: "2023-08-07T12:30:00.000Z",
     orders: 2,
     totalItems: 4,
@@ -15,8 +16,10 @@ export const allOrders = [
             category: "Jacket",
             image:
               "https://isomorphic-furyroad.s3.amazonaws.com/public/products/modern/8.webp",
-            price: "850.00",
-            quantity: 1,
+            color: "Blue",
+            size: "md", // updated size format
+            status: "Paid",
+            quantity: 1, // added quantity
           },
           {
             id: "0o22222222",
@@ -24,8 +27,10 @@ export const allOrders = [
             category: "Scarf",
             image:
               "https://isomorphic-furyroad.s3.amazonaws.com/public/products/modern/9.webp",
-            price: "220.00",
-            quantity: 3,
+            color: "Red",
+            size: "One Size", // no size change needed for this item
+            status: "Paid",
+            quantity: 2, // added quantity
           },
         ],
       },
@@ -40,8 +45,10 @@ export const allOrders = [
             category: "Footwear",
             image:
               "https://isomorphic-furyroad.s3.amazonaws.com/public/products/modern/10.webp",
-            price: "500.00",
-            quantity: 1,
+            color: "White",
+            size: "lg", // updated size format
+            status: "Paid",
+            quantity: 1, // added quantity
           },
           {
             id: "0o44444444",
@@ -49,14 +56,17 @@ export const allOrders = [
             category: "Accessory",
             image:
               "https://isomorphic-furyroad.s3.amazonaws.com/public/products/modern/11.webp",
-            price: "300.00",
-            quantity: 1,
+            color: "Brown",
+            size: "L", // no change for this item
+            status: "Paid",
+            quantity: 1, // added quantity
           },
         ],
       },
     ],
   },
   {
+    id: "023655413",
     createdAt: "2023-08-08T14:45:30.000Z",
     orders: 2,
     totalItems: 6,
@@ -72,8 +82,10 @@ export const allOrders = [
             category: "Bag",
             image:
               "https://isomorphic-furyroad.s3.amazonaws.com/public/products/modern/12.webp",
-            price: "750.00",
-            quantity: 2,
+            color: "Black",
+            size: "Large",
+            status: "Paid",
+            quantity: 1, // added quantity
           },
           {
             id: "0o66666666",
@@ -81,8 +93,10 @@ export const allOrders = [
             category: "Hat",
             image:
               "https://isomorphic-furyroad.s3.amazonaws.com/public/products/modern/13.webp",
-            price: "150.00",
-            quantity: 2,
+            color: "Gray",
+            size: "One Size", // no change for this item
+            status: "Paid",
+            quantity: 3, // added quantity
           },
         ],
       },
@@ -97,8 +111,10 @@ export const allOrders = [
             category: "Accessory",
             image:
               "https://isomorphic-furyroad.s3.amazonaws.com/public/products/modern/14.webp",
-            price: "600.00",
-            quantity: 1,
+            color: "Black",
+            size: "Medium",
+            status: "Paid",
+            quantity: 2, // added quantity
           },
           {
             id: "0o88888888",
@@ -106,14 +122,17 @@ export const allOrders = [
             category: "T-Shirt",
             image:
               "https://isomorphic-furyroad.s3.amazonaws.com/public/products/modern/15.webp",
-            price: "200.00",
-            quantity: 1,
+            color: "White",
+            size: "lg", // updated size format
+            status: "Paid",
+            quantity: 1, // added quantity
           },
         ],
       },
     ],
   },
   {
+    id: "033653413",
     createdAt: "2023-08-09T09:15:45.000Z",
     orders: 2,
     totalItems: 5,
@@ -129,8 +148,10 @@ export const allOrders = [
             category: "Watch",
             image:
               "https://isomorphic-furyroad.s3.amazonaws.com/public/products/modern/16.webp",
-            price: "1200.00",
-            quantity: 1,
+            color: "Silver",
+            size: "One Size", // no change for this item
+            status: "Paid",
+            quantity: 1, // added quantity
           },
           {
             id: "0o10101010",
@@ -138,8 +159,10 @@ export const allOrders = [
             category: "Shirt",
             image:
               "https://isomorphic-furyroad.s3.amazonaws.com/public/products/modern/17.webp",
-            price: "400.00",
-            quantity: 2,
+            color: "Blue",
+            size: "lg", // updated size format
+            status: "Paid",
+            quantity: 2, // added quantity
           },
         ],
       },
@@ -154,8 +177,10 @@ export const allOrders = [
             category: "Accessory",
             image:
               "https://isomorphic-furyroad.s3.amazonaws.com/public/products/modern/18.webp",
-            price: "500.00",
-            quantity: 1,
+            color: "Dark Brown",
+            size: "One Size", // no change for this item
+            status: "Paid",
+            quantity: 1, // added quantity
           },
           {
             id: "0o30303030",
@@ -163,14 +188,17 @@ export const allOrders = [
             category: "Socks",
             image:
               "https://isomorphic-furyroad.s3.amazonaws.com/public/products/modern/19.webp",
-            price: "50.00",
-            quantity: 1,
+            color: "White",
+            size: "One Size", // no change for this item
+            status: "Paid",
+            quantity: 4, // added quantity
           },
         ],
       },
     ],
   },
   {
+    id: "045653413",
     createdAt: "2023-08-10T16:25:10.000Z",
     orders: 2,
     totalItems: 4,
@@ -186,8 +214,10 @@ export const allOrders = [
             category: "Bag",
             image:
               "https://isomorphic-furyroad.s3.amazonaws.com/public/products/modern/20.webp",
-            price: "900.00",
-            quantity: 1,
+            color: "Beige",
+            size: "Medium",
+            status: "Paid",
+            quantity: 1, // added quantity
           },
           {
             id: "0o50505050",
@@ -195,8 +225,10 @@ export const allOrders = [
             category: "Dress",
             image:
               "https://isomorphic-furyroad.s3.amazonaws.com/public/products/modern/21.webp",
-            price: "1200.00",
-            quantity: 1,
+            color: "Pink",
+            size: "md", // updated size format
+            status: "Paid",
+            quantity: 1, // added quantity
           },
         ],
       },
@@ -211,8 +243,10 @@ export const allOrders = [
             category: "Footwear",
             image:
               "https://isomorphic-furyroad.s3.amazonaws.com/public/products/modern/22.webp",
-            price: "650.00",
-            quantity: 2,
+            color: "Red",
+            size: "2xl", // updated size format
+            status: "Paid",
+            quantity: 1, // added quantity
           },
           {
             id: "0o70707070",
@@ -220,14 +254,17 @@ export const allOrders = [
             category: "Shorts",
             image:
               "https://isomorphic-furyroad.s3.amazonaws.com/public/products/modern/23.webp",
-            price: "300.00",
-            quantity: 1,
+            color: "Blue",
+            size: "md", // updated size format
+            status: "Paid",
+            quantity: 2, // added quantity
           },
         ],
       },
     ],
   },
   {
+    id: "056653413",
     createdAt: "2023-08-11T11:40:55.000Z",
     orders: 2,
     totalItems: 3,
@@ -243,33 +280,39 @@ export const allOrders = [
             category: "Bag",
             image:
               "https://isomorphic-furyroad.s3.amazonaws.com/public/products/modern/24.webp",
-            price: "600.00",
-            quantity: 1,
+            color: "Navy Blue",
+            size: "Large",
+            status: "Paid",
+            quantity: 1, // added quantity
           },
           {
             id: "0o90909090",
-            name: "Cotton Hoodie",
-            category: "Hoodie",
+            name: "Beach Hat",
+            category: "Hat",
             image:
               "https://isomorphic-furyroad.s3.amazonaws.com/public/products/modern/25.webp",
-            price: "500.00",
-            quantity: 1,
+            color: "Yellow",
+            size: "One Size", // no change for this item
+            status: "Paid",
+            quantity: 1, // added quantity
           },
         ],
       },
       {
         id: "0o56789002",
-        lateFee: "100",
-        deliveryStatus: "Processing",
+        lateFee: "150",
+        deliveryStatus: "Delivered",
         products: [
           {
-            id: "0o11111112",
-            name: "Stylish Jeans",
-            category: "Pants",
+            id: "0o10101010",
+            name: "Summer Sandals",
+            category: "Footwear",
             image:
               "https://isomorphic-furyroad.s3.amazonaws.com/public/products/modern/26.webp",
-            price: "800.00",
-            quantity: 1,
+            color: "Beige",
+            size: "xl", // updated size format
+            status: "Paid",
+            quantity: 1, // added quantity
           },
         ],
       },

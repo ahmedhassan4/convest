@@ -3,9 +3,11 @@ export const orderData = [
     id: "3413",
     name: "Dr. Ernest Fritsch-Shanahan",
     phone: "+20 117-262-4739",
+    avatar:
+      "https://isomorphic-furyroad.s3.amazonaws.com/public/avatars/avatar-15.webp",
     items: 83,
     price: "3,168.00",
-    fullPrice: "4500.00",
+    fullPrice: "457.00",
     status: "Cancelled",
     createdAt: "2023-08-06T00:01:51.735Z",
     updatedAt: "2023-08-10T22:39:21.113Z",
