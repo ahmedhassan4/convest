@@ -5,10 +5,10 @@ import { useTable } from "@/hooks/use-table";
 import { useColumn } from "@/hooks/use-column";
 import { PiCaretDownBold, PiCaretUpBold } from "react-icons/pi";
 import ControlledTable from "@/shared/controlled-table-not-modified/index";
-import { getColumns } from "@/app/dashboard/supplier-portal/all-orders-table/columns";
+import { getColumns } from "@/app/dashboard/supplier-portal/cashflows-table/columns";
 import { ActionIcon, Text, Title } from "rizzui";
 import cn from "@/utils/class-names";
-import ExpandedOrderRow from "@/app/dashboard/supplier-portal/all-orders-table/expanded-row";
+import ExpandedOrderRow from "@/app/dashboard/supplier-portal/cashflows-table/expanded-row";
 // dynamic import
 
 function CustomExpandIcon(props: any) {
@@ -38,7 +38,7 @@ const filterState = {
   status: "",
 };
 
-export default function AllOrdersTable({
+export default function CashflowTable({
   data = [],
   variant = "modern",
   className,
@@ -88,7 +88,7 @@ export default function AllOrdersTable({
 
   return (
     <div className="mt-5">
-      <Text className="font-semibold text-xl">All Orders</Text>
+      <Text className="font-semibold text-xl">Cashflows</Text>
       <div className={cn(className)}>
         <ControlledTable
           variant={variant}

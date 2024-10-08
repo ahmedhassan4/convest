@@ -19,42 +19,70 @@ export const getColumns = ({
   {
     title: (
       <HeaderCell
-        title="Expected Pick Up"
+        title="Date"
         sortable
         ascending={
-          sortConfig?.direction === "asc" && sortConfig?.key === "createdAt"
+          sortConfig?.direction === "asc" && sortConfig?.key === "date"
         }
       />
     ),
-    onHeaderCell: () => onHeaderCellClick("createdAt"),
-    dataIndex: "createdAt",
-    key: "createdAt",
+    onHeaderCell: () => onHeaderCellClick("date"),
+    dataIndex: "date",
+    key: "date",
     width: 500,
     render: (value: Date) => <DateCell date={value} />,
   },
   {
-    title: <HeaderCell title="No. of Orders" />,
-    dataIndex: "orders",
-    key: "orders",
+    title: (
+      <HeaderCell
+        title="Total Amount"
+        sortable
+        ascending={
+          sortConfig?.direction === "asc" && sortConfig?.key === "totalAmount"
+        }
+      />
+    ),
+    onHeaderCell: () => onHeaderCellClick("totalAmount"),
+    dataIndex: "totalAmount",
+    key: "totalAmount",
+    width: 150,
+    render: (value: string, row: any) => (
+      <div>
+        <Text className="text-sm font-medium text-gray-900 dark:text-gray-700">
+          {value} EGP
+        </Text>
+
+        <Text className="text-[13px] text-gray-500">Paid {"500000"} EGP</Text>
+      </div>
+    ),
+  },
+  {
+    title: <HeaderCell title="Order size" />,
+    dataIndex: "orderSize",
+    key: "orderSize",
     width: 150,
     render: (_: any, row: any) => (
       <div>
         <Text className="text-sm font-medium text-gray-900 dark:text-gray-700">
-          {row.orders} <span className="text-gray-500 font-normal">orders</span>
+          {row.orderSize}{" "}
+          <span className="text-gray-500 font-normal">Instalments</span>
         </Text>
       </div>
     ),
   },
   {
-    title: <HeaderCell title="Total Items" />,
-    dataIndex: "totalItems",
-    key: "totalItems",
+    title: <HeaderCell title="Status" />,
+    dataIndex: "status",
+    key: "status",
     width: 150,
     render: (_: any, row: any) => (
       <div>
-        <Text className="text-sm font-medium text-gray-900 dark:text-gray-700">
-          {row.totalItems}{" "}
-          <span className="text-gray-500 font-normal">items</span>
+        <Text
+          className={`text-sm font-medium ${
+            row.status === "Paid" ? "text-[#0D9488]" : "text-yellow-600"
+          }`}
+        >
+          {row.status}
         </Text>
       </div>
     ),

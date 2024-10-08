@@ -62,10 +62,22 @@ export default function ExpandedOrderRow({ record }: any) {
                     ${order.lateFee}
                   </Text>
                 </div>
+                <div className="flex flex-col">
+                  <Text className="text-sm font-medium">Order Amount</Text>
+                  <Text className="text-xs text-gray-500">
+                    {order.orderAmount} EGP
+                  </Text>
+                </div>
                 <div className="flex flex-col mt-2 md:mt-0">
-                  <Text className="text-sm font-medium">Delivery Status:</Text>
-                  <Text className="text-xs text-[#0D9488] font-medium">
-                    {order.deliveryStatus}
+                  <Text className="text-sm font-medium">Payment Status</Text>
+                  <Text
+                    className={`text-sm font-medium ${
+                      order.paymentStatus === "Paid"
+                        ? "text-[#0D9488]"
+                        : "text-yellow-600"
+                    }`}
+                  >
+                    {order.paymentStatus}
                   </Text>
                 </div>
               </div>
@@ -121,9 +133,26 @@ export default function ExpandedOrderRow({ record }: any) {
                         </Text>
                       </div>
                     </div>
-                    <Text className="text-xs text-[#0D9488] font-medium mt-2">
-                      {product.status}
-                    </Text>
+                    <div className="flex items-center justify-between gap-6 mt-2 md:mt-0">
+                      <div>
+                        <Text className="text-sm text-[#111111] font-medium mb-1">
+                          Receive In
+                        </Text>
+                        <Text className="text-xs text-[#666666]">
+                          {product.receiveIn} Months
+                        </Text>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between gap-6 mt-2 md:mt-0">
+                      <div>
+                        <Text className="text-sm text-[#111111] font-medium mb-1">
+                          Price
+                        </Text>
+                        <Text className="text-xs text-[#666666]">
+                          {product.price} EGP
+                        </Text>
+                      </div>
+                    </div>
                   </div>
                 </article>
               ))}
