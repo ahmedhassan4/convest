@@ -89,9 +89,9 @@ export default function SuppliersHistoryTable({
   const { visibleColumns } = useColumn(columns);
   return (
     <div className={cn(className)}>
-      <div className=" mt-4 flex w-full items-center justify-between  gap-3  my-6">
+      <div className="mt-4 flex flex-col w-full items-center gap-3 my-6 sm:flex-row sm:items-center sm:justify-between">
         <Input
-          className="w-3/12 @[35rem]:w-auto @[70rem]:w-80 "
+          className="w-full sm:w-5/12 md:w-4/12 @[35rem]:w-auto @[70rem]:w-80" // Adjusted width for better appearance on md screens
           type="search"
           inputClassName="h-9"
           placeholder="Search for user details..."
@@ -103,7 +103,7 @@ export default function SuppliersHistoryTable({
         />
         <Button
           as="span"
-          className="min-w-[13%] @lg:w-auto  hover:bg-blue-500 cursor-pointer"
+          className="w-full sm:min-w-[150px] sm:w-auto hover:bg-blue-500 cursor-pointer"
           onClick={handleInfoClick}
         >
           <PiPlusBold className="me-1.5 h-[17px] w-[17px]" />
