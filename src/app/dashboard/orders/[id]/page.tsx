@@ -13,7 +13,7 @@ export default function OrderDetailsPage({ params }: any) {
         name: "Home",
       },
       {
-        href: routes.eCommerce.orders,
+        href: routes.dashboard.orders,
         name: "Orders",
       },
       {
@@ -25,19 +25,23 @@ export default function OrderDetailsPage({ params }: any) {
     <>
       <PageHeader
         title={
-          <div className="flex items-center justify-center">
-            {pageHeader.title} <Badge renderAsDot className="mx-2  bg-black" />{" "}
-            <span className="font-medium">23rd March 2024</span>
+          <div className="flex flex-col items-center justify-center xs:flex-row sm:items-center">
+            <div className="flex items-center">
+              {pageHeader.title}
+              <Badge
+                renderAsDot
+                className="mx-2 bg-black hidden xs:inline"
+              />{" "}
+            </div>
+            <span className="font-medium md:mt-0 md:ml-2">
+              {" "}
+              23rd March 2024
+            </span>
           </div>
         }
         breadcrumb={pageHeader.breadcrumb}
-      >
-        <Link
-          href={routes.eCommerce.editOrder(params.id)}
-          className="mt-4 w-full @lg:mt-0 @lg:w-auto"
-        ></Link>
-        {/* <Badge renderAsDot /> */}
-      </PageHeader>
+      ></PageHeader>
+
       <CartPageWrapper />
     </>
   );
