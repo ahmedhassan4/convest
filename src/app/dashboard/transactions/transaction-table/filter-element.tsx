@@ -32,13 +32,14 @@ export default function FilterElement({
   handleReset,
 }: FilterElementProps) {
   return (
-    <div className="flex w-1/6 items-center gap-4">
-      <Text className="font-semibold text-lg capitalize text-gray-700 flex-shrink-0">
+    <div className="flex flex-col sm:flex-row sm:items-center sm:gap-4 w-full">
+      {" "}
+      <Text className="font-semibold text-lg capitalize text-gray-700 flex-shrink-0 mb-2 md:mb-0">
         Sort By
       </Text>
       <StatusField
         dropdownClassName="!z-10"
-        className="w-full min-w-[145px] @[42rem]:w-auto"
+        className="w-full min-w-[145px] sm:w-auto"
         options={statusOptions}
         value={filters["status"]}
         onChange={(value: string) => {
@@ -54,7 +55,7 @@ export default function FilterElement({
         <Button
           size="sm"
           onClick={handleReset}
-          className="h-8 bg-gray-200/70"
+          className="h-8 bg-gray-200/70 mt-2 sm:mt-0"
           variant="flat"
         >
           <PiTrashDuotone className="me-1.5 h-[17px] w-[17px]" /> Clear

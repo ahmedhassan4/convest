@@ -80,7 +80,9 @@ export default function TransactionHistoryTable({
   const { visibleColumns } = useColumn(columns);
   return (
     <div className={cn(className)}>
-      <div className=" mt-4 flex w-full items-center justify-between  gap-3  @[35rem]:flex-row @[57rem]:mt-0 my-6">
+      <div className="mt-4 flex flex-col w-full items-center gap-3 my-6 sm:flex-row sm:items-center sm:justify-between">
+        {" "}
+        {/* Stack vertically on small screens, horizontal on larger screens */}
         <FilterElement
           isFiltered={isFiltered}
           filters={filters}
@@ -88,7 +90,7 @@ export default function TransactionHistoryTable({
           handleReset={handleReset}
         />
         <Input
-          className="w-3/12 @[35rem]:w-auto @[70rem]:w-80 "
+          className="w-full sm:w-5/12 md:w-4/12 @[70rem]:w-80"
           type="search"
           inputClassName="h-9"
           placeholder="Search for user details..."
