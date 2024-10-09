@@ -57,7 +57,7 @@ export default function OtpForm() {
         <div className="space-y-10">
           <PinCode
             variant="outline"
-            setValue={(value) => setValue('otp', String(value))}
+            setValue={(value) => setValue("otp", String(value))}
             size="lg"
             className="lg:justify-start "
           />
@@ -71,7 +71,7 @@ export default function OtpForm() {
               isLoading={isResendOtp}
               onClick={() => resendOtp({ email: email })}
             >
-              RESEND OTP
+              RESEND
             </Button>
             <Button
               className="w-full text-base font-medium"
@@ -80,7 +80,7 @@ export default function OtpForm() {
               rounded="pill"
               isLoading={isPending}
             >
-              VERIFY OTP
+              VERIFY
             </Button>
           </div>
         </div>

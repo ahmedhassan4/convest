@@ -1,10 +1,11 @@
-import { z } from 'zod';
-import { validateEmail } from '../../common-rules';
+import { z } from "zod";
 
-// form zod validation schema
+const validatePhoneNumber = z
+  .string()
+  .regex(/^(\+20)?1[0-9]{9}$/, "Invalid phone number");
+
 export const forgetPasswordSchema = z.object({
-  email: validateEmail,
+  phoneNumber: validatePhoneNumber,
 });
 
-// generate form types from zod validation schema
 export type ForgetPasswordSchema = z.infer<typeof forgetPasswordSchema>;

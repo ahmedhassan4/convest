@@ -17,7 +17,7 @@ import useSendEmail from "./useSendEmail";
 import OrSeparation from "../../or-separation";
 
 const initialValues = {
-  email: "",
+  phoneNumber: "",
 };
 
 export default function ForgetPasswordForm() {
@@ -30,32 +30,10 @@ export default function ForgetPasswordForm() {
     navigate: true,
   });
 
-  // const { mutateAsync, isPending } = useMutation({
-  //   mutationFn: (data: ForgetPasswordSchema) =>
-  //     axios.post(
-  //       `${process.env.NEXT_PUBLIC_API_ENDPOINT}${endPoitsUrl.auth.forgetPassword.email}`, data
-  //     ),
-  //   onSuccess: async (res: any) => {
-  //     console.log('res', res);
-  //     toast.success(
-  //       <Text>
-  //         Reset link sent to this email:{' '}
-  //         <Text as="b" className="font-semibold">
-  //           {res?.data?.email}
-  //         </Text>
-  //       </Text>
-  //     );
-  //     setReset(initialValues);
-
-  //     router.push(routes.auth.otp + `?email=${res?.data?.email}`);
-  //   },
-  //   onError: (err: any) => {
-  //     toast.error(err?.response?.data?.message);
-  //   },
-  // });
   const onSubmit: SubmitHandler<ForgetPasswordSchema> = (data) => {
     console.log("Forgot password form data->", data);
-    mutateAsync(data);
+    // mutateAsync(data);
+    router.push(routes.auth.otp + `?phoneNumber=${data?.phoneNumber}`);
   };
 
   return (
@@ -80,7 +58,7 @@ export default function ForgetPasswordForm() {
         {({ register, formState: { errors } }) => (
           <div className="space-y-5">
             <Input
-              type="number"
+              type="text"
               size={isMedium ? "lg" : "xl"}
               label="Phone Number"
               prefix={
@@ -91,7 +69,11 @@ export default function ForgetPasswordForm() {
               placeholder="Enter your number"
               className="[&>label>span]:font-medium"
               rounded="pill"
+              {...register("phoneNumber")}
             />
+            {errors.phoneNumber && (
+              <Text className="text-red-500">{errors.phoneNumber.message}</Text>
+            )}
             <Button
               className="border-primary-light w-full border-2 text-base font-medium text-white"
               type="submit"
