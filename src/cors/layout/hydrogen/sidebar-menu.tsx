@@ -15,24 +15,24 @@ export function SidebarMenu() {
     <div className="mt-4 pb-3 3xl:mt-6">
       {menuItems.map((item, index) => {
         const isActive = pathname === (item?.href as string);
-        const pathnameExistInDropdowns: any = item?.dropdownItems?.filter(
-          (dropdownItem) => dropdownItem.href === pathname
-        );
-        const isDropdownOpen = Boolean(pathnameExistInDropdowns?.length);
+        // const pathnameExistInDropdowns: any = item?.dropdownItems?.filter(
+        //   (dropdownItem) => dropdownItem.href === pathname
+        // );
+        // const isDropdownOpen = Boolean(pathnameExistInDropdowns?.length);
 
         return (
           <Fragment key={item.name + "-" + index}>
             {item?.href ? (
               <>
-                {item?.dropdownItems ? (
+                { false ? (
                   <Collapse
-                    defaultOpen={isDropdownOpen}
+                    // defaultOpen={isDropdownOpen}
                     header={({ open, toggle }) => (
                       <div
                         onClick={toggle}
                         className={cn(
                           "group relative mx-3 flex cursor-pointer items-center justify-between rounded-md px-3 py-2 font-medium lg:my-1 2xl:mx-5 2xl:my-2",
-                          isDropdownOpen
+                          false
                             ? "before:top-2/5 text-white before:absolute before:-start-3 before:block before:h-4/5 before:w-1 before:rounded-ee-md before:rounded-se-md before:bg-white 2xl:before:-start-5"
                             : "text-gray-700 transition-colors duration-200 hover:bg-[#2B90EC] hover:text-white dark:text-gray-700/90"
                         )}
@@ -42,7 +42,7 @@ export function SidebarMenu() {
                             <span
                               className={cn(
                                 "me-2 inline-flex h-5 w-5 items-center justify-center rounded-md [&>svg]:h-[20px] [&>svg]:w-[20px]",
-                                isDropdownOpen
+                                false
                                   ? "text-white"
                                   : "text-gray-800 group-hover:text-white dark:text-gray-500 dark:group-hover:text-white"
                               )}
@@ -63,7 +63,7 @@ export function SidebarMenu() {
                       </div>
                     )}
                   >
-                    {item?.dropdownItems?.map((dropdownItem, index) => {
+                    {/* {item?.dropdownItems?.map((dropdownItem, index) => {
                       const isChildActive =
                         pathname === (dropdownItem?.href as string);
 
@@ -96,7 +96,7 @@ export function SidebarMenu() {
                           ) : null}
                         </Link>
                       );
-                    })}
+                    })} */}
                   </Collapse>
                 ) : (
                   <Link
@@ -123,9 +123,9 @@ export function SidebarMenu() {
                       )}
                       <span className="truncate">{item.name}</span>
                     </div>
-                    {item?.badge?.length ? (
+                    {/* {item?.badge?.length ? (
                       <StatusBadge status={item?.badge} />
-                    ) : null}
+                    ) : null} */}
                   </Link>
                 )}
               </>

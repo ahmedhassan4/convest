@@ -39,7 +39,7 @@ export default function OrdersPage() {
 
       <OrderState className="mb-6 @5xl:mb-8 @7xl:mb-11" />
 
-      <OrdersTable data={orderData} />
+      {/* <OrdersTable data={orderData} /> */}
     </>
   );
 }

@@ -7,7 +7,7 @@ export default function DateFiled({
   placeholderText = 'Select date',
   inputProps,
   ...props
-}: DatePickerProps<any> & { onClear?: () => void }) {
+}: any & { onClear?: () => void }) {
   return (
     <div>
       <DatePicker

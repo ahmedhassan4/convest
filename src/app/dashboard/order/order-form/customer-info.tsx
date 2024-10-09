@@ -1,9 +1,10 @@
+import PencilIcon from "@/componnets/icons/pencil";
+import cn from "@/utils/class-names";
 import Image from "next/image";
+import DatePicker from "react-datepicker";
 import { Controller, useFormContext } from "react-hook-form";
-import { DatePicker } from "@ui/date-picker";
-import PencilIcon from "@components/icons/pencil";
+
 import { Text, Title, Select, ActionIcon } from "rizzui";
-import cn from "@utils/class-names";
 
 interface CustomerInfoProps {
   className?: string;

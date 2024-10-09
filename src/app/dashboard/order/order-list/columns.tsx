@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import Link from 'next/link';
 import { HeaderCell } from "@/shared/table";
@@ -126,7 +126,7 @@ export const getColumns = ({
     dataIndex: "createdAt",
     key: "createdAt",
     width: 200,
-    render: (value: Date) => <DateCell date={value} />,
+    // render: (value: Date) => <DateCell date={value} />,
   },
   {
     title: <HeaderCell title="Status" />,
@@ -145,17 +145,15 @@ export const getColumns = ({
       <div className="flex items-center justify-cneter gap-3 pe-4">
         {/* <Tooltip
           size="sm"
-          content={'Edit Order'}
+          content={"Edit Order"}
           placement="top"
-          color="invert"
-        >
+          color="invert">
           <Link href={routes.eCommerce.editOrder(row.id)}>
             <ActionIcon
               as="span"
               size="sm"
               variant="outline"
-              className="hover:text-gray-700"
-            >
+              className="hover:text-gray-700">
               <PencilIcon className="h-4 w-4" />
             </ActionIcon>
           </Link>
@@ -171,8 +169,7 @@ export const getColumns = ({
               as="span"
               size="sm"
               variant="outline"
-              className="hover:text-gray-700"
-            >
+              className="hover:text-gray-700">
               <EyeIcon className="h-4 w-4" />
             </ActionIcon>
           </Link>
@@ -202,8 +199,7 @@ export const getWidgetColumns = ({
     render: (value: string, row: any) => (
       <Link
         href={routes.eCommerce.editOrder(row.id)}
-        className="ps-4 hover:text-gray-900 hover:underline"
-      >
+        className="ps-4 hover:text-gray-900 hover:underline">
         #{value}
       </Link>
     ),
@@ -272,7 +268,7 @@ export const getWidgetColumns = ({
     dataIndex: "createdAt",
     key: "createdAt",
     width: 200,
-    render: (createdAt: Date) => <DateCell date={createdAt} />,
+    // render: (createdAt: Date) => <DateCell date={createdAt} />,
   },
   {
     title: <HeaderCell title="Status" />,
@@ -293,8 +289,7 @@ export const getWidgetColumns = ({
           size="sm"
           content={"View Order"}
           placement="top"
-          color="invert"
-        >
+          color="invert">
           <Link href={routes.eCommerce.orderDetails(row.id)}>
             <ActionIcon
               as="span"

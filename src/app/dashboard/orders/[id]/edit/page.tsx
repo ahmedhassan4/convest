@@ -3,9 +3,10 @@ import { Metadata } from 'next';
 import { routes } from '@/config/routes';
 import { Button } from 'rizzui';
 import { metaObject } from '@/config/site.config';
-import PageHeader from '@/app/shared/page-header';
-import CreateOrder from '@/app/shared/ecommerce/order/create-order';
-import { orderData } from '@/app/shared/ecommerce/order/order-form/form-utils';
+import PageHeader from '@/shared/page-header';
+import CreateOrder from '@/app/dashboard/order/create-order';
+import { orderData } from '@/app/dashboard/order/order-form/form-utils';
+
 
 type Props = {
   params: { id: string };

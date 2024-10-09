@@ -1,6 +1,6 @@
 import { CreateOrderInput } from "@/validators/create-order.schema";
 
-export function defaultValues(order?: CreateOrderInput) {
+export function defaultValues(order?: any) {
   return {
     billingAddress: {
       customerName: order?.billingAddress?.customerName,

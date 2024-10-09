@@ -16,7 +16,7 @@ const useSendEmail = ({navigate = true}: {navigate?: boolean}) => {
         `${process.env.NEXT_PUBLIC_API_ENDPOINT}${endPoitsUrl.auth.forgetPassword.email}`,
         data
       ),
-    onSuccess: async (res: any, data) => {
+    onSuccess: async (res: any, data: any) => {
       console.log("res", res);
       toast.success(
         <Text>

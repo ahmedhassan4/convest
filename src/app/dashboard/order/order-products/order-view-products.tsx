@@ -1,11 +1,10 @@
 'use client';
 
 import Image from 'next/image';
-import Table, { HeaderCell } from '@/app/shared/table';
 import { useCart } from '@/store/quick-cart/cart.context';
 import { Title, Text } from 'rizzui';
-import { toCurrency } from '@utils/to-currency';
-import { CartItem } from '@/types';
+import Table, { HeaderCell } from '@/shared/table';
+
 
 const columns = [
   {
@@ -13,7 +12,7 @@ const columns = [
     dataIndex: 'product',
     key: 'product',
     width: 250,
-    render: (_: any, row: CartItem) => (
+    render: (_: any, row: any) => (
       <div className="flex items-center">
         <div className="relative aspect-square w-12 overflow-hidden rounded-lg">
           <Image
@@ -37,9 +36,9 @@ const columns = [
     dataIndex: 'price',
     key: 'price',
     width: 200,
-    render: (price: string) => (
-      <Text className="text-end text-sm">{toCurrency(price)}</Text>
-    ),
+    // render: (price: string) => (
+    //   <Text className="text-end text-sm">{toCurrency(price)}</Text>
+    // ),
   },
   {
     title: <HeaderCell title="Quantity" align="center" />,
@@ -56,11 +55,11 @@ const columns = [
     dataIndex: 'price',
     key: 'price',
     width: 200,
-    render: (price: number, row: CartItem) => (
-      <Text className="text-end text-sm">
-        {toCurrency(price * row.quantity)}
-      </Text>
-    ),
+    // render: (price: number, row: CartItem) => (
+    //   <Text className="text-end text-sm">
+    //     {toCurrency(price * row.quantity)}
+    //   </Text>
+    // ),
   },
 ];
 
