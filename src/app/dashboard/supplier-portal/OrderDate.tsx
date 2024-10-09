@@ -23,7 +23,7 @@ export default function OrderDate({ className }: { className?: string }) {
         startDate={selectedRange ? selectedRange[0] : null}
         endDate={selectedRange ? selectedRange[1] : null}
         onChange={handleDateChange}
-        className="w-80"
+        className="w-full mx-auto max-w-[300px] md:max-w-[400px] lg:max-w-[500px]"
         placeholderText="Select created date"
       />
     </div>
