@@ -1,10 +1,8 @@
 import { z } from 'zod';
 
-// form zod validation schema
+// form zod validation schema (only password will be validated now)
 export const loginSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(1),
-  rememberMe: z.boolean().optional(),
+  password: z.string().min(1, "Password is required"),
 });
 
 // generate form types from zod validation schema

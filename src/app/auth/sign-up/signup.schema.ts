@@ -6,13 +6,13 @@ import {
 
 export const signUpSchema = z
   .object({
-    code: z.string().nonempty('Institution code is required'),
+    // code: z.string().nonempty('Institution code is required'),
     password: validatePassword,
     confirmPassword: validateConfirmPassword,
   })
   .refine((data) => data.password === data.confirmPassword, {
-    path: ['confirmPassword'], // Show error on confirmPassword field
-    message: 'Passwords do not match',
+    path: ["confirmPassword"], // Show error on confirmPassword field
+    message: "Passwords do not match",
   });
 
 // generate form types from zod validation schema

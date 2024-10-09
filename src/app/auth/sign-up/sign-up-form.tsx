@@ -28,7 +28,7 @@ export default function SignUpForm() {
     onSuccess: async (res: any) => {
       toast.success("Account created successfully");
       setReset({});
-      router.push(routes.auth.login);
+      // router.push(routes.auth.login);
     },
     onError: (err: any) => {
       toast.error(err?.response?.data?.message);
@@ -37,7 +37,8 @@ export default function SignUpForm() {
 
   const onSubmit: SubmitHandler<SignUpSchema> = (data) => {
     console.log("sign up form data", data);
-    mutateAsync(data);
+    // mutateAsync(data);
+    router.push(routes.dashboard.orderDetails("0025895"));
   };
 
   return (
@@ -73,8 +74,7 @@ export default function SignUpForm() {
               {...register("confirmPassword")}
               error={errors.confirmPassword?.message}
             />
-            {/* pb-4 will be removed in future  */}
-            <Text className="mt-5 pb-4 text-center text-sm font-normal leading-loose text-[#333333] lg:text-start xl:mt-7">
+            <Text className="mt-5 text-center text-sm font-normal leading-loose text-[#333333] lg:text-start xl:mt-7">
               By signing up you have agreed to our{" "}
               <Link
                 href={routes.auth.login}
@@ -85,18 +85,15 @@ export default function SignUpForm() {
               </Link>
             </Text>
 
-            {/* Link will be romoved in future */}
-            <Link href={routes.dashboard.orderDetails("0012549")}>
-              <Button
-                className="border-primary-light w-full border-2 text-base font-medium text-white"
-                type="submit"
-                size={isMedium ? "lg" : "xl"}
-                isLoading={isPending}
-                rounded="pill"
-              >
-                Create Account
-              </Button>
-            </Link>
+            <Button
+              className="border-primary-light w-full border-2 text-base font-medium text-white"
+              type="submit"
+              size={isMedium ? "lg" : "xl"}
+              isLoading={isPending}
+              rounded="pill"
+            >
+              Create Account
+            </Button>
           </div>
         )}
       </Form>

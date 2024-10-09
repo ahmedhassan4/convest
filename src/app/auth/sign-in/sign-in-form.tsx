@@ -1,9 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
 import { SubmitHandler } from "react-hook-form";
-import { Input, Button, Password, Checkbox, Text, Title } from "rizzui";
+import { Input, Button, Text, Title } from "rizzui";
 import { routes } from "@/config/routes";
 import { useMedia } from "react-use";
 import { Form } from "@/ui/Form";
@@ -45,7 +44,6 @@ export default function SignInForm() {
           login_data: {
             fcmToken: process.env.NEXT_PUBLIC_FCM_TOKEN,
             ...data,
-            phone: "0123456789", // Include dummy phone value in request data
           },
         }
       ),
@@ -57,12 +55,10 @@ export default function SignInForm() {
         hideProgressBar: true,
       });
       const { token, data } = res?.data;
-      const { notificationsSettings, ...restData } = data;
-      const userInfo = JSON.stringify(restData);
-      const newToken = JSON.stringify(token);
+      const userInfo = JSON.stringify(data);
       setCookie("userInfo", userInfo, siteConfig.cookieOptions);
-      setCookie("token", newToken, siteConfig.cookieOptions);
-      // router.push("/dashboard");
+      setCookie("token", JSON.stringify(token), siteConfig.cookieOptions);
+      router.push("/dashboard");
       setIsSuccess(true);
     },
     onError: (error: any) => {
@@ -72,7 +68,8 @@ export default function SignInForm() {
 
   const onSubmit: SubmitHandler<LoginSchema> = (data) => {
     // mutateAsync(data);
-    router.push(routes.dashboard.orderDetails("0025895"));
+    console.log("Signed in phone number:", data.phone);
+    router.push(routes.auth.authLogin);
   };
 
   return (
@@ -80,11 +77,10 @@ export default function SignInForm() {
       <div className="">
         <OrSeparation
           title="LET'S GET STARTED!"
-          className="my-7 "
+          className="my-7"
           isCenter={false}
         />
       </div>
-
       <Form<LoginSchema>
         validationSchema={loginSchema}
         onSubmit={onSubmit}
@@ -97,34 +93,14 @@ export default function SignInForm() {
             <Input
               type="number"
               size={isMedium ? "lg" : "xl"}
+              prefix={<Text className="text-[#2B90EC] font-medium">+20</Text>}
               label="Phone Number"
-              disabled={true} // Disable the input field
-              value="0123456789" // Dummy value
-              prefix={
-                <span className="text-[#2B90EC] text-[16px] font-medium mr-2">
-                  +20
-                </span>
-              }
-              className="[&>label>span]:font-medium"
-              rounded="pill"
-            />
-            <Password
-              label="Password"
-              placeholder="Enter your password"
-              size={isMedium ? "lg" : "xl"}
+              placeholder="Enter your phone number"
               rounded="pill"
               className="[&>label>span]:font-medium"
-              {...register("password")}
-              error={errors.password?.message}
+              {...register("phone")}
+              error={errors.phone?.message}
             />
-            <div className="flex items-center justify-between pb-2">
-              <Link
-                href={routes.auth.forgetPassword}
-                className="h-auto p-0 leading-[24px] font-semibold text-[#2B90EC] transition-colors text-[14px] hover:text-gray-500 hover:no-underline"
-              >
-                Forget Password?
-              </Link>
-            </div>
             <Button
               className="border-primary-light w-full border-2 text-base font-bold text-primary-foreground"
               type="submit"
@@ -132,7 +108,7 @@ export default function SignInForm() {
               rounded="pill"
               isLoading={isPending || isSuccess}
             >
-              Continue
+              Sign in
             </Button>
           </div>
         )}
@@ -140,7 +116,7 @@ export default function SignInForm() {
       <Text className="mt-5 text-center text-[15px] leading-loose text-gray-500 lg:text-start xl:mt-7 xl:text-base">
         Don&apos;t have an account?{" "}
         <Link
-          href={routes.auth.login}
+          href={routes.auth.signUp}
           className="font-semibold text-[#2B90EC] transition-colors hover:text-blue"
         >
           Sign Up
@@ -149,4 +125,3 @@ export default function SignInForm() {
     </>
   );
 }
-
