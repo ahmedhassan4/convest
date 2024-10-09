@@ -15,10 +15,6 @@ const pageHeader = {
       name: "Home",
     },
     {
-      href: routes.eCommerce.dashboard,
-      name: "Orders",
-    },
-    {
       name: "All Orders",
     },
   ],

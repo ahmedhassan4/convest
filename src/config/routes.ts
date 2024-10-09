@@ -8,8 +8,12 @@ export const routes = {
     newPassword: "/auth/forget_password/new-password",
   },
   dashboard: {
-    home: "/",
+    home: "/dashboard/orders/02558965",
     checkout: "/dashboard/checkout",
+    suppliers: "/dashboard/suppliers",
+    supplierPortal: "/dashboard/supplier-portal",
+    transactions: "/dashboard/transactions",
+    orders: "/dashboard/orders",
     firstInstallment: "/dashboard/first-installment",
     institutions: "/dashboard/institutions",
     orderDetails: (id: string) => `/dashboard/orders/${id}`,

@@ -15,20 +15,25 @@ export const menuItems = [
   // label end
   {
     name: "Orders",
-    href: routes.dashboard.institutions,
+    href: routes.dashboard.home,
     icon: <Package weight="duotone" />,
   },
   {
     name: "Shop",
-    href: routes.dashboard.myAccount,
+    href: "#",
     icon: <ShoppingCart weight="duotone" />,
   },
   {
     name: "Supplier",
   },
   {
+    name: "suppliers",
+    href: routes.dashboard.suppliers,
+    icon: <DropboxLogo weight="duotone" />,
+  },
+  {
     name: "supplier Portal",
-    href: routes.dashboard.institutions,
+    href: routes.dashboard.supplierPortal,
     icon: <DropboxLogo weight="duotone" />,
   },
   {
@@ -36,12 +41,12 @@ export const menuItems = [
   },
   {
     name: "All Transactions",
-    href: routes.dashboard.all_courses.list,
+    href: routes.dashboard.transactions,
     icon: <CurrencyCircleDollar weight="duotone" />,
   },
   {
     name: "All Orders",
-    href: routes.dashboard.calendar,
+    href: routes.dashboard.orders,
     icon: <DropboxLogo weight="duotone" />,
   },
 ];
