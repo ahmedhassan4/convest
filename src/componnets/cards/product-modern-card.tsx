@@ -5,7 +5,6 @@ import { Title, Text } from 'rizzui';
 import cn from '../../utils/class-names';
 import WishlistButton from '../wishlist-button';
 import { generateSlug } from '../../utils/generate-slug';
-import ColorSwatch from '../../utils/color-swatch';
 import { Product } from '../../types';
 import { toCurrency } from '../../utils/to-currency';
 
@@ -72,7 +71,7 @@ export default function ProductModernCard({
           )}
         </div>
 
-        {colors?.length ? <ColorSwatch colors={product?.colors} /> : null}
+        {/* {colors?.length ? <ColorSwatch colors={product?.colors} /> : null} */}
       </div>
     </div>
   );

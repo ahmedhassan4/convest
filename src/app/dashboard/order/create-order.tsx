@@ -11,26 +11,23 @@ import { useSetAtom } from 'jotai';
 import toast from 'react-hot-toast';
 import isEmpty from 'lodash/isEmpty';
 import { zodResolver } from '@hookform/resolvers/zod';
-import DifferentBillingAddress from '@/app/shared/ecommerce/order/order-form/different-billing-address';
-import { defaultValues } from '@/app/shared/ecommerce/order/order-form/form-utils';
-import CustomerInfo from '@/app/shared/ecommerce/order/order-form/customer-info';
-import AddressInfo from '@/app/shared/ecommerce/order/order-form/address-info';
+
 import { Text } from 'rizzui';
-import cn from '@utils/class-names';
-import OrderSummery from '@/app/shared/ecommerce/checkout/order-summery';
+
 import { useRouter } from 'next/navigation';
 import { routes } from '@/config/routes';
 import { DUMMY_ID } from '@/config/constants';
-import OrderNote from '@/app/shared/ecommerce/checkout/order-note';
 import {
   billingAddressAtom,
   orderNoteAtom,
   shippingAddressAtom,
 } from '@/store/checkout';
-import {
-  CreateOrderInput,
-  orderFormSchema,
-} from '@/validators/create-order.schema';
+import { defaultValues } from './order-form/form-utils';
+import cn from '@/utils/class-names';
+import AddressInfo from './order-form/address-info';
+import DifferentBillingAddress from './order-form/different-billing-address';
+import CustomerInfo from './order-form/customer-info';
+
 
 // main order form component for create and update order
 export default function CreateOrder({
@@ -40,7 +37,8 @@ export default function CreateOrder({
 }: {
   id?: string;
   className?: string;
-  order?: CreateOrderInput;
+  // order?: CreateOrderInput;
+  order?: any;
 }) {
   const [isLoading, setLoading] = useState(false);
   const router = useRouter();
@@ -50,10 +48,10 @@ export default function CreateOrder({
 
   const methods = useForm({
     defaultValues: defaultValues(order),
-    resolver: zodResolver(orderFormSchema),
+    // resolver: zodResolver(orderFormSchema),
   });
 
-  const onSubmit: SubmitHandler<CreateOrderInput> = (data) => {
+  const onSubmit: SubmitHandler<any> = (data) => {
     // console.log('data', data);
 
     // set timeout ony required to display loading state of the create order button
@@ -103,13 +101,13 @@ export default function CreateOrder({
 
               {!sameShippingAddress && <AddressInfo type="shippingAddress" />}
 
-              <OrderNote />
+              {/* <OrderNote /> */}
             </div>
           </div>
 
           <div className="pb-7 pt-10 @container @5xl:col-span-4 @5xl:py-0 @6xl:col-span-3">
             <CustomerInfo />
-            <OrderSummery isLoading={isLoading} className="static" />
+            {/* <OrderSummery isLoading={isLoading} className="static" /> */}
           </div>
         </div>
       </form>

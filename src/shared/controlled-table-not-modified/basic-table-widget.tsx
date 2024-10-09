@@ -2,12 +2,14 @@
 
 import React from 'react';
 import { Input } from 'rizzui';
-import cn from '@utils/class-names';
-import WidgetCard from '@components/cards/widget-card';
+
 import { PiMagnifyingGlassBold } from 'react-icons/pi';
-import { useTable } from '@hooks/use-table';
-import { useColumn } from '@hooks/use-column';
+
 import ControlledTable from './index';
+import { useTable } from '@/hooks/use-table';
+import { useColumn } from '@/hooks/use-column';
+import WidgetCard from '@/componnets/cards/widget-card';
+import cn from '@/utils/class-names';
 
 type ColumnTypes = {
   data?: any[];

@@ -1,5 +1,5 @@
 import { CartItem, Product, ProductColor } from '@/types';
-import { generateSlug } from '@utils/generate-slug';
+import { generateSlug } from '@/utils/generate-slug';
 
 interface CartProduct extends Omit<Product, 'colors' | 'sizes'> {
   color: ProductColor;

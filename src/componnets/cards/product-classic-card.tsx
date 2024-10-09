@@ -5,8 +5,9 @@ import { Title, Text, Button } from 'rizzui';
 import cn from '../../utils/class-names';
 import { toCurrency } from '../../utils/to-currency';
 import { PiMinus, PiPlus } from 'react-icons/pi';
-import { useCart } from '../../../../../apps/isomorphic/src/store/quick-cart/cart.context';
+
 import { CartItem, PosProduct } from '../../types';
+import { useCart } from '@/store/quick-cart/cart.context';
 
 interface ProductProps {
   product: PosProduct;
