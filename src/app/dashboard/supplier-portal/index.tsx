@@ -11,12 +11,10 @@ const SupplierPortalPageWrapper = () => {
   return (
     <>
       <div className="mb-5 flex flex-col md:flex-row items-center justify-between gap-4">
-        {/* Product Dropdown */}
         <div className="w-full md:w-96 flex justify-center md:justify-start">
           <PorductDropdown />
         </div>
 
-        {/* Order Date */}
         <div className="w-full md:w-80 flex justify-center md:justify-end">
           <OrderDate className="w-full md:w-80 mx-auto md:mx-0" />
         </div>

@@ -10,6 +10,8 @@ import DeletePopover from "@/shared/delete-popover";
 import DateCell from "@/ui/date-cell";
 import MasterCardIcon from "@/componnets/icons/mastercard";
 import VisaIcon from "@/componnets/icons/visa";
+import { PiCopyDuotone } from "react-icons/pi";
+import { Hand } from "@phosphor-icons/react";
 
 type Columns = {
   data: any[];
@@ -19,12 +21,14 @@ type Columns = {
   onDeleteItem: (id: string) => void;
   onHeaderCellClick: (value: string) => void;
   onChecked?: (id: string) => void;
+  handleCopy: (text: string) => void;
 };
 
 export const getColumns = ({
   sortConfig,
   onDeleteItem,
   onHeaderCellClick,
+  handleCopy,
 }: Columns) => [
   {
     title: <HeaderCell title="ID" className="ps-4" />,
@@ -32,7 +36,18 @@ export const getColumns = ({
     dataIndex: "id",
     key: "id",
     width: 80,
-    render: (id: string) => <Text className="ps-4">#{id}</Text>,
+    render: (id: string) => (
+      <div className="flex items-center gap-2">
+        <Text className="ps-4">#{id}</Text>
+        <PiCopyDuotone
+          className="cursor-pointer"
+          onClick={() => {
+            handleCopy(`#${id}`); // Copy the ID to clipboard
+          }}
+          title="Copy ID"
+        />
+      </div>
+    ),
   },
   {
     title: <HeaderCell title="Supplier name" />,

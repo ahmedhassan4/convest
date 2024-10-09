@@ -11,6 +11,7 @@ import { Button, Input } from "rizzui";
 import cn from "@/utils/class-names";
 import { useModal } from "@/shared/modal-views/use-modal";
 import AddSupplierForm from "../AddSupplierForm";
+import useCopy from "@/hooks/use-copy";
 
 const filterState = {
   date: [null, null],
@@ -23,6 +24,7 @@ export default function SuppliersHistoryTable({
 }) {
   const [pageSize, setPageSize] = useState(7);
   const { openModal } = useModal();
+  const { handleCopy } = useCopy();
 
   const handleInfoClick = () => {
     openModal({
@@ -73,6 +75,7 @@ export default function SuppliersHistoryTable({
         onDeleteItem,
         onChecked: handleRowSelect,
         handleSelectAll,
+        handleCopy,
       }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [
@@ -83,6 +86,7 @@ export default function SuppliersHistoryTable({
       onDeleteItem,
       handleRowSelect,
       handleSelectAll,
+      handleCopy,
     ]
   );
 
