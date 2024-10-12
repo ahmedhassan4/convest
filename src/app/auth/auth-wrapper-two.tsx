@@ -30,7 +30,11 @@ export default function AuthWrapperTwo({
   return (
     <div className="min-h-screen items-center justify-center xl:flex xl:bg-gray-50 xl:px-5 xl:py-16 2xl:px-8 2xl:py-28">
       <div className="mx-auto w-full py-2 xl:py-14 2xl:w-[1720px]">
-        <div className="rounded-xl bg-white xl:flex dark:bg-transparent dark:xl:bg-gray-100/50 shadow-md">
+        <div className="rounded-xl bg-white xl:flex dark:bg-transparent dark:xl:bg-gray-100/50 shadow-md relative">
+          {/* Place the Arabic text here */}
+          <div className="absolute top-4 right-4 flex">
+            <Text className="font-serif cursor-pointer">العربيه</Text>
+          </div>
           <AuthNavBar />
           <IntroBannerBlock />
           <div className="flex w-full items-center px-4 xl:px-0 ">

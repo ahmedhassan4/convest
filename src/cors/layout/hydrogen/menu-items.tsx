@@ -3,6 +3,7 @@ import {
   DropboxLogo,
   Package,
   ShoppingCart,
+  SignOut,
 } from "@phosphor-icons/react";
 import { routes } from "@/config/routes";
 
@@ -48,5 +49,10 @@ export const menuItems = [
     name: "All Orders",
     href: routes.dashboard.orders,
     icon: <DropboxLogo weight="duotone" />,
+  },
+  {
+    name: "Logout",
+    href: "#",
+    icon: <SignOut weight="duotone" />,
   },
 ];
