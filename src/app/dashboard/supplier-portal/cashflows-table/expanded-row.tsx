@@ -133,7 +133,7 @@ export default function ExpandedOrderRow({ record }: any) {
                         </Text>
                       </div>
                     </div>
-                    <div className="flex items-center justify-between gap-6 mt-2 md:mt-0">
+                    {/* <div className="flex items-center justify-between gap-6 mt-2 md:mt-0">
                       <div>
                         <Text className="text-sm text-[#111111] font-medium mb-1">
                           Receive In
@@ -142,7 +142,7 @@ export default function ExpandedOrderRow({ record }: any) {
                           {product.receiveIn} Months
                         </Text>
                       </div>
-                    </div>
+                    </div> */}
                     <div className="flex items-center justify-between gap-6 mt-2 md:mt-0">
                       <div>
                         <Text className="text-sm text-[#111111] font-medium mb-1">

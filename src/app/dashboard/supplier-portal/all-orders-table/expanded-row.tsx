@@ -73,7 +73,7 @@ export default function ExpandedOrderRow({ record }: any) {
           </article>
 
           {expandedOrder[order.id] && (
-            <div className="mt-3 pl-5 border-l border-muted">
+            <div className="mt-3 pl-5 ">
               {order?.products.map((product: any) => (
                 <article
                   key={record.id + product.name}

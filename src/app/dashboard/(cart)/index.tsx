@@ -26,58 +26,175 @@ export default function CartPageWrapper() {
   const billingAddress = useAtomValue(billingAddressAtom);
   const shippingAddress = useAtomValue(shippingAddressAtom);
 
-  const mockProducts = [
+  const deliveries = [
     {
-      id: 1,
-      name: "King Size Bed Sheets",
-      description: "IKEA",
-      image:
-        "https://isomorphic-furyroad.s3.amazonaws.com/public/products/details/1.jpg",
-      size: "M",
-      color: { name: "Blue" },
-      Receive_In: "6 Months",
+      delivery_by_date: "03 Oct 2024",
+      delivery_fee: 60,
+      tracking_number: null,
+      vendor: "H&M",
+      items: [
+        {
+          title: "Test Sheets",
+          brand: "IKEA",
+          total_price: "800.00 EGP",
+          quantity: 1,
+          installment_duration: 0,
+          amount_paid: 0,
+          amount_outstanding: 0,
+          installment_price: "800.00 EGP/Month",
+          image:
+            "https://cdn.shopify.com/s/files/1/0665/3024/6794/files/charlesdeluvio-OtC8kRzlbqo-unsplash.jpg?v=1727163982",
+          options: [
+            {
+              name: "Bedding size",
+              value: "Double",
+            },
+            {
+              name: "Receive In",
+              value: "Now",
+            },
+          ],
+        },
+      ],
     },
     {
-      id: 2,
-      name: "Casio Watch",
-      description: "Casio",
-      image:
-        "https://isomorphic-furyroad.s3.amazonaws.com/public/products/details/2.jpg",
-      size: 42,
-      color: { name: "Red" },
-      Receive_In: "6 Months",
+      delivery_by_date: "02 Jan 2025",
+      delivery_fee: 60,
+      tracking_number: null,
+      vendor: "H&M",
+      items: [
+        {
+          title: "Test Sheets",
+          brand: "IKEA",
+          total_price: "800.00 EGP",
+          quantity: 2,
+          installment_duration: 3,
+          amount_paid: 0,
+          amount_outstanding: 0,
+          installment_price: "533.33 EGP/Month",
+          image:
+            "https://cdn.shopify.com/s/files/1/0665/3024/6794/files/charlesdeluvio-OtC8kRzlbqo-unsplash.jpg?v=1727163982",
+          options: [
+            {
+              name: "Bedding size",
+              value: "Queen",
+            },
+            {
+              name: "Receive In",
+              value: "3 Months",
+            },
+          ],
+        },
+      ],
     },
     {
-      id: 3,
-      name: "Casio Watch",
-      description: "Casio Classic Watch",
-      image:
-        "https://isomorphic-furyroad.s3.amazonaws.com/public/products/details/3.jpg",
-      size: "lg",
-      color: { name: "Brown" },
-      Receive_In: "12 Months",
+      delivery_by_date: "02 Apr 2025",
+      delivery_fee: 60,
+      tracking_number: null,
+      vendor: "H&M",
+      items: [
+        {
+          title: "Test Sheets",
+          brand: "IKEA",
+          total_price: "800.00 EGP",
+          quantity: 1,
+          installment_duration: 6,
+          amount_paid: 0,
+          amount_outstanding: 0,
+          installment_price: "133.33 EGP/Month",
+          image:
+            "https://cdn.shopify.com/s/files/1/0665/3024/6794/files/charlesdeluvio-OtC8kRzlbqo-unsplash.jpg?v=1727163982",
+          options: [
+            {
+              name: "Bedding size",
+              value: "King",
+            },
+            {
+              name: "Receive In",
+              value: "6 Months",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      delivery_by_date: "02 Apr 2025",
+      delivery_fee: 60,
+      tracking_number: null,
+      vendor: "H&M",
+      items: [
+        {
+          title: "Test Shirt",
+          brand: "HnM",
+          total_price: "300.00 EGP",
+          quantity: 1,
+          installment_duration: 6,
+          amount_paid: 0,
+          amount_outstanding: 0,
+          installment_price: "50.00 EGP/Month",
+          image:
+            "https://cdn.shopify.com/s/files/1/0665/3024/6794/files/IMG_0676.jpg?v=1726042059",
+          options: [
+            {
+              name: "Receive In",
+              value: "6 Months",
+            },
+            {
+              name: "Color",
+              value: "White",
+            },
+            {
+              name: "Size",
+              value: "S",
+            },
+          ],
+        },
+      ],
     },
   ];
+
   return (
     <div className="@container">
       <div className="mx-auto w-full max-w-[1536px] items-start @5xl:grid @5xl:grid-cols-12 @5xl:gap-7 @6xl:grid-cols-10 @7xl:gap-10">
         <div className="@5xl:col-span-8 @6xl:col-span-7">
-          <div>
-            <Title as="h3" className="text-base font-semibold text-[#111111]">
-              Delivery By 12 June 2025
-            </Title>
-            <div className="flex text-[#484848]">
-              <Text className="text-sm font-medium mr-4">
-                Shipping Fee: <span className="font-bold text-sm">60 EGP</span>
-              </Text>
-              <Text className="text-sm font-medium">
-                Vendor: <span className="font-bold text-sm">HnM</span>
-              </Text>
-            </div>
-          </div>
-          {mockProducts.length ? (
-            mockProducts.map((item) => (
-              <CartProduct key={item.id} product={item} />
+          {deliveries && deliveries.length ? (
+            deliveries.map((delivery: any, index: number) => (
+              <div key={index}>
+                <div>
+                  <Title
+                    as="h3"
+                    className={`text-base font-semibold text-[#111111]" ${
+                      index > 0 ? "mt-4" : "mt-0"
+                    }`}
+                  >
+                    Delivery By {delivery.delivery_by_date}
+                  </Title>
+                  <div className="flex text-[#484848]">
+                    <Text className="text-sm font-medium mr-4">
+                      Shipping Fee:{" "}
+                      <span className="font-bold text-sm">
+                        {delivery.delivery_fee} EGP
+                      </span>
+                    </Text>
+                    <Text className="text-sm font-medium">
+                      Vendor:{" "}
+                      <span className="font-bold text-sm">
+                        {delivery.vendor}
+                      </span>
+                    </Text>
+                  </div>
+                </div>
+                {delivery.items.length ? (
+                  delivery.items.map((item: any) => (
+                    <CartProduct key={item.title} item={item} />
+                  ))
+                ) : (
+                  <Empty
+                    image={<EmptyProductBoxIcon />}
+                    text="No Product in the Cart"
+                  />
+                )}
+              </div>
             ))
           ) : (
             <Empty
@@ -85,7 +202,6 @@ export default function CartPageWrapper() {
               text="No Product in the Cart"
             />
           )}
-
           <div className="@5xl:col-span-8 @5xl:space-y-10 @6xl:col-span-7 mt-10 mb-5">
             <Balance />
           </div>
