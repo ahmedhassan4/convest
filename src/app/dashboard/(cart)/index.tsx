@@ -156,6 +156,25 @@ export default function CartPageWrapper() {
   return (
     <div className="@container">
       <div className="mx-auto w-full max-w-[1536px] items-start @5xl:grid @5xl:grid-cols-12 @5xl:gap-7 @6xl:grid-cols-10 @7xl:gap-10">
+        <div className="my-6 grid grid-cols-1 gap-4 @md:gap-6 md:hidden ">
+          <Button
+            size="xl"
+            rounded="pill"
+            // onClick={() => router.push(routes.dashboard.checkout)}
+            className="w-full hover:bg-[#3489d7]"
+          >
+            Continue
+          </Button>
+
+          <Button
+            size="xl"
+            variant="outline"
+            rounded="pill"
+            className="w-full text-[#2B90EC] dark:bg-gray-100 dark:active:bg-gray-100"
+          >
+            Cancel Order
+          </Button>
+        </div>
         <div className="@5xl:col-span-8 @6xl:col-span-7">
           {deliveries && deliveries.length ? (
             deliveries.map((delivery: any, index: number) => (

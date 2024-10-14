@@ -64,16 +64,16 @@ const CartCalculations = () => {
           Total Due Today
           <span className="font-medium text-gray-1000">480 EGP</span>
         </div>
-        <Link href={routes.dashboard.checkout}>
-          <Button
-            size="xl"
-            rounded="pill"
-            onClick={() => router.push(routes.dashboard.checkout)}
-            className="w-full hover:bg-[#3489d7]"
-          >
-            Continue
-          </Button>
-        </Link>
+
+        <Button
+          size="xl"
+          rounded="pill"
+          onClick={() => router.push(routes.dashboard.checkout)}
+          className="w-full hover:bg-[#3489d7]"
+        >
+          Continue
+        </Button>
+
         <Button
           size="xl"
           variant="outline"
