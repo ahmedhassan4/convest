@@ -13,7 +13,7 @@ export default function OrderDate({ className }: { className?: string }) {
       console.log("Selected Range:", date); // Log the selected range
     } else {
       setSelectedRange([date, null]);
-      console.log("Selected Single Date:", date); // Log the single date
+      // console.log("Selected Single Date:", date); // Log the single date
     }
   };
 
@@ -23,7 +23,7 @@ export default function OrderDate({ className }: { className?: string }) {
         startDate={selectedRange ? selectedRange[0] : null}
         endDate={selectedRange ? selectedRange[1] : null}
         onChange={handleDateChange}
-        className="w-full mx-auto max-w-[300px] md:max-w-[400px] lg:max-w-[500px]"
+        className="w-full mx-auto  md:max-w-[400px] lg:max-w-[500px]"
         placeholderText="Select created date"
       />
     </div>

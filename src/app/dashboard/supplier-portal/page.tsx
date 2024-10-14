@@ -13,10 +13,7 @@ const pageHeader = {
   breadcrumb: [
     {
       name: "Home",
-    },
-    {
-      href: routes.eCommerce.dashboard,
-      name: "E-Commerce",
+      href: routes.dashboard.orders,
     },
     {
       name: "Supplier Portal",

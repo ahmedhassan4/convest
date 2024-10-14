@@ -8,6 +8,7 @@ const pageHeader = {
   breadcrumb: [
     {
       name: "Home",
+      href: routes.dashboard.orders,
     },
     {
       href: routes.dashboard.orders,

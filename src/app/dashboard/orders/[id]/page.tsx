@@ -9,7 +9,7 @@ export default function OrderDetailsPage({ params }: any) {
     title: `Order #${params.id}`,
     breadcrumb: [
       {
-        href: routes.dashboard.home,
+        href: routes.dashboard.orders,
         name: "Home",
       },
       {

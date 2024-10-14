@@ -21,7 +21,8 @@ export default function Header() {
           aria-label="Site Logo"
           className="me-4 w-9 shrink-0 text-gray-800 hover:text-gray-900 lg:me-5 xl:hidden"
         >
-          <Logo iconOnly={true} />
+          {/* <Logo iconOnly={true} /> */}
+          <img src="/vector.svg" alt="" className="w-7 h-7" />
         </Link>
 
         <div className="sm:flex hidden w-full ">

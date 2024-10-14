@@ -73,7 +73,7 @@ const PorductDropdown = () => {
     <StatusField
       options={statusOptions}
       value={selectedStatus}
-      className="w-full mx-auto max-w-[300px] md:max-w-[400px] lg:max-w-[500px]"
+      className="w-full mx-auto"
       onChange={handleStatusChange}
       getOptionValue={(option) => option.value}
       getOptionDisplayValue={(option) => renderOptionDisplayValue(option)}

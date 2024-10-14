@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Input, InputProps } from "rizzui";
+import { Input, InputProps, Text } from "rizzui";
 import cn from "../utils/class-names";
 import { PiCalendarBlank, PiCaretDownBold } from "react-icons/pi";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { FiCalendar, FiChevronDown } from "react-icons/fi";
 
 const calendarContainerClasses = {
   base: "[&.react-datepicker]:shadow-lg [&.react-datepicker]:border-gray-100 [&.react-datepicker]:rounded-md",
@@ -31,16 +32,13 @@ const timeOnlyClasses = {
 
 export interface DatePickerProps<selectsRange extends boolean | undefined>
   extends Omit<any, "selectsRange" | "onChange"> {
-  /** Pass function in onChange prop to handle selecting value */
   onChange(
     date: selectsRange extends false | undefined
       ? Date | null
       : [Date | null, Date | null],
     event: React.SyntheticEvent<any> | undefined
   ): void;
-  /** Whether range selecting is enabled */
   selectsRange?: selectsRange;
-  /** Pass input props to style input */
   inputProps?: InputProps;
 }
 
@@ -53,11 +51,33 @@ export const DatePicker = ({
   onCalendarClose,
   inputProps,
   calendarClassName,
+  onChange: externalOnChange,
   ...props
 }: DatePickerProps<boolean>) => {
   const [isCalenderOpen, setIsCalenderOpen] = useState(false);
+  const [startDate, setStartDate] = useState<Date | null>(null);
+  const [endDate, setEndDate] = useState<Date | null>(null);
+
   const handleCalenderOpen = () => setIsCalenderOpen(true);
   const handleCalenderClose = () => setIsCalenderOpen(false);
+
+  const formatDate = (date: Date) => {
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
+
+  const handleChange = (dates: [Date | null, Date | null]) => {
+    const [start, end] = dates;
+    setStartDate(start);
+    setEndDate(end);
+    if (externalOnChange) {
+      externalOnChange(dates, undefined);
+    }
+  };
+
   return (
     <div
       className={cn(
@@ -66,20 +86,25 @@ export const DatePicker = ({
       )}
     >
       <ReactDatePicker
+        selected={startDate}
+        onChange={handleChange}
+        startDate={startDate}
+        endDate={endDate}
         customInput={
           customInput || (
-            <Input
-              prefix={<PiCalendarBlank className="h-5 w-5 text-gray-500" />}
-              suffix={
-                <PiCaretDownBold
-                  className={cn(
-                    "h-4 w-4 text-gray-500 transition",
-                    isCalenderOpen && "rotate-180"
-                  )}
-                />
-              }
-              {...inputProps}
-            />
+            <div className="h-[36px] w-full bg-white  border-[1.5px] border-gray-200 rounded-md shadow-sm px-3 py-2 flex items-center">
+              <FiCalendar className="text-gray-500 mr-2" />
+
+              <div className="flex-grow text-gray-500">
+                {startDate && endDate
+                  ? `${formatDate(startDate)} - ${formatDate(endDate)}`
+                  : startDate
+                  ? `${formatDate(startDate)} - End Date`
+                  : "Start Date - End Date"}
+              </div>
+
+              <FiChevronDown className="text-gray-500" />
+            </div>
           )
         }
         showPopperArrow={showPopperArrow}
