@@ -18,7 +18,8 @@ export default function OrderProducts({
   addItemToCart,
   removeItemFromCart,
 }: {
-  items: CartItem[];
+  // items: CartItem[];
+  items: any;
   className?: string;
   itemClassName?: string;
   showControls?: boolean;
@@ -35,9 +36,10 @@ export default function OrderProducts({
   }
 
   return (
-    <SimpleBar className={cn("h-[calc(100vh_-_170px)] pb-3", className)}>
-      <div className={cn("grid gap-3.5", className)}>
-        {items.map((item) => (
+    <SimpleBar className={cn("lg:h-[calc(100vh_-_170px)] pb-3", className)}>
+      <div className={cn("grid gap-3.5")}>
+        {/* <div className={cn("grid gap-3.5", className)}> */}
+        {items.map((item: any) => (
           <div
             key={item.id}
             className={cn(

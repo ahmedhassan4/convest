@@ -10,6 +10,31 @@ import cn from "@/utils/class-names";
 import { toCurrency } from "@/utils/to-currency";
 import { useCart } from "@/store/quick-cart/cart.context";
 
+
+const fakeCartItems = [
+  {
+    id: 1,
+    name: "King Size Bed Sheets",
+    image:
+      "https://isomorphic-furyroad.s3.amazonaws.com/public/products/modern/2.webp",
+    price: 50,
+    quantity: 2,
+  },
+  {
+    id: 2,
+    name: "King Size Bed Sheets",
+    image:
+      "https://isomorphic-furyroad.s3.amazonaws.com/public/products/modern/2.webp",
+    price: 30,
+    quantity: 1,
+  },
+];
+
+const fakeTotal = fakeCartItems.reduce(
+  (total, item) => total + item.price * item.quantity,
+  0
+);
+
 export default function OrderSummery({
   isLoading,
   className,
@@ -18,8 +43,12 @@ export default function OrderSummery({
   isLoading?: boolean;
 }) {
   const params = useParams();
-  const { items, total, addItemToCart, removeItemFromCart, clearItemFromCart } =
-    useCart();
+  // const { items, total, addItemToCart, removeItemFromCart, clearItemFromCart } =
+  //   useCart();
+
+  const items = fakeCartItems;
+  const total = fakeTotal;
+
   const { price: subtotal } = usePrice(
     items && {
       amount: total,
@@ -41,10 +70,17 @@ export default function OrderSummery({
       </Title>
       <div className="rounded-lg border border-muted p-4 @xs:p-6 @5xl:rounded-none @5xl:border-none @5xl:px-0">
         <div className="pt-4 @xl:pt-6">
-          <OrderProducts
+          {/* <OrderProducts
             addItemToCart={addItemToCart}
             removeItemFromCart={removeItemFromCart}
             clearItemFromCart={clearItemFromCart}
+            items={items}
+            className="mb-5 border-b border-muted pb-5"
+          /> */}
+          <OrderProducts
+            addItemToCart={() => {}}
+            removeItemFromCart={() => {}}
+            clearItemFromCart={() => {}}
             items={items}
             className="mb-5 border-b border-muted pb-5"
           />
@@ -71,7 +107,7 @@ export default function OrderSummery({
             <Text>{totalPrice}</Text>
           </div>
 
-          {items.length ? (
+          {/* {items.length ? (
             <Button
               type="submit"
               isLoading={isLoading}
@@ -79,14 +115,14 @@ export default function OrderSummery({
             >
               {params?.id ? "Update Order" : "Place Order"}
             </Button>
-          ) : (
-            <Link href={routes.dashboard.firstInstallment}>
-              <Button
-                as="span"
-                className="mt-3 w-full text-base @md:h-12 rounded-full hover:bg-[#3489d7]"
-              >{`Confirm`}</Button>
-            </Link>
-          )}
+          ) : ( */}
+          <Link href={routes.dashboard.firstInstallment}>
+            <Button
+              as="span"
+              className="mt-3 w-full text-base @md:h-12 rounded-full hover:bg-[#3489d7]"
+            >{`Confirm`}</Button>
+          </Link>
+          {/* )} */}
         </div>
       </div>
     </div>

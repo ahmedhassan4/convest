@@ -30,24 +30,48 @@ export default function InstallmentWrapper() {
 
   const mockProducts = [
     {
-      id: 1,
-      name: "King Size Bed Sheets",
-      description: "IKEA",
+      title: "Test Sheets",
+      brand: "IKEA",
+      total_price: "800.00 EGP",
+      quantity: 2,
+      installment_duration: 3,
+      amount_paid: 0,
+      amount_outstanding: 0,
+      installment_price: "533.33 EGP/Month",
       image:
-        "https://isomorphic-furyroad.s3.amazonaws.com/public/products/details/1.jpg",
-      size: "M",
-      color: { name: "Blue" },
-      Receive_In: "6 Months",
+        "https://cdn.shopify.com/s/files/1/0665/3024/6794/files/charlesdeluvio-OtC8kRzlbqo-unsplash.jpg?v=1727163982",
+      options: [
+        {
+          name: "Bedding size",
+          value: "Queen",
+        },
+        {
+          name: "Receive In",
+          value: "3 Months",
+        },
+      ],
     },
     {
-      id: 2,
-      name: "Casio Watch",
-      description: "Casio",
+      title: "Test Sheets",
+      brand: "IKEA",
+      total_price: "800.00 EGP",
+      quantity: 2,
+      installment_duration: 3,
+      amount_paid: 0,
+      amount_outstanding: 0,
+      installment_price: "533.33 EGP/Month",
       image:
-        "https://isomorphic-furyroad.s3.amazonaws.com/public/products/details/2.jpg",
-      size: 42,
-      color: { name: "Red" },
-      Receive_In: "6 Months",
+        "https://cdn.shopify.com/s/files/1/0665/3024/6794/files/charlesdeluvio-OtC8kRzlbqo-unsplash.jpg?v=1727163982",
+      options: [
+        {
+          name: "Bedding size",
+          value: "Queen",
+        },
+        {
+          name: "Receive In",
+          value: "3 Months",
+        },
+      ],
     },
   ];
   return (
@@ -55,8 +79,8 @@ export default function InstallmentWrapper() {
       <div className="mx-auto w-full max-w-[1536px] items-start @5xl:grid @5xl:grid-cols-12 @5xl:gap-7 @6xl:grid-cols-10 @7xl:gap-10">
         <div className="@5xl:col-span-8 @6xl:col-span-7">
           {mockProducts.length ? (
-            mockProducts.map((item) => (
-              <CartProduct key={item.id} product={item} />
+            mockProducts.map((item, index) => (
+              <CartProduct key={index} item={item} />
             ))
           ) : (
             <Empty
