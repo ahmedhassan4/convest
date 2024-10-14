@@ -7,7 +7,7 @@ import { ActionIcon } from 'rizzui';
 import { useTable } from '@/hooks/use-table';
 import cn from '@/utils/class-names';
 import { useColumn } from '@/hooks/use-column';
-import ControlledTable from '@/shared/controlled-table';
+import ControlledTable from "@/shared/controlled-table-not-modified";
 // dynamic import
 function CustomExpandIcon(props: any) {
   return (

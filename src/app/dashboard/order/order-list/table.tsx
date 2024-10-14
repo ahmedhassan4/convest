@@ -4,10 +4,14 @@ import { useCallback, useMemo, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { useTable } from "@/hooks/use-table";
 import { useColumn } from "@/hooks/use-column";
-import { PiCaretDownBold, PiCaretUpBold } from "react-icons/pi";
-import ControlledTable from "@/shared/controlled-table/index";
+import {
+  PiCaretDownBold,
+  PiCaretUpBold,
+  PiMagnifyingGlassBold,
+} from "react-icons/pi";
+import ControlledTable from "@/shared/controlled-table-not-modified/index";
 import { getColumns } from "@/app/dashboard/order/order-list/columns";
-import { ActionIcon } from "rizzui";
+import { ActionIcon, Input } from "rizzui";
 import cn from "@/utils/class-names";
 import ExpandedOrderRow from "@/app/dashboard/order/order-list/expanded-row";
 // dynamic import
@@ -45,11 +49,9 @@ const filterState = {
 
 export default function OrderTable({
   data = [],
-  variant = "modern",
   className,
 }: {
   data: any[];
-  variant?: "modern" | "minimal" | "classic" | "elegant" | "retro";
   className?: string;
 }) {
   const [pageSize, setPageSize] = useState(10);
@@ -78,6 +80,9 @@ export default function OrderTable({
     handleSearch,
     sortConfig,
     handleSort,
+    selectedRowKeys,
+    handleRowSelect,
+    handleSelectAll,
     handleDelete,
     handleReset,
   } = useTable(data, pageSize, filterState);
@@ -88,16 +93,36 @@ export default function OrderTable({
     [onHeaderCellClick, sortConfig.key, sortConfig.direction, onDeleteItem]
   );
 
-  const { visibleColumns, checkedColumns, setCheckedColumns } =
-    useColumn(columns);
+  const { visibleColumns } = useColumn(columns);
 
   return (
     <div className={cn(className)}>
+      <div className="mt-4 flex flex-col w-full items-center gap-3 my-6 sm:flex-row sm:items-center sm:justify-between">
+        {" "}
+        {/* Stack vertically on small screens, horizontal on larger screens */}
+        <FilterElement
+          isFiltered={isFiltered}
+          filters={filters}
+          updateFilter={updateFilter}
+          handleReset={handleReset}
+        />
+        <Input
+          className="w-full sm:w-5/12 md:w-4/12 @[70rem]:w-80"
+          type="search"
+          inputClassName="h-9"
+          placeholder="Search for user details..."
+          value={searchTerm}
+          onClear={() => handleSearch("")}
+          onChange={(event) => handleSearch(event.target.value)}
+          clearable
+          prefix={<PiMagnifyingGlassBold className="h-4 w-4" />}
+        />
+      </div>
       <ControlledTable
-        variant={variant}
+        variant="modern"
+        data={tableData}
         isLoading={isLoading}
         showLoadingText={true}
-        data={tableData}
         // @ts-ignore
         columns={visibleColumns}
         expandable={{
@@ -111,29 +136,6 @@ export default function OrderTable({
           current: currentPage,
           onChange: (page: number) => handlePaginate(page),
         }}
-        filterOptions={{
-          searchTerm,
-          onSearchClear: () => {
-            handleSearch("");
-          },
-          onSearchChange: (event) => {
-            handleSearch(event.target.value);
-          },
-          hasSearched: isFiltered,
-          hideIndex: 1,
-          columns,
-          checkedColumns,
-          setCheckedColumns,
-          enableDrawerFilter: true,
-        }}
-        filterElement={
-          <FilterElement
-            isFiltered={isFiltered}
-            filters={filters}
-            updateFilter={updateFilter}
-            handleReset={handleReset}
-          />
-        }
         className={
           "rounded-md border border-muted text-sm shadow-sm [&_.rc-table-placeholder_.rc-table-expanded-row-fixed>div]:h-60 [&_.rc-table-placeholder_.rc-table-expanded-row-fixed>div]:justify-center [&_.rc-table-row:last-child_td.rc-table-cell]:border-b-0 [&_thead.rc-table-thead]:border-t-0"
         }

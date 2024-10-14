@@ -1,7 +1,7 @@
 'use client';
 
 import React from "react";
-import StatusField from "@/shared/controlled-table/status-field";
+import StatusField from "@/shared/controlled-table-not-modified/status-field";
 import { Badge, Button, Text } from "rizzui";
 import { PiTrashDuotone } from "react-icons/pi";
 
@@ -44,6 +44,8 @@ export default function FilterElement({
           Sort By
         </Text>
         <StatusField
+          dropdownClassName="!z-10"
+          className="w-full min-w-[145px] sm:w-auto"
           options={statusOptions}
           value={filters["status"]}
           onChange={(value: string) => {
@@ -51,7 +53,7 @@ export default function FilterElement({
           }}
           getOptionValue={(option: { value: any }) => option.value}
           getOptionDisplayValue={(option: { value: any }) =>
-            renderOptionDisplayValue(option.value)
+            renderOptionDisplayValue(option.value as string)
           }
           displayValue={(selected: string) =>
             renderOptionDisplayValue(selected)
