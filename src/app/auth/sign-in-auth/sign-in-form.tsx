@@ -137,15 +137,6 @@ export default function SignInForm() {
           </div>
         )}
       </Form>
-      <Text className="mt-5 text-center text-[15px] leading-loose text-gray-500 lg:text-start xl:mt-7 xl:text-base">
-        Don&apos;t have an account?{" "}
-        <Link
-          href={"#"}
-          className="font-semibold text-[#2B90EC] transition-colors hover:text-blue"
-        >
-          Sign Up
-        </Link>
-      </Text>
     </>
   );
 }

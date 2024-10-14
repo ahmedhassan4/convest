@@ -13,16 +13,14 @@ import {
   PiInstagramLogo,
   PiLinkedinLogo,
   PiTwitterLogo,
-  PiArrowLineRight,
-  PiUserCirclePlus,
-} from 'react-icons/pi';
-import cn from '@/utils/class-names';
-import ArrowShape from '@/componnets/shape/arrow';
-import BgImage from "@/images/Greeny.png"
+} from "react-icons/pi";
+import cn from "@/utils/class-names";
+import ArrowShape from "@/componnets/shape/arrow";
+import BgImage from "@/images/Greeny.png";
 
 export default function AuthWrapperTwo({
   children,
-  title
+  title,
 }: {
   children: React.ReactNode;
   title: React.ReactNode;
@@ -30,9 +28,8 @@ export default function AuthWrapperTwo({
   return (
     <div className="min-h-screen items-center justify-center xl:flex xl:bg-gray-50 xl:px-5 xl:py-16 2xl:px-8 2xl:py-28">
       <div className="mx-auto w-full py-2 xl:py-14 2xl:w-[1720px]">
-        <div className="rounded-xl bg-white xl:flex dark:bg-transparent dark:xl:bg-gray-100/50 shadow-md relative">
-          {/* Place the Arabic text here */}
-          <div className="absolute top-4 right-4 flex">
+        <div className="rounded-xl bg-white xl:flex dark:bg-transparent dark:xl:bg-gray-100/50 xl:shadow-md relative">
+          <div className="absolute top-10 right-10 hidden lg:flex  ">
             <Text className="font-serif cursor-pointer">العربيه</Text>
           </div>
           <AuthNavBar />
@@ -75,7 +72,7 @@ function AuthNavLink({
       href={href}
       className={cn(
         "before:bg-primary-light relative flex items-center gap-x-1.5 text-[15px] font-medium text-gray-700 transition-colors duration-200 before:absolute before:bottom-0 before:start-0 before:h-0.5 before:content-[''] hover:text-gray-900 xl:gap-x-2.5 xl:px-6 xl:py-0.5 xl:text-base xl:before:top-0 xl:before:h-full 2xl:px-9 [&>svg]:w-[22px] [&>svg]:shrink-0 xl:[&>svg]:w-6",
-        isActive(href) ? 'before:w-full xl:before:w-1' : ' '
+        isActive(href) ? "before:w-full xl:before:w-1" : " "
       )}
     >
       {children}
@@ -92,19 +89,18 @@ function AuthNavBar() {
           alt="Isomorphic"
           width={64}
           height={64}
-          className="dark:invert"
+          className="dark:invert w-10 h-10 lg:w-20 lg:h-20"
         />
       </Link>
-      <div className="flex space-x-6 xl:w-full xl:flex-col xl:space-x-0 xl:space-y-6 xl:pt-9 2xl:space-y-7 2xl:pt-12 3xl:pt-14">
-        <AuthNavLink href={"#"}>
-          <PiUserCirclePlus className="h-6 w-6" />
-          Sign up
-        </AuthNavLink>
-        <AuthNavLink href={routes.auth.login}>
-          <PiArrowLineRight className="h-[22px] w-[22px]" />
-          Login
-        </AuthNavLink>
+
+      <div className="flex items-center lg:hidden space-x-6 xl:w-full xl:flex-col xl:space-x-0 xl:space-y-6 xl:pt-9 2xl:space-y-7 2xl:pt-12 3xl:pt-14">
+        <Text className="font-serif cursor-pointer">العربيه</Text>
+
+        <div className="h-6 w-[1px] bg-gray-400"></div>
+
+        <AuthNavLink href={routes.auth.login}>Login</AuthNavLink>
       </div>
+
       <Link
         href={"/"}
         className="relative hidden items-center gap-x-1.5 text-[15px] font-medium text-gray-700 transition-colors duration-200 hover:text-gray-1000 xl:mt-auto xl:flex xl:gap-x-1.5 xl:py-0.5 xl:pe-6 xl:ps-3 xl:text-base xl:text-gray-500 xl:before:top-0 xl:before:h-full xl:hover:text-gray-700 2xl:pe-9 2xl:ps-7 [&>svg]:w-[22px] [&>svg]:shrink-0 xl:[&>svg]:w-6"
