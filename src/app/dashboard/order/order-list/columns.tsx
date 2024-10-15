@@ -126,7 +126,7 @@ export const getColumns = ({
     dataIndex: "createdAt",
     key: "createdAt",
     width: 200,
-    // render: (value: Date) => <DateCell date={value} />,
+    render: (value: Date) => <DateCell date={value} />,
   },
   {
     title: <HeaderCell title="Status" />,
@@ -169,7 +169,8 @@ export const getColumns = ({
               as="span"
               size="sm"
               variant="outline"
-              className="hover:text-gray-700">
+              className="hover:text-gray-700"
+            >
               <EyeIcon className="h-4 w-4" />
             </ActionIcon>
           </Link>

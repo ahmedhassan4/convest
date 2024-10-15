@@ -11,6 +11,8 @@ import DeletePopover from "@/shared/delete-popover";
 import DateCell from "@/ui/date-cell";
 import MasterCardIcon from "@/componnets/icons/mastercard";
 import VisaIcon from "@/componnets/icons/visa";
+import Link from "next/link";
+import { routes } from "@/config/routes";
 
 const statusColorClassName = {
   Complete: "text-green-dark before:bg-green-dark",
@@ -135,15 +137,17 @@ export const getColumns = ({
           placement="top"
           color="invert"
         >
-          <ActionIcon
-            as="span"
-            size="sm"
-            variant="outline"
-            aria-label={"View Customer"}
-            className="hover:!border-gray-900 hover:text-gray-700"
-          >
-            <EyeIcon className="h-4 w-4" />
-          </ActionIcon>
+          <Link href={routes.dashboard.orderDetails("0012556")}>
+            <ActionIcon
+              as="span"
+              size="sm"
+              variant="outline"
+              aria-label={"View Order"}
+              className="hover:text-gray-700"
+            >
+              <EyeIcon className="h-4 w-4" />
+            </ActionIcon>
+          </Link>
         </Tooltip>
       </div>
     ),

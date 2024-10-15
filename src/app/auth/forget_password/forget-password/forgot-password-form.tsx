@@ -87,7 +87,7 @@ export default function ForgetPasswordForm() {
         )}
       </Form>
       <Text className="mt-5 text-center text-[15px] leading-loose text-gray-500 lg:text-start xl:mt-7 xl:text-base">
-        Already have an account?{" "}
+        Don’t want to reset?{" "}
         <Link
           href={routes.auth.login}
           className="font-semibold text-[#2B90EC] transition-colors hover:text-blue"
