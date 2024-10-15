@@ -24,7 +24,7 @@ const fakeCartItems = [
     id: 2,
     name: "King Size Bed Sheets",
     image:
-      "https://isomorphic-furyroad.s3.amazonaws.com/public/products/modern/2.webp",
+      "https://isomorphic-furyroad.s3.amazonaws.com/public/products/modern/5.webp",
     price: 30,
     quantity: 1,
   },

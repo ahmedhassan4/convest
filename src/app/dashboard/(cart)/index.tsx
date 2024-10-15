@@ -43,7 +43,7 @@ export default function CartPageWrapper() {
           amount_outstanding: 0,
           installment_price: "800.00 EGP/Month",
           image:
-            "https://cdn.shopify.com/s/files/1/0665/3024/6794/files/charlesdeluvio-OtC8kRzlbqo-unsplash.jpg?v=1727163982",
+            "https://isomorphic-furyroad.s3.amazonaws.com/public/products/modern/2.webp",
           options: [
             {
               name: "Bedding size",
@@ -57,36 +57,7 @@ export default function CartPageWrapper() {
         },
       ],
     },
-    {
-      delivery_by_date: "02 Jan 2025",
-      delivery_fee: 60,
-      tracking_number: null,
-      vendor: "H&M",
-      items: [
-        {
-          title: "Test Sheets",
-          brand: "IKEA",
-          total_price: "800.00 EGP",
-          quantity: 2,
-          installment_duration: 3,
-          amount_paid: 0,
-          amount_outstanding: 0,
-          installment_price: "533.33 EGP/Month",
-          image:
-            "https://cdn.shopify.com/s/files/1/0665/3024/6794/files/charlesdeluvio-OtC8kRzlbqo-unsplash.jpg?v=1727163982",
-          options: [
-            {
-              name: "Bedding size",
-              value: "Queen",
-            },
-            {
-              name: "Receive In",
-              value: "3 Months",
-            },
-          ],
-        },
-      ],
-    },
+
     {
       delivery_by_date: "02 Apr 2025",
       delivery_fee: 60,
@@ -103,7 +74,7 @@ export default function CartPageWrapper() {
           amount_outstanding: 0,
           installment_price: "133.33 EGP/Month",
           image:
-            "https://cdn.shopify.com/s/files/1/0665/3024/6794/files/charlesdeluvio-OtC8kRzlbqo-unsplash.jpg?v=1727163982",
+            "https://isomorphic-furyroad.s3.amazonaws.com/public/products/modern/7.webp",
           options: [
             {
               name: "Bedding size",
@@ -112,40 +83,6 @@ export default function CartPageWrapper() {
             {
               name: "Receive In",
               value: "6 Months",
-            },
-          ],
-        },
-      ],
-    },
-    {
-      delivery_by_date: "02 Apr 2025",
-      delivery_fee: 60,
-      tracking_number: null,
-      vendor: "H&M",
-      items: [
-        {
-          title: "Test Shirt",
-          brand: "HnM",
-          total_price: "300.00 EGP",
-          quantity: 1,
-          installment_duration: 6,
-          amount_paid: 0,
-          amount_outstanding: 0,
-          installment_price: "50.00 EGP/Month",
-          image:
-            "https://cdn.shopify.com/s/files/1/0665/3024/6794/files/IMG_0676.jpg?v=1726042059",
-          options: [
-            {
-              name: "Receive In",
-              value: "6 Months",
-            },
-            {
-              name: "Color",
-              value: "White",
-            },
-            {
-              name: "Size",
-              value: "S",
             },
           ],
         },

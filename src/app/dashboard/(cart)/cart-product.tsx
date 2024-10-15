@@ -8,9 +8,7 @@ export default function CartProduct({ item }: { item: any }) {
     <div className="grid grid-cols-12 items-start gap-4 border-b border-muted py-6 first:pt-0 sm:flex sm:gap-6 2xl:py-8">
       <figure className="col-span-4 sm:max-w-[180px]">
         <Image
-          src={
-            "https://isomorphic-furyroad.s3.amazonaws.com/public/products/modern/7.webp"
-          }
+          src={item.image}
           alt={item.title}
           width={150}
           height={150}

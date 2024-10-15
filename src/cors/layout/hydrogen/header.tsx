@@ -8,6 +8,7 @@ import HeaderMenuRight from "../header-menu-right";
 import Logo from "@/componnets/logo";
 import SearchWidget from "@/componnets/search/search";
 import ContactUs from "./ContactUs";
+import Image from "next/image";
 
 export default function Header() {
   return (
@@ -16,14 +17,20 @@ export default function Header() {
         <HamburgerButton
           view={<Sidebar className="static w-full 2xl:w-full" />}
         />
-        <Link
+        {/* <Link
           href={"/"}
           aria-label="Site Logo"
-          className="me-4 w-9 shrink-0 text-gray-800 hover:text-gray-900 lg:me-5 xl:hidden"
-        >
-          {/* <Logo iconOnly={true} /> */}
-          <img src="/vector.svg" alt="" className="w-7 h-7" />
-        </Link>
+          className=""
+        > */}
+        {/* <Logo iconOnly={true} /> */}
+        <Image
+          src={"/Vector.svg"}
+          alt="Isomorphic"
+          width={64}
+          height={64}
+          className="w-7 h-7 me-4 shrink-0 text-gray-800 hover:text-gray-900 lg:me-5 xl:hidden"
+        />
+        {/* </Link> */}
 
         <div className="sm:flex hidden w-full ">
           <ContactUs />
