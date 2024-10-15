@@ -12,6 +12,9 @@ import {
 import CartCalculations from "./CartCalculations";
 import OrderStatus from "./OrderStatus";
 import Balance from "./Balance";
+import { useRouter } from "next/router";
+import { routes } from "@/config/routes";
+import Link from "next/link";
 
 type FormValues = {
   couponCode: string;
@@ -55,9 +58,30 @@ export default function CartPageWrapper() {
             },
           ],
         },
+        {
+          title: "Test Sheets",
+          brand: "IKEA",
+          total_price: "800.00 EGP",
+          quantity: 1,
+          installment_duration: 6,
+          amount_paid: 0,
+          amount_outstanding: 0,
+          installment_price: "133.33 EGP/Month",
+          image:
+            "https://isomorphic-furyroad.s3.amazonaws.com/public/products/modern/7.webp",
+          options: [
+            {
+              name: "Bedding size",
+              value: "King",
+            },
+            {
+              name: "Receive In",
+              value: "6 Months",
+            },
+          ],
+        },
       ],
     },
-
     {
       delivery_by_date: "02 Apr 2025",
       delivery_fee: 60,
@@ -94,23 +118,25 @@ export default function CartPageWrapper() {
     <div className="@container">
       <div className="mx-auto w-full max-w-[1536px] items-start @5xl:grid @5xl:grid-cols-12 @5xl:gap-7 @6xl:grid-cols-10 @7xl:gap-10">
         <div className="my-6 grid grid-cols-1 gap-4 @md:gap-6 md:hidden ">
-          <Button
-            size="xl"
-            rounded="pill"
-            // onClick={() => router.push(routes.dashboard.checkout)}
-            className="w-full hover:bg-[#3489d7]"
-          >
-            Continue
-          </Button>
-
-          <Button
-            size="xl"
-            variant="outline"
-            rounded="pill"
-            className="w-full text-[#2B90EC] dark:bg-gray-100 dark:active:bg-gray-100"
-          >
-            Cancel Order
-          </Button>
+          <Link href={routes.dashboard.checkout}>
+            <Button
+              size="xl"
+              rounded="pill"
+              className="w-full hover:bg-[#3489d7]"
+            >
+              Continue
+            </Button>
+          </Link>
+          <Link href={routes.dashboard.orders}>
+            <Button
+              size="xl"
+              variant="outline"
+              rounded="pill"
+              className="w-full text-[#2B90EC] dark:bg-gray-100 dark:active:bg-gray-100"
+            >
+              Cancel Order
+            </Button>
+          </Link>
         </div>
         <div className="@5xl:col-span-8 @6xl:col-span-7">
           {deliveries && deliveries.length ? (

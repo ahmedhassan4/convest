@@ -28,7 +28,7 @@ export default function RootLayout({
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1"
         />
-                
+        <title>Convest</title>
       </Head>
       <body
         // to prevent any warning that is caused by third party extensions like Grammarly

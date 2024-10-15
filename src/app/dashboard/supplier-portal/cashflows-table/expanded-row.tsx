@@ -9,7 +9,7 @@ function CustomExpandIcon(props: any) {
       size="sm"
       variant="outline"
       rounded="full"
-      className="expand-row-icon ms-2"
+      className="expand-row-icon ms-2 pl-[3px] pt-1"
       onClick={(e) => {
         props.onExpand(props.record, e);
       }}
@@ -43,55 +43,55 @@ export default function ExpandedOrderRow({ record }: any) {
     <div className="grid grid-cols-1 divide-y bg-gray-0 px-3.5 dark:bg-gray-50">
       {record.order.map((order: any) => (
         <div key={order.id} className="py-4 first:pt-2.5 last:pb-2.5">
-          <article className="flex flex-col md:flex-row items-center justify-between w-full gap-10">
-            <div className="flex items-center ml-5">
-              <CustomExpandIcon
-                expanded={expandedOrder[order.id]}
-                onExpand={() => toggleExpand(order.id)}
-              />
-            </div>
-            <div className="flex w-full justify-between">
+          {" "}
+          {/* modefied needed*/}
+          <article className="flex items-center justify-between py-6 first-of-type:pt-2.5 last-of-type:pb-2.5">
+            <div className="flex items-center">
+              <div className="flex mx-5">
+                <CustomExpandIcon
+                  expanded={expandedOrder[order.id]}
+                  onExpand={() => toggleExpand(order.id)}
+                />
+              </div>
               <div className="flex-1">
                 <Text className="text-sm font-medium">Order #{order.id}</Text>
                 <Text className="text-xs text-gray-500">Omar El Olimi</Text>
               </div>
-              <div className="flex-1 flex flex-col md:flex-row justify-between">
-                <div className="flex flex-col">
-                  <Text className="text-sm font-medium">Late Fee</Text>
-                  <Text className="text-xs text-gray-500">
-                    ${order.lateFee}
-                  </Text>
-                </div>
-                <div className="flex flex-col">
-                  <Text className="text-sm font-medium">Order Amount</Text>
-                  <Text className="text-xs text-gray-500">
-                    {order.orderAmount} EGP
-                  </Text>
-                </div>
-                <div className="flex flex-col mt-2 md:mt-0">
-                  <Text className="text-sm font-medium">Payment Status</Text>
-                  <Text
-                    className={`text-sm font-medium ${
-                      order.paymentStatus === "Paid"
-                        ? "text-[#0D9488]"
-                        : "text-yellow-600"
-                    }`}
-                  >
-                    {order.paymentStatus}
-                  </Text>
-                </div>
+            </div>
+            <div className="flex w-full max-w-lg items-center justify-between">
+              <div className="flex flex-col">
+                <Text className="text-sm font-medium">Late Fee</Text>
+                <Text className="text-xs text-gray-500">${order.lateFee}</Text>
+              </div>
+              <div className="flex flex-col">
+                <Text className="text-sm font-medium">Order Amount</Text>
+                <Text className="text-xs text-gray-500">
+                  {order.orderAmount} EGP
+                </Text>
+              </div>
+              <div className="flex flex-col mt-2 md:mt-0">
+                <Text className="text-sm font-medium">Payment Status</Text>
+                <Text
+                  className={`text-sm font-medium ${
+                    order.paymentStatus === "Paid"
+                      ? "text-[#0D9488]"
+                      : "text-yellow-600"
+                  }`}
+                >
+                  {order.paymentStatus}
+                </Text>
               </div>
             </div>
           </article>
-
+          {/* place the nested expanded row */}
           {expandedOrder[order.id] && (
-            <div className="mt-3 pl-5 border-l border-muted">
+            <div className="grid grid-cols-1 divide-y bg-gray-0 px-3.5 dark:bg-gray-50">
               {order?.products.map((product: any) => (
                 <article
                   key={record.id + product.name}
-                  className="flex flex-col md:flex-row items-center justify-start py-4 first:pt-2.5 last:pb-2.5"
+                  className="flex items-center justify-between py-6 first-of-type:pt-2.5 last-of-type:pb-2.5"
                 >
-                  <div className="flex items-start w-full md:w-[33%]">
+                  <div className="flex items-start">
                     <div className="relative me-4 aspect-[80/60] w-20 flex-shrink-0 overflow-hidden rounded-md bg-gray-100">
                       <Image
                         fill
@@ -112,46 +112,32 @@ export default function ExpandedOrderRow({ record }: any) {
                       </Text>
                     </header>
                   </div>
-                  <div className="flex-1 ml-4 flex flex-col md:flex-row items-center justify-between">
-                    <div className="flex items-center justify-between gap-6">
-                      <div>
-                        <Text className="text-sm text-[#111111] font-medium mb-1">
-                          Color
-                        </Text>
-                        <Text className="text-xs text-[#666666]">
-                          {product.color}
-                        </Text>
-                      </div>
+                  <div className="flex w-full max-w-lg items-center justify-between gap-4">
+                    <div>
+                      <Text className="text-sm text-[#111111] font-medium mb-1">
+                        Color
+                      </Text>
+                      <Text className="text-xs text-[#666666]">
+                        {product.color}
+                      </Text>
                     </div>
-                    <div className="flex items-center justify-between gap-6 mt-2 md:mt-0">
-                      <div>
-                        <Text className="text-sm text-[#111111] font-medium mb-1">
-                          Size
-                        </Text>
-                        <Text className="text-xs text-[#666666]">
-                          {product.size}
-                        </Text>
-                      </div>
+
+                    <div>
+                      <Text className="text-sm text-[#111111] font-medium mb-1">
+                        Size
+                      </Text>
+                      <Text className="text-xs text-[#666666]">
+                        {product.size}
+                      </Text>
                     </div>
-                    {/* <div className="flex items-center justify-between gap-6 mt-2 md:mt-0">
-                      <div>
-                        <Text className="text-sm text-[#111111] font-medium mb-1">
-                          Receive In
-                        </Text>
-                        <Text className="text-xs text-[#666666]">
-                          {product.receiveIn} Months
-                        </Text>
-                      </div>
-                    </div> */}
-                    <div className="flex items-center justify-between gap-6 mt-2 md:mt-0">
-                      <div>
-                        <Text className="text-sm text-[#111111] font-medium mb-1">
-                          Price
-                        </Text>
-                        <Text className="text-xs text-[#666666]">
-                          {product.price} EGP
-                        </Text>
-                      </div>
+
+                    <div>
+                      <Text className="text-sm text-[#111111] font-medium mb-1">
+                        Price
+                      </Text>
+                      <Text className="text-xs text-[#666666]">
+                        {product.price} EGP
+                      </Text>
                     </div>
                   </div>
                 </article>

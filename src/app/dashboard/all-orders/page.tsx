@@ -5,7 +5,7 @@ import { metaObject } from "@/config/site.config";
 import { CartProvider } from "@/store/quick-cart/cart.context";
 
 export const metadata = {
-  ...metaObject("Checkout"),
+  ...metaObject("convest"),
 };
 
 const pageHeader = {

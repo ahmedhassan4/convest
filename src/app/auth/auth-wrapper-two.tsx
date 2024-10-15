@@ -3,8 +3,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Avatar, Title, Text, Button } from 'rizzui';
-import { usePathname } from 'next/navigation';
-import { routes } from '@/config/routes';
+import { usePathname, useRouter } from "next/navigation";
+import { routes } from "@/config/routes";
 
 import {
   PiArrowLeftBold,
@@ -82,6 +82,12 @@ function AuthNavLink({
 }
 
 function AuthNavBar() {
+  const router = useRouter();
+
+  const handleGoBack = () => {
+    router.back();
+  };
+
   return (
     <div className="flex shrink-0 justify-between rounded-bl-xl rounded-tl-xl bg-white px-4 py-4 xl:sticky xl:top-0 xl:w-36 xl:flex-col xl:items-center xl:justify-start xl:px-0 xl:py-14 2xl:w-[184px] dark:bg-transparent">
       <Link href="/" className="mb-1 inline-block max-w-[64px]">
@@ -107,13 +113,14 @@ function AuthNavBar() {
         </AuthNavLink>
       </div>
 
-      <Link
-        href={"/"}
+      <Button
+        variant="text"
+        onClick={handleGoBack}
         className="relative hidden items-center gap-x-1.5 text-[15px] font-medium text-gray-700 transition-colors duration-200 hover:text-gray-1000 xl:mt-auto xl:flex xl:gap-x-1.5 xl:py-0.5 xl:pe-6 xl:ps-3 xl:text-base xl:text-gray-500 xl:before:top-0 xl:before:h-full xl:hover:text-gray-700 2xl:pe-9 2xl:ps-7 [&>svg]:w-[22px] [&>svg]:shrink-0 xl:[&>svg]:w-6"
       >
         <PiArrowLeftBold />
         Back
-      </Link>
+      </Button>
     </div>
   );
 }

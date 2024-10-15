@@ -12,7 +12,7 @@ import ExportButton from "@/shared/export-button";
 import OrderState from "@/app/dashboard/order/order-status/OrderState";
 
 export const metadata = {
-  ...metaObject("Orders"),
+  ...metaObject("convest"),
 };
 
 const pageHeader = {

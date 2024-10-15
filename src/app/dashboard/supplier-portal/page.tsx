@@ -5,7 +5,7 @@ import { metaObject } from "@/config/site.config";
 import SupplierPortalPageWrapper from ".";
 
 export const metadata = {
-  ...metaObject("Checkout"),
+  ...metaObject("convest"),
 };
 
 const pageHeader = {

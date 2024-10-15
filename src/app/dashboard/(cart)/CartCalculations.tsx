@@ -78,6 +78,7 @@ const CartCalculations = () => {
           size="xl"
           variant="outline"
           rounded="pill"
+          onClick={() => router.push(routes.dashboard.orders)}
           className="w-full text-[#2B90EC] dark:bg-gray-100 dark:active:bg-gray-100"
         >
           Cancel Order

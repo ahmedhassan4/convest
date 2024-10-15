@@ -7,10 +7,10 @@ enum MODE {
 }
 
 export const siteConfig = {
-  title: 'Isomorphic - React Typescript Admin Dashboard Template',
+  title: "",
   description: `Isomorphic the ultimate React TypeScript Admin Template. Streamline your admin dashboard development with our feature-rich, responsive, and highly customizable solution. Boost productivity and create stunning admin interfaces effortlessly.`,
-  logo: '/logo-short.svg',
-  icon: '/auth/star.svg',
+  logo: "/logo-short.svg",
+  icon: "/auth/star.svg",
   mode: MODE.LIGHT,
   debounceDuration: 1000,
   // TODO: favicon
@@ -18,7 +18,7 @@ export const siteConfig = {
     maxAge: 30 * 24 * 60 * 60, // 30 days
     // path: '/',
   },
-  endPointURL: process.env.NEXT_PUBLIC_API_ENDPOINT
+  endPointURL: process.env.NEXT_PUBLIC_API_ENDPOINT,
 };
 
 export const metaObject = (
@@ -27,20 +27,20 @@ export const metaObject = (
   description: string = siteConfig.description
 ): Metadata => {
   return {
-    title: title ? `${title} - Isomorphic Furyroad` : siteConfig.title,
+    title: title ? `${title} ` : siteConfig.title,
     description,
     openGraph: openGraph ?? {
       title: title ? `${title} - Isomorphic Furyroad` : title,
       description,
-      url: 'https://isomorphic-furyroad.vercel.app',
-      siteName: 'Isomorphic Furyroad', // https://developers.google.com/search/docs/appearance/site-names
+      url: "https://isomorphic-furyroad.vercel.app",
+      siteName: "Isomorphic Furyroad", // https://developers.google.com/search/docs/appearance/site-names
       images: {
-        url: 'https://s3.amazonaws.com/redqteam.com/isomorphic-furyroad/itemdep/isobanner.png',
+        url: "https://s3.amazonaws.com/redqteam.com/isomorphic-furyroad/itemdep/isobanner.png",
         width: 1200,
         height: 630,
       },
-      locale: 'en_US',
-      type: 'website',
+      locale: "en_US",
+      type: "website",
     },
   };
 };
