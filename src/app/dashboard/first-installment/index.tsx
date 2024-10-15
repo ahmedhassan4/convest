@@ -30,7 +30,7 @@ export default function InstallmentWrapper() {
 
   const mockProducts = [
     {
-      title: "Test Sheets",
+      title: "Elegant Silk Scarf",
       brand: "IKEA",
       total_price: "800.00 EGP",
       quantity: 2,
@@ -39,7 +39,7 @@ export default function InstallmentWrapper() {
       amount_outstanding: 0,
       installment_price: "533.33 EGP/Month",
       image:
-        "https://cdn.shopify.com/s/files/1/0665/3024/6794/files/charlesdeluvio-OtC8kRzlbqo-unsplash.jpg?v=1727163982",
+        "https://isomorphic-furyroad.s3.amazonaws.com/public/products/modern/9.webp",
       options: [
         {
           name: "Bedding size",
@@ -61,7 +61,7 @@ export default function InstallmentWrapper() {
       amount_outstanding: 0,
       installment_price: "533.33 EGP/Month",
       image:
-        "https://cdn.shopify.com/s/files/1/0665/3024/6794/files/charlesdeluvio-OtC8kRzlbqo-unsplash.jpg?v=1727163982",
+        "https://isomorphic-furyroad.s3.amazonaws.com/public/products/modern/5.webp",
       options: [
         {
           name: "Bedding size",
