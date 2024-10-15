@@ -18,7 +18,7 @@ export default function OtpPage() {
         <Text className="mt-5 text-center text-[15px] leading-loose text-gray-500 lg:text-start xl:mt-7 xl:text-base">
           Wrong Number?{" "}
           <Link
-            href={routes.auth.login}
+            href={routes.auth.forgetPassword}
             className="font-semibold text-[#2B90EC] transition-colors hover:text-blue"
           >
             Go Back
