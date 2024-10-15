@@ -8,6 +8,7 @@ import { routes } from '@/config/routes';
 
 import {
   PiArrowLeftBold,
+  PiArrowLineRight,
   PiDribbbleLogo,
   PiFacebookLogo,
   PiInstagramLogo,
@@ -29,8 +30,8 @@ export default function AuthWrapperTwo({
     <div className="min-h-screen items-center justify-center xl:flex xl:bg-gray-50 xl:px-5 xl:py-16 2xl:px-8 2xl:py-28">
       <div className="mx-auto w-full py-2 xl:py-14 2xl:w-[1720px]">
         <div className="rounded-xl bg-white xl:flex dark:bg-transparent dark:xl:bg-gray-100/50 xl:shadow-md relative">
-          <div className="absolute top-10 right-10 hidden lg:flex  ">
-            <Text className="font-serif cursor-pointer">العربيه</Text>
+          <div className="absolute top-10 right-10 hidden xl:flex  ">
+            <Text className="font-serif cursor-pointer">العربية</Text>
           </div>
           <AuthNavBar />
           <IntroBannerBlock />
@@ -85,7 +86,7 @@ function AuthNavBar() {
     <div className="flex shrink-0 justify-between rounded-bl-xl rounded-tl-xl bg-white px-4 py-4 xl:sticky xl:top-0 xl:w-36 xl:flex-col xl:items-center xl:justify-start xl:px-0 xl:py-14 2xl:w-[184px] dark:bg-transparent">
       <Link href="/" className="mb-1 inline-block max-w-[64px]">
         <Image
-          src={"/vector.svg"}
+          src={"/Vector.svg"}
           alt="Isomorphic"
           width={64}
           height={64}
@@ -93,12 +94,17 @@ function AuthNavBar() {
         />
       </Link>
 
-      <div className="flex items-center lg:hidden space-x-6 xl:w-full xl:flex-col xl:space-x-0 xl:space-y-6 xl:pt-9 2xl:space-y-7 2xl:pt-12 3xl:pt-14">
-        <Text className="font-serif cursor-pointer">العربيه</Text>
+      <div className="flex items-center  space-x-6 xl:w-full xl:flex-col xl:space-x-0 xl:space-y-6 xl:pt-9 2xl:space-y-7 2xl:pt-12 3xl:pt-14">
+        <Button variant="text" className="font-serif xl:hidden pt-3">
+          العربية
+        </Button>
 
-        <div className="h-6 w-[1px] bg-gray-400"></div>
+        <div className="h-6 w-[1px] bg-gray-400 xl:hidden"></div>
 
-        <AuthNavLink href={routes.auth.login}>Login</AuthNavLink>
+        <AuthNavLink href={routes.auth.login}>
+          <PiArrowLineRight className="h-[22px] w-[22px] hidden xl:flex" />
+          Login
+        </AuthNavLink>
       </div>
 
       <Link

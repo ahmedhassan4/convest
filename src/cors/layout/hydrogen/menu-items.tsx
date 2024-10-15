@@ -16,7 +16,7 @@ export const menuItems = [
   // label end
   {
     name: "Orders",
-    href: routes.dashboard.home,
+    href: routes.dashboard.orders,
     icon: <Package weight="duotone" />,
   },
   {
@@ -52,7 +52,7 @@ export const menuItems = [
   },
   {
     name: "Logout",
-    href: "#",
+    href: routes.auth.login,
     icon: <SignOut weight="duotone" />,
   },
 ];
